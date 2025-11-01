@@ -30,6 +30,11 @@
         <steamWorkshopUrl>https://steamcommunity.com/workshop/filedetails/?id=2023507013</steamWorkshopUrl>
         <downloadUrl>https://github.com/Vanilla-Expanded/VanillaExpandedFramework</downloadUrl>
     </li>
+    <li>
+        <packageId>explodoboy.HediffCureFramework</packageId>
+        <displayName>I Have The Cure!</displayName>
+        <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2672103801</steamWorkshopUrl>
+    </li>
 </modDependencies>
 <loadAfter>
     <li>V1024.EBFramework</li>
