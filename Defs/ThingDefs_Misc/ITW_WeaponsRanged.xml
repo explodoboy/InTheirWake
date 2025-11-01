@@ -1,0 +1,364 @@
+<Defs>
+
+    <ThingDef ParentName="BaseMakeableGun">
+        <defName>ITW_Pistol</defName>
+        <label>phitech pistol</label>
+        <description>A pistol that launches packets of phi-matter that react violently with all matter (including air) on contact. It is designed to be as cheap as possible, trading performance for mass-producibility. It does decently at all ranges.</description>
+        <techLevel>Ultra</techLevel>
+        <soundInteract>Interact_ChargeRifle</soundInteract>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_Pistol</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <Mass>1.25</Mass>
+            <WorkToMake>20000</WorkToMake>
+            <AccuracyTouch>0.75</AccuracyTouch>
+            <AccuracyShort>0.85</AccuracyShort>
+            <AccuracyMedium>0.75</AccuracyMedium>
+            <AccuracyLong>0.65</AccuracyLong>
+            <RangedWeapon_Cooldown>0.8</RangedWeapon_Cooldown>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>ITW_PistolBullet</defaultProjectile>
+                <warmupTime>0.3</warmupTime>
+                <range>27.9</range>
+                <soundCast>Shot_ChargeRifle</soundCast>
+                <soundCastTail>GunTail_Light</soundCastTail>
+                <muzzleFlashScale>9</muzzleFlashScale>
+            </li>
+        </verbs>
+        <tools>
+            <li>
+            <label>barrel</label>
+            <capacities>
+                <li>Blunt</li>
+                <li>Poke</li>
+            </capacities>
+            <power>9</power>
+            <cooldownTime>2</cooldownTime>
+            </li>
+        </tools>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>10</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+        </recipeMaker>
+        <weaponTags>
+            <li>SpacerGun</li>
+        </weaponTags>
+        <tradeTags>
+            <li>WeaponRanged</li>
+        </tradeTags>
+        <thingSetMakerTags>
+            <li>RewardStandardQualitySuper</li>
+            <li>RewardStandardMidFreq</li>
+        </thingSetMakerTags>
+        <costList>
+            <ITW_MaterialCommon>25</ITW_MaterialCommon>
+            <ITW_Component>1</ITW_Component>
+        </costList>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseBullet">
+        <defName>ITW_PistolBullet</defName>
+        <label>phitech pistol projectile</label>
+        <graphicData>
+            <texPath>BaseITW/Things/Projectile/ITW_PistolBullet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>12</damageAmountBase>
+            <armorPenetrationBase>0.7</armorPenetrationBase>
+            <stoppingPower>0.5</stoppingPower>
+            <speed>80</speed>
+        </projectile>
+    </ThingDef>
+    
+
+    <ThingDef ParentName="BaseMakeableGun">
+        <defName>ITW_Rifle</defName>
+        <label>phitech rifle</label>
+        <description>An assault rifle that launches bursts of phi-matter packets that react violently with all matter (including air) on contact. It excels at medium range, and is decent otherwise.</description>
+        <techLevel>Ultra</techLevel>
+        <soundInteract>Interact_ChargeLance</soundInteract>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_Rifle</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <Mass>5</Mass>
+            <WorkToMake>45000</WorkToMake>
+            <AccuracyTouch>0.55</AccuracyTouch>
+            <AccuracyShort>0.70</AccuracyShort>
+            <AccuracyMedium>0.85</AccuracyMedium>
+            <AccuracyLong>0.70</AccuracyLong>
+            <RangedWeapon_Cooldown>1.75</RangedWeapon_Cooldown>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>ITW_RifleBullet</defaultProjectile>
+                <warmupTime>1.0</warmupTime>
+                <range>34.9</range>
+                <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+                <burstShotCount>3</burstShotCount>
+                <soundCast>ChargeLance_Fire</soundCast>
+                <soundCastTail>GunTail_Medium</soundCastTail>
+                <muzzleFlashScale>9</muzzleFlashScale>
+            </li>
+        </verbs>
+        <tools>
+            <li>
+                <label>stock</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+            <li>
+                <label>barrel</label>
+                <capacities>
+                    <li>Blunt</li>
+                    <li>Poke</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+        </tools>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>10</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+        </recipeMaker>
+        <weaponTags>
+            <li>SpacerGun</li>
+        </weaponTags>
+        <tradeTags>
+            <li>WeaponRanged</li>
+        </tradeTags>
+        <thingSetMakerTags>
+            <li>RewardStandardQualitySuper</li>
+            <li>RewardStandardMidFreq</li>
+        </thingSetMakerTags>
+        <costList>
+            <ITW_MaterialCommon>50</ITW_MaterialCommon>
+            <ITW_Component>2</ITW_Component>
+        </costList>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseBullet">
+        <defName>ITW_RifleBullet</defName>
+        <label>phitech rifle projectile</label>
+        <graphicData>
+            <texPath>BaseITW/Things/Projectile/ITW_RifleBullet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>20</damageAmountBase> <!-- +10% DPS over sniper due to slightly less range -->
+            <armorPenetrationBase>0.7</armorPenetrationBase>
+            <stoppingPower>1.0</stoppingPower>
+            <speed>90</speed>
+        </projectile>
+    </ThingDef>
+    
+
+    <ThingDef ParentName="BaseMakeableGun">
+        <defName>ITW_Shotgun</defName>
+        <label>phitech shotgun</label>
+        <description>A shotgun that launches groups of phi-matter packets that react violently with all matter (including air) on contact. It shreds armor and has incredible stopping power, but struggles at range.</description>
+        <techLevel>Ultra</techLevel>
+        <soundInteract>Interact_ChargeLance</soundInteract>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_Shotgun</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <Mass>5</Mass>
+            <WorkToMake>45000</WorkToMake>
+            <AccuracyTouch>0.95</AccuracyTouch>
+            <AccuracyShort>0.90</AccuracyShort>
+            <AccuracyMedium>0.60</AccuracyMedium>
+            <AccuracyLong>0.30</AccuracyLong>
+            <RangedWeapon_Cooldown>1.0</RangedWeapon_Cooldown>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>ITW_ShotgunBullet</defaultProjectile>
+                <warmupTime>0.5</warmupTime>
+                <range>20.9</range>
+                <soundCast>ChargeLance_Fire</soundCast>
+                <soundCastTail>GunTail_Heavy</soundCastTail>
+                <muzzleFlashScale>9</muzzleFlashScale>
+            </li>
+        </verbs>
+        <tools>
+            <li>
+                <label>stock</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+            <li>
+                <label>barrel</label>
+                <capacities>
+                    <li>Blunt</li>
+                    <li>Poke</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+        </tools>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>10</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+        </recipeMaker>
+        <weaponTags>
+            <li>SpacerGun</li>
+        </weaponTags>
+        <tradeTags>
+            <li>WeaponRanged</li>
+        </tradeTags>
+        <thingSetMakerTags>
+            <li>RewardStandardQualitySuper</li>
+            <li>RewardStandardMidFreq</li>
+        </thingSetMakerTags>
+        <costList>
+            <ITW_MaterialCommon>50</ITW_MaterialCommon>
+            <ITW_Component>2</ITW_Component>
+        </costList>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseBullet">
+        <defName>ITW_ShotgunBullet</defName>
+        <label>phitech shotgun projectile</label>
+        <graphicData>
+            <texPath>BaseITW/Things/Projectile/ITW_ShotgunBullet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>38</damageAmountBase> <!-- +25% DPS over sniper due to lower range -->
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+            <stoppingPower>5.0</stoppingPower>
+            <speed>90</speed>
+        </projectile>
+    </ThingDef>
+    
+
+    <ThingDef ParentName="BaseMakeableGun">
+        <defName>ITW_Sniper</defName>
+        <label>phitech sniper</label>
+        <description>A sniper rifle that launches dense packets of phi-matter that react violently with all matter (including air) on contact. One shot is often all that's needed to secure a kill.</description>
+        <techLevel>Ultra</techLevel>
+        <soundInteract>Interact_ChargeLance</soundInteract>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_Sniper</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <Mass>5</Mass>
+            <WorkToMake>45000</WorkToMake>
+            <AccuracyTouch>0.55</AccuracyTouch>
+            <AccuracyShort>0.70</AccuracyShort>
+            <AccuracyMedium>0.85</AccuracyMedium>
+            <AccuracyLong>0.95</AccuracyLong>
+            <RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>ITW_SniperBullet</defaultProjectile>
+                <warmupTime>1.5</warmupTime>
+                <range>59.9</range>
+                <soundCast>ChargeLance_Fire</soundCast>
+                <soundCastTail>GunTail_Heavy</soundCastTail>
+                <muzzleFlashScale>9</muzzleFlashScale>
+            </li>
+        </verbs>
+        <tools>
+            <li>
+                <label>stock</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+            <li>
+                <label>barrel</label>
+                <capacities>
+                    <li>Blunt</li>
+                    <li>Poke</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+        </tools>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>10</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+        </recipeMaker>
+        <weaponTags>
+            <li>SpacerGun</li>
+        </weaponTags>
+        <tradeTags>
+            <li>WeaponRanged</li>
+        </tradeTags>
+        <thingSetMakerTags>
+            <li>RewardStandardQualitySuper</li>
+            <li>RewardStandardMidFreq</li>
+        </thingSetMakerTags>
+        <costList>
+            <ITW_MaterialCommon>75</ITW_MaterialCommon>
+            <ITW_Component>3</ITW_Component>
+        </costList>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseBullet">
+        <defName>ITW_SniperBullet</defName>
+        <label>phitech sniper projectile</label>
+        <graphicData>
+            <texPath>BaseITW/Things/Projectile/ITW_SniperBullet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>80</damageAmountBase>
+            <armorPenetrationBase>0.8</armorPenetrationBase>
+            <stoppingPower>3.0</stoppingPower>
+            <speed>135</speed>
+        </projectile>
+    </ThingDef>
+
+</Defs>

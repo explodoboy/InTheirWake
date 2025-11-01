@@ -1,0 +1,74 @@
+<Defs>
+
+    <ThingDef ParentName="ITW_DrugItemBase">
+        <defName>ITW_DrugMood</defName>
+        <label>everglow</label>
+        <description>A concoction of mechanites that augments one's ability to derive pleasure. Unlike joywires, they don't negatively impact concentration, nor does it risk addiction or dependency. Regardless, they are controversial among many glitterworld cultures for circumventing human enjoyment.\n\nA dose lasts for 1.3 days.</description>
+        <descriptionHyperlinks>
+            <HediffDef>ITW_DrugMood</HediffDef>
+        </descriptionHyperlinks>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Drug/ITW_DrugMood</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>60</MarketValue>
+        </statBases>
+        <ingestible>
+            <joyKind>Chemical</joyKind>
+            <joy>0.75</joy>
+            <outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>ITW_DrugMood</hediffDef>
+					<severity>1</severity>
+				</li>
+            </outcomeDoers>
+        </ingestible>
+        <researchPrerequisites>
+            <li>ITW_MedicineAndDrugs</li>
+        </researchPrerequisites>
+        <tradeTags Inherit="False"><li>Drugs</li></tradeTags> <!-- Inside Def and not base to allow modsettings to disable -->
+        <comps>
+            <li Class="CompProperties_Drug">
+                <addictiveness>0</addictiveness>
+                <existingAddictionSeverityOffset>0</existingAddictionSeverityOffset>
+                <needLevelOffset>0</needLevelOffset>
+                <isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+                <listOrder>200</listOrder>
+                <overdoseSeverityOffset>0</overdoseSeverityOffset>
+                <largeOverdoseChance>0</largeOverdoseChance>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef ParentName="ITW_DrugHediffBase">
+        <defName>ITW_DrugMood</defName>
+        <label>high on everglow</label>
+        <labelNoun>an everglow high</labelNoun>
+        <description>Everglow mechanites in the brain. They are monitoring and selectively stimulating the parts of the brain that regulate emotion, amplifying pleasant thoughts and sensations while suppressing negative ones. Eventually they will lose charge and harmlessly filter out of the body.</description>
+        <defaultLabelColor>(255,60,0)</defaultLabelColor>
+        <maxSeverity>1</maxSeverity>
+        <comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+                <severityPerDay>-0.75</severityPerDay>
+                <showHoursToRecover>true</showHoursToRecover>
+            </li>
+        </comps>
+    </HediffDef>
+  
+    <ThoughtDef>
+		<defName>ITW_DrugMood</defName>
+		<workerClass>ThoughtWorker_Hediff</workerClass>
+		<hediff>ITW_DrugMood</hediff>
+		<validWhileDespawned>true</validWhileDespawned>
+		<developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+		<stages>
+			<li>
+				<label>high on everglow</label>
+				<description>I feel great. Everything I do is nice, and my problems feel like nothing at all.</description>
+				<baseMoodEffect>40</baseMoodEffect>
+			</li>
+		</stages>
+    </ThoughtDef>
+    
+</Defs>

@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!-- 
+    QUEST REWARD TAGS:
+        RewardStandardHighFreq - Weight 5
+        RewardStandardMidFreq - Weight 2.5
+        RewardStandardLowFreq - Weight 1
+
+        RewardStandardQualitySuper - Weight 1.5 (force high quality)
+        RewardStandardCore - Weight 3 (meant for vanilla items)
+    -->
+
+    <ThingDef ParentName="ResourceBase" Name="ITW_ResourceBase" Abstract="True">
+        <soundInteract>Metal_Drop</soundInteract>
+        <soundDrop>Metal_Drop</soundDrop>
+        <useHitPoints>false</useHitPoints>
+        <healthAffectsPrice>false</healthAffectsPrice>
+        <burnableByRecipe>false</burnableByRecipe>
+        <smeltable>true</smeltable>
+        <thingCategories><li>ResourcesRaw</li></thingCategories>
+        <stuffProps>
+            <statFactors>
+                <Flammability>0.0</Flammability>
+            </statFactors>
+            <categories>
+                <li>Metallic</li>
+                <li>Fabric</li>
+                <li>Leathery</li>
+            </categories>
+            <appearance>Metal</appearance>
+            <constructEffect>ConstructMetal</constructEffect>
+            <soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+            <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+            <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+        </stuffProps>
+        <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+        <allowedArchonexusCount>80</allowedArchonexusCount>
+    </ThingDef>
+
+    <ThingDef ParentName="ResourceBase" Name="ITW_ResourceIngredientBase" Abstract="True">
+        <soundInteract>Metal_Drop</soundInteract>
+        <soundDrop>Standard_Drop</soundDrop>
+        <stackLimit>500</stackLimit>
+        <healthAffectsPrice>false</healthAffectsPrice>
+        <intricate>true</intricate>
+        <thingCategories><li>Manufactured</li></thingCategories>
+        <statBases>
+            <Mass>0.1</Mass>
+            <Flammability>0</Flammability>
+            <DeteriorationRate>0</DeteriorationRate>
+        </statBases>
+        <allowedArchonexusCount>1000</allowedArchonexusCount>
+    </ThingDef>
+
+    <ThingDef ParentName="ResourceBase" Name="ITW_ComponentBase" Abstract="True">
+        <soundInteract>Metal_Drop</soundInteract>
+        <soundDrop>Standard_Drop</soundDrop>
+        <stackLimit>50</stackLimit>
+        <healthAffectsPrice>false</healthAffectsPrice>
+        <intricate>true</intricate>
+        <thingCategories><li>Manufactured</li></thingCategories>
+        <statBases>
+            <Mass>0.6</Mass>
+            <Flammability>0</Flammability>
+            <DeteriorationRate>0</DeteriorationRate>
+        </statBases>
+        <allowedArchonexusCount>10</allowedArchonexusCount>
+    </ThingDef>
+
+    <!-- END BASE DEFS -->
+
+    <ThingDef ParentName="ITW_ResourceBase">
+        <defName>ITW_MaterialCommon</defName>
+        <label>common starsteel</label>
+        <description>A human-made alloy infused with phi-matter, assembled at the molecular level. Its qualities can be fine-tuned with advanced technology. It's simultaneously incredibly resilient and soft to the touch, and also features antimicrobial and insulating properties. It is fit for use in anything from warship plating to clothing.\n\nThis variant was pre-made to be extremely versatile.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Resource/ITW_MaterialCommon</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>30</MarketValue>
+            <Mass>0.38</Mass>
+            <StuffPower_Armor_Sharp>1.35</StuffPower_Armor_Sharp>
+            <StuffPower_Armor_Blunt>0.75</StuffPower_Armor_Blunt>
+            <StuffPower_Armor_Heat>0.85</StuffPower_Armor_Heat>
+            <StuffPower_Insulation_Cold>30</StuffPower_Insulation_Cold>
+            <StuffPower_Insulation_Heat>30</StuffPower_Insulation_Heat>
+            <SharpDamageMultiplier>1.30</SharpDamageMultiplier>
+            <BluntDamageMultiplier>1.30</BluntDamageMultiplier>
+        </statBases>
+        <stuffProps>
+            <color>(229,229,229)</color>
+            <commonality>0.01</commonality>
+            <statOffsets>
+                <Beauty>12</Beauty>
+            </statOffsets>
+            <statFactors>
+                <MaxHitPoints>7.0</MaxHitPoints>
+                <Beauty>3</Beauty>
+                <Flammability>0</Flammability>
+                <WorkToMake>1.5</WorkToMake>
+                <WorkToBuild>1.5</WorkToBuild>
+                <MeleeWeapon_CooldownMultiplier>1</MeleeWeapon_CooldownMultiplier>
+            </statFactors>
+        </stuffProps>
+        <tradeTags> <!-- tradeTags are inside this Def instead of its abstract base because XML patches run BEFORE inheritance, meaning that if I want to patch something, it has to be inside the XML code. I really don't like it, but it is what it is. -->
+            <li>ExoticMisc</li>
+        </tradeTags>
+        <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_ResourceBase">
+        <defName>ITW_MaterialFlawed</defName>
+        <label>flawed starsteel</label>
+        <description>A human-made alloy infused with phi-matter. It is an imperfect blend made by careful mixing of metals instead of ultratech molecular assembly, typically made by less advanced societies who happen to have a supply of phi-matter but for whatever reason can't access or afford regular starsteel. Notably, its properties cannot be modified like regular starsteel. Even then, it's still better than plasteel.\n\nWith sufficient technical knowhow, it can be reassembled into common starsteel.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Resource/ITW_MaterialFlawed</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>23</MarketValue>
+            <Mass>0.38</Mass>
+            <StuffPower_Armor_Sharp>1.25</StuffPower_Armor_Sharp>
+            <StuffPower_Armor_Blunt>0.65</StuffPower_Armor_Blunt>
+            <StuffPower_Armor_Heat>0.75</StuffPower_Armor_Heat>
+            <StuffPower_Insulation_Cold>20</StuffPower_Insulation_Cold>
+            <StuffPower_Insulation_Heat>20</StuffPower_Insulation_Heat>
+            <SharpDamageMultiplier>1.20</SharpDamageMultiplier>
+            <BluntDamageMultiplier>1.20</BluntDamageMultiplier>
+        </statBases>
+        <stuffProps>
+            <color>(172,204,229)</color>
+            <commonality>0.02</commonality>
+            <statOffsets>
+                <Beauty>6</Beauty>
+            </statOffsets>
+            <statFactors>
+                <MaxHitPoints>5.0</MaxHitPoints>
+                <Beauty>2</Beauty>
+                <Flammability>0</Flammability>
+                <WorkToMake>1.8</WorkToMake>
+                <WorkToBuild>1.8</WorkToBuild>
+                <MeleeWeapon_CooldownMultiplier>1</MeleeWeapon_CooldownMultiplier>
+            </statFactors>
+        </stuffProps>
+        <tradeTags> <!-- Refer to comment in ITW_MaterialCommon. -->
+            <li>ExoticMisc</li>
+        </tradeTags>
+        <thingSetMakerTags><li>RewardStandardHighFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_ResourceBase">
+        <defName>ITW_MaterialBeauty</defName>
+        <label>opulent starsteel</label>
+        <description>A human-made alloy infused with phi-matter, assembled at the molecular level. Its qualities can be fine-tuned with advanced technology. It's simultaneously incredibly resilient and soft to the touch, and also features antimicrobial and insulating properties. It is fit for use in anything from warship plating to clothing.\n\nThis variant is equally as beautiful as gold, but it makes for worse weapons and armor.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Resource/ITW_MaterialBeauty</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>30</MarketValue>
+            <Mass>0.38</Mass>
+            <StuffPower_Armor_Sharp>1.25</StuffPower_Armor_Sharp>
+            <StuffPower_Armor_Blunt>0.65</StuffPower_Armor_Blunt>
+            <StuffPower_Armor_Heat>0.75</StuffPower_Armor_Heat>
+            <StuffPower_Insulation_Cold>30</StuffPower_Insulation_Cold>
+            <StuffPower_Insulation_Heat>30</StuffPower_Insulation_Heat>
+            <SharpDamageMultiplier>1.20</SharpDamageMultiplier>
+            <BluntDamageMultiplier>1.20</BluntDamageMultiplier>
+        </statBases>
+        <stuffProps>
+            <color>(229,220,174)</color>
+            <commonality>0.01</commonality>
+            <statOffsets>
+                <Beauty>20</Beauty>
+            </statOffsets>
+            <statFactors>
+                <MaxHitPoints>7.0</MaxHitPoints>
+                <Beauty>4</Beauty>
+                <Flammability>0</Flammability>
+                <WorkToMake>1.5</WorkToMake>
+                <WorkToBuild>1.5</WorkToBuild>
+                <MeleeWeapon_CooldownMultiplier>1</MeleeWeapon_CooldownMultiplier>
+            </statFactors>
+        </stuffProps>
+        <tradeTags> <!-- Refer to comment in ITW_MaterialCommon. -->
+            <li>ExoticMisc</li>
+        </tradeTags>
+        <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_ResourceBase">
+        <defName>ITW_MaterialDurable</defName>
+        <label>stalwart starsteel</label>
+        <description>A human-made alloy infused with phi-matter, assembled at the molecular level. Its qualities can be fine-tuned with advanced technology. It's simultaneously incredibly resilient and soft to the touch, and also features antimicrobial and insulating properties. It is fit for use in anything from warship plating to clothing.\n\nThis variant is extremely durable, but inflexible. It works great for fortifications and weapons, but not human armor.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Resource/ITW_MaterialDurable</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>30</MarketValue>
+            <Mass>0.38</Mass>
+            <StuffPower_Armor_Sharp>1.25</StuffPower_Armor_Sharp>
+            <StuffPower_Armor_Blunt>0.65</StuffPower_Armor_Blunt>
+            <StuffPower_Armor_Heat>0.75</StuffPower_Armor_Heat>
+            <StuffPower_Insulation_Cold>30</StuffPower_Insulation_Cold>
+            <StuffPower_Insulation_Heat>30</StuffPower_Insulation_Heat>
+            <SharpDamageMultiplier>1.40</SharpDamageMultiplier>
+            <BluntDamageMultiplier>1.40</BluntDamageMultiplier>
+        </statBases>
+        <stuffProps>
+            <color>(226,172,172)</color>
+            <commonality>0.01</commonality>
+            <statOffsets>
+                <Beauty>12</Beauty>
+            </statOffsets>
+            <statFactors>
+                <MaxHitPoints>10.0</MaxHitPoints>
+                <Beauty>3</Beauty>
+                <Flammability>0</Flammability>
+                <WorkToMake>1.5</WorkToMake>
+                <WorkToBuild>1.5</WorkToBuild>
+                <MeleeWeapon_CooldownMultiplier>1</MeleeWeapon_CooldownMultiplier>
+            </statFactors>
+        </stuffProps>
+        <tradeTags> <!-- Refer to comment in ITW_MaterialCommon. -->
+            <li>ExoticMisc</li>
+        </tradeTags>
+        <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_ResourceBase">
+        <defName>ITW_MaterialProtective</defName>
+        <label>resilient starsteel</label>
+        <description>A human-made alloy infused with phi-matter, assembled at the molecular level. Its qualities can be fine-tuned with advanced technology. It's simultaneously incredibly resilient and soft to the touch, and also features antimicrobial and insulating properties. It is fit for use in anything from warship plating to clothing.\n\nThis variant is especially flexible. It absorbs impacts well, which makes it great for armor. It makes for worse weapons, however, in addition too being less beautiful.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Resource/ITW_MaterialProtective</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>30</MarketValue>
+            <Mass>0.38</Mass>
+            <StuffPower_Armor_Sharp>1.45</StuffPower_Armor_Sharp>
+            <StuffPower_Armor_Blunt>0.85</StuffPower_Armor_Blunt>
+            <StuffPower_Armor_Heat>0.95</StuffPower_Armor_Heat>
+            <StuffPower_Insulation_Cold>50</StuffPower_Insulation_Cold>
+            <StuffPower_Insulation_Heat>50</StuffPower_Insulation_Heat>
+            <SharpDamageMultiplier>1.20</SharpDamageMultiplier>
+            <BluntDamageMultiplier>1.20</BluntDamageMultiplier>
+        </statBases>
+        <stuffProps>
+            <color>(203,172,229)</color>
+            <commonality>0.01</commonality>
+            <statOffsets>
+                <Beauty>6</Beauty>
+            </statOffsets>
+            <statFactors>
+                <MaxHitPoints>7.0</MaxHitPoints>
+                <Beauty>2</Beauty>
+                <Flammability>0</Flammability>
+                <WorkToMake>1.5</WorkToMake>
+                <WorkToBuild>1.5</WorkToBuild>
+                <MeleeWeapon_CooldownMultiplier>1</MeleeWeapon_CooldownMultiplier>
+            </statFactors>
+        </stuffProps>
+        <tradeTags> <!-- Refer to comment in ITW_MaterialCommon. -->
+            <li>ExoticMisc</li>
+        </tradeTags>
+        <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_ComponentBase">
+        <defName>ITW_Component</defName>
+        <label>phitech component</label>
+        <description>Heavy-duty computation and machinery components, fit for human-grade phitech applications.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Resource/ITW_Component</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <Mass>3.8</Mass>
+            <MarketValue>300</MarketValue>
+            <MaxHitPoints>250</MaxHitPoints>
+        </statBases>
+        <tradeTags> <!-- Refer to comment in ITW_MaterialCommon. -->
+            <li>ExoticMisc</li>
+        </tradeTags>
+    </ThingDef>
+    
+    <!-- [Time] >>> 100 proto-cosmic charge -->
+    <ThingDef ParentName="ITW_ResourceIngredientBase">
+        <defName>ITW_PhiMatter</defName>
+        <label>phi-matter</label>
+        <description>A capacitor-like container filled with phi-matter. Phi-matter is an anomalous material which defies the known laws of physics. While its chaotic properties prevent study, it is theorized that phi-matter is its own elementary particle separate from the rest of the standard model. It forms the basis of all phitech in the galaxy whether made by humans, archotechs, or the Phibearers.\n\nCurrently, the only way to obtain phi-matter is by phi-matter "wells" salvaged from Phibearer ruins; archotechs do not appear to be capable of producing their own equivalents.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Resource/ITW_PhiMatter</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MaxHitPoints>125</MaxHitPoints>
+            <MarketValue>0.5</MarketValue>
+        </statBases>
+        <tradeTags> <!-- Refer to comment in ITW_MaterialCommon. -->
+            <li>ExoticMisc</li>
+        </tradeTags>
+        <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    </ThingDef>
+    
+    <!-- The NEW big thing this mod is balanced around...!!!!!! -->
+    <ThingDef ParentName="ITW_ComponentBase">
+        <defName>ITW_PhiWell</defName>
+        <label>phi-well</label>
+        <description>An ancient and enigmatic device built by the Phibearers over a million years ago. Despite its age, it is as pristine as the day it was made. Through an unknown mechanism, the phi-well accumulates phi-matter inside an internal reservoir, which can then be extracted into capacitor. There is currently no known limit to how much phi-matter any one can generate.\n\nIt will temporarily shut itself off when tampered with, preventing observation or analysis. However, a few insights have been made about its inner workings through indirect observation. Whatever mechanism generates the phi-matter apparently requires a vacuum inside the phi-well. It is aware to some degree of its surroundings, because it can dynamically adjust or even stop phi-matter output depending on any mounted extractor's current ability to withstand phi-matter flow.</description>
+        <stackLimit>1</stackLimit>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Resource/ITW_PhiWell</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <Mass>50</Mass>
+            <MaxHitPoints>25000</MaxHitPoints>
+            <MarketValue>10000</MarketValue>
+        </statBases>
+        <tradeTags> <!-- Refer to comment in ITW_MaterialCommon. -->
+            <li>ExoticMisc</li>
+        </tradeTags>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(205,190,39,0)</glowColor>
+			</li>
+		</comps>
+        <thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+    
+</Defs>

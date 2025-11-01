@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Royalty</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+            <xpath>Defs/RecipeDef[defName="ITW_DrugPsychic_OneBatch"]/recipeUsers</xpath>
+            <value>
+                <li>ITW_CraftingMain</li>
+            </value>
+        </match>
+    </Operation>
+    
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Royalty</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+            <xpath>Defs/RecipeDef[defName="ITW_DrugPsychic_FiveBatch"]/recipeUsers</xpath>
+            <value>
+                <li>ITW_CraftingMain</li>
+            </value>
+        </match>
+    </Operation>
+    
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Royalty</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="ITW_UtilityBelt"]/description</xpath>
+            <value>
+                <description>A multi-purpose utility pack attached to the waist with a personal shield and jump module. The personal shield protects against incoming projectiles and shrapnel, but does not protect against melee attacks or heat and shuts down instantly if hit by an EMP. Unlike regular personal shields, the stellar utility pack allows for its user to shoot with the shield active. The jump module does not require fuel to function, and instead requires an hour to recharge between uses.</description>
+            </value>
+        </match>
+    </Operation>
+
+</Patch>

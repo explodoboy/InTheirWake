@@ -1,0 +1,399 @@
+<Defs>
+
+    <ThingDef Abstract="True" Name="ITW_GrenadeBase" ParentName="BaseMakeableGrenade">
+        <uiIconScale>1.3</uiIconScale>
+        <soundInteract>Interact_Grenade</soundInteract>
+        <techLevel>Archotech</techLevel>
+        <statBases>
+            <Mass>1</Mass>
+            <RangedWeapon_Cooldown>2.66</RangedWeapon_Cooldown>
+            <WorkToMake>12000</WorkToMake>
+        </statBases>
+        <thingCategories>
+            <li>Grenades</li>
+        </thingCategories>
+    </ThingDef>
+
+
+    <ThingDef ParentName="ITW_GrenadeBase">
+        <defName>ITW_GrenadeEMP</defName>
+        <label>stellar EMP grenade</label>
+        <description>High-power EMP grenade with mobility thrusters for extended range. They can be thrown a decent distance where they'll discharge, emitting an electromagnetic pulse that disrupts electronic equipment such as shields and mechanoids.</description>
+        <recipeMaker>
+            <researchPrerequisite>ITW_Grenades</researchPrerequisite>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+        </recipeMaker>
+        <weaponTags>
+            <li>GrenadeEMP</li>
+        </weaponTags>
+        <tradeTags Inherit="False">
+            <li>WeaponRanged</li>
+        </tradeTags>
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_GrenadeEMP</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Ultra</techLevel> <!-- Override for Gen1, since it's the only non-Archotech generation. -->
+        <costList>
+            <ITW_MaterialCommon>30</ITW_MaterialCommon>
+            <ITW_Component>4</ITW_Component>
+        </costList>
+        <verbs>
+            <li>
+                <label>throw stellar EMP grenade</label>
+                <verbClass>Verb_LaunchProjectile</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <range>17.9</range>
+                <forcedMissRadius>1.9</forcedMissRadius>
+                <warmupTime>1.5</warmupTime>
+                <noiseRadius>4</noiseRadius>
+                <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+                <soundCast>ThrowGrenade</soundCast>
+                <targetParams>
+                    <canTargetLocations>true</canTargetLocations>
+                </targetParams>
+                <defaultProjectile>ITW_Proj_GrenadeEMP</defaultProjectile>
+                <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+            </li>
+        </verbs>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseGrenadeProjectile">
+        <defName>ITW_Proj_GrenadeEMP</defName>
+        <label>stellar EMP grenade</label>
+        <thingClass>Projectile_Explosive</thingClass>
+        <graphicData>
+            <texPath>BaseITW/Things/Projectile/ITW_Proj_GrenadeEMP</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <explosionRadius>3.9</explosionRadius>
+            <damageDef>EMP</damageDef> <!-- Base 'EMP' damage is 10 -->
+            <damageAmountBase>67</damageAmountBase>
+            <explosionDelay>100</explosionDelay>
+        </projectile>
+    </ThingDef>
+
+
+    <ThingDef ParentName="ITW_GrenadeBase">
+        <defName>ITW_GrenadeExplosive</defName>
+        <label>stellar explosive grenade</label>
+        <description>High-yield explosive fragmentation grenade with mobility thrusters for extended range. They can be thrown a decent distance where they'll explode, damaging anything and everyone nearby.</description>
+        <recipeMaker>
+            <researchPrerequisite>ITW_Grenades</researchPrerequisite>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+        </recipeMaker>
+        <weaponTags>
+            <li>GrenadeDestructive</li>
+            <li>EmpireGrenadeDestructive</li>
+        </weaponTags>
+        <tradeTags Inherit="False">
+            <li>WeaponRanged</li>
+        </tradeTags>
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_GrenadeExplosive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Ultra</techLevel> <!-- Override for Gen1, since it's the only non-Archotech generation. -->
+        <costList>
+            <ITW_MaterialCommon>30</ITW_MaterialCommon>
+            <ITW_Component>4</ITW_Component>
+        </costList>
+        <verbs>
+            <li>
+                <label>throw stellar explosive grenade</label>
+                <verbClass>Verb_LaunchProjectile</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <range>17.9</range>
+                <forcedMissRadius>1.9</forcedMissRadius>
+                <warmupTime>1.5</warmupTime>
+                <noiseRadius>4</noiseRadius>
+                <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+                <soundCast>ThrowGrenade</soundCast>
+                <targetParams>
+                    <canTargetLocations>true</canTargetLocations>
+                </targetParams>
+                <defaultProjectile>ITW_Proj_GrenadeExplosive</defaultProjectile>
+                <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+            </li>
+        </verbs>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseGrenadeProjectile">
+        <defName>ITW_Proj_GrenadeExplosive</defName>
+        <label>stellar explosive grenade</label>
+        <thingClass>Projectile_Explosive</thingClass>
+        <graphicData>
+            <texPath>BaseITW/Things/Projectile/ITW_Proj_GrenadeExplosive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <explosionRadius>2</explosionRadius>
+            <damageDef>Bomb</damageDef> <!-- Base 'Bomb' damage is 50 -->
+            <damageAmountBase>67</damageAmountBase>
+            <explosionDelay>100</explosionDelay>
+        </projectile>
+    </ThingDef>
+    
+
+    <ThingDef ParentName="ITW_GrenadeBase">
+        <defName>ITW_GrenadeFire</defName>
+        <label>stellar fire grenade</label>
+        <description>High-pressure fire grenade with mobility thrusters for extended range. They can be thrown at a decent distance where they'll discharge, igniting everything flammable around them.</description>
+        <recipeMaker>
+            <researchPrerequisite>ITW_Grenades</researchPrerequisite>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+        </recipeMaker>
+        <weaponTags>
+            <li>GrenadeDestructive</li>
+            <li>GrenadeFlame</li>
+        </weaponTags>
+        <tradeTags Inherit="False">
+            <li>WeaponRanged</li>
+        </tradeTags>
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_GrenadeFire</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Ultra</techLevel> <!-- Override for Gen1, since it's the only non-Archotech generation. -->
+        <costList>
+            <ITW_MaterialCommon>30</ITW_MaterialCommon>
+            <ITW_Component>4</ITW_Component>
+        </costList>
+        <verbs>
+            <li>
+                <label>throw stellar fire grenade</label>
+                <verbClass>Verb_LaunchProjectile</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <range>17.9</range>
+                <forcedMissRadius>1.9</forcedMissRadius>
+                <warmupTime>1.5</warmupTime>
+                <noiseRadius>4</noiseRadius>
+                <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+                <soundCast>ThrowGrenade</soundCast>
+                <targetParams>
+                    <canTargetLocations>true</canTargetLocations>
+                </targetParams>
+                <defaultProjectile>ITW_Proj_GrenadeFire</defaultProjectile>
+                <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+            </li>
+        </verbs>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseGrenadeProjectile">
+        <defName>ITW_Proj_GrenadeFire</defName>
+        <label>stellar fire grenade</label>
+        <thingClass>Projectile_Explosive</thingClass>
+        <graphicData>
+            <texPath>BaseITW/Things/Projectile/ITW_Proj_GrenadeFire</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <explosionRadius>2</explosionRadius>
+            <damageDef>Flame</damageDef> <!-- Base 'Flame' damage is 10 -->
+            <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+            <ai_IsIncendiary>true</ai_IsIncendiary>
+            <screenShakeFactor>0.5</screenShakeFactor>
+            <damageAmountBase>13</damageAmountBase>
+            <explosionDelay>100</explosionDelay>
+        </projectile>
+    </ThingDef>
+    
+
+    <ThingDef ParentName="ITW_GrenadeBase">
+        <defName>ITW_GrenadeFirefoam</defName>
+        <label>stellar firefoam grenade</label>
+        <description>High-pressure firefoam grenade with mobility thrusters for extended range. They can be thrown at a decent distance before they'll discharge, dispending firefoam which will quickly extinguish any nearby fires.</description>
+        <recipeMaker>
+            <researchPrerequisite>ITW_Grenades</researchPrerequisite>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+        </recipeMaker>
+        <tradeTags Inherit="False">
+            <li>WeaponRanged</li>
+        </tradeTags>
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_GrenadeFirefoam</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Ultra</techLevel> <!-- Override for Gen1, since it's the only non-Archotech generation. -->
+        <costList>
+            <ITW_MaterialCommon>30</ITW_MaterialCommon>
+            <ITW_Component>4</ITW_Component>
+        </costList>
+        <verbs>
+            <li>
+                <label>throw stellar firefoam grenade</label>
+                <verbClass>Verb_LaunchProjectile</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <range>17.9</range>
+                <forcedMissRadius>1.9</forcedMissRadius>
+                <warmupTime>1.5</warmupTime>
+                <noiseRadius>4</noiseRadius>
+                <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+                <soundCast>ThrowGrenade</soundCast>
+                <targetParams>
+                    <canTargetLocations>true</canTargetLocations>
+                </targetParams>
+                <defaultProjectile>ITW_Proj_GrenadeFirefoam</defaultProjectile>
+                <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+            </li>
+        </verbs>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseGrenadeProjectile">
+        <defName>ITW_Proj_GrenadeFirefoam</defName>
+        <label>stellar firefoam grenade</label>
+        <thingClass>Projectile_Explosive</thingClass>
+        <graphicData>
+            <texPath>BaseITW/Things/Projectile/ITW_Proj_GrenadeFirefoam</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <explosionRadius>3.9</explosionRadius>
+            <damageDef>Extinguish</damageDef>
+            <!-- Use default damage, it's high enough to deal with any fire that could ever exist.-->
+            <explosionDelay>100</explosionDelay>
+        </projectile>
+    </ThingDef>
+    
+
+    <ThingDef ParentName="ITW_GrenadeBase">
+        <defName>ITW_GrenadeStun</defName>
+        <label>stellar stun grenade</label>
+        <description>High-power stun grenade with mobility thrusters for extended range. They can be thrown at a decent distance before they'll activate, emitting a disorienting burst of light and sound that disrupts most conscious beings.</description>
+        <recipeMaker>
+            <researchPrerequisite>ITW_Grenades</researchPrerequisite>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+        </recipeMaker>
+        <tradeTags Inherit="False">
+            <li>WeaponRanged</li>
+        </tradeTags>
+        <weaponTags>
+            <li>GrenadeStun</li>
+        </weaponTags>
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_GrenadeStun</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Ultra</techLevel> <!-- Override for Gen1, since it's the only non-Archotech generation. -->
+        <costList>
+            <ITW_MaterialCommon>30</ITW_MaterialCommon>
+            <ITW_Component>4</ITW_Component>
+        </costList>
+        <verbs>
+            <li>
+                <label>throw stellar stun grenade</label>
+                <verbClass>Verb_LaunchProjectile</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <range>17.9</range>
+                <forcedMissRadius>1.9</forcedMissRadius>
+                <warmupTime>1.5</warmupTime>
+                <noiseRadius>4</noiseRadius>
+                <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+                <soundCast>ThrowGrenade</soundCast>
+                <targetParams>
+                    <canTargetLocations>true</canTargetLocations>
+                </targetParams>
+                <defaultProjectile>ITW_Proj_GrenadeStun</defaultProjectile>
+                <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+            </li>
+        </verbs>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseGrenadeProjectile">
+        <defName>ITW_Proj_GrenadeStun</defName>
+        <label>stellar stun grenade</label>
+        <thingClass>Projectile_Explosive</thingClass>
+        <graphicData>
+            <texPath>BaseITW/Things/Projectile/ITW_Proj_GrenadeStun</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <explosionRadius>3.9</explosionRadius>
+            <damageDef>Stun</damageDef> <!-- Base 'Stun' damage is 20 -->
+            <damageAmountBase>27</damageAmountBase>
+            <explosionDelay>100</explosionDelay>
+        </projectile>
+    </ThingDef>
+    
+
+    <ThingDef ParentName="ITW_GrenadeBase">
+        <defName>ITW_GrenadeToxGas</defName>
+        <label>stellar tox gas grenade</label>
+        <description>High-pressure tox gas grenade with mobility thrusters for extended range. They can be thrown at a decent distance before they'll discharge, dispensing hazardous tox gas.</description>
+        <recipeMaker>
+            <researchPrerequisite>ITW_Grenades</researchPrerequisite>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+        </recipeMaker>
+        <tradeTags Inherit="False">
+            <li>WeaponRanged</li>
+        </tradeTags>
+        <weaponTags>
+            <li>GrenadeToxGas</li>
+        </weaponTags>
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_GrenadeToxGas</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Ultra</techLevel> <!-- Override for Gen1, since it's the only non-Archotech generation. -->
+        <costList>
+            <ITW_MaterialCommon>30</ITW_MaterialCommon>
+            <ITW_Component>4</ITW_Component>
+        </costList>
+        <verbs>
+            <li>
+                <label>throw stellar tox gas grenade</label>
+                <verbClass>Verb_LaunchProjectile</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <range>17.9</range>
+                <forcedMissRadius>1.9</forcedMissRadius>
+                <warmupTime>1.5</warmupTime>
+                <noiseRadius>4</noiseRadius>
+                <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+                <soundCast>ThrowGrenade</soundCast>
+                <targetParams>
+                    <canTargetLocations>true</canTargetLocations>
+                </targetParams>
+                <defaultProjectile>ITW_Proj_GrenadeToxGas</defaultProjectile>
+                <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+            </li>
+        </verbs>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseGrenadeProjectile">
+        <defName>ITW_Proj_GrenadeToxGas</defName>
+        <label>stellar tox gas grenade</label>
+        <thingClass>Projectile_Explosive</thingClass>
+        <graphicData>
+            <texPath>BaseITW/Things/Projectile/ITW_Proj_GrenadeToxGas</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <explosionRadius>2.9</explosionRadius>
+            <damageDef>Smoke</damageDef>
+            <!-- No base damage. -->
+            <explosionDelay>100</explosionDelay>
+            <explosionRadiusDisplayPadding>4</explosionRadiusDisplayPadding>
+            <screenShakeFactor>0.5</screenShakeFactor>
+        </projectile>
+    </ThingDef>
+
+</Defs>

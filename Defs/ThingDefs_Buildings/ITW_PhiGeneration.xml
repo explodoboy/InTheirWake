@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingDef ParentName="BuildingBase" Name="ITW_PhiGeneratorBase" Abstract="True">
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>Impassable</passability>
+        <pathCost>50</pathCost>
+        <minifiedDef />
+        <thingCategories Inherit="false" />
+        <fillPercent>1</fillPercent>
+        <staticSunShadowHeight>0.20</staticSunShadowHeight>
+        <castEdgeShadows>true</castEdgeShadows>
+        <designationCategory>Production</designationCategory>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <uiOrder>1200</uiOrder>
+        <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+        <surfaceType>Item</surfaceType>
+        <hasInteractionCell>true</hasInteractionCell>
+        <statBases>
+            <Flammability>0</Flammability>
+            <WorkToBuild>4500</WorkToBuild>
+        </statBases>
+        <placeWorkers>
+          <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+        </placeWorkers>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_PhiGeneratorBase">
+        <defName>ITW_PhiGeneratorPassive</defName>
+        <label>phi-siphon</label>
+        <description>An autonomous phi-matter generation structure. It slowly extracts phi-matter out of a phi-well at a rate sufficient for making a single batch of starsteel a day. Although slow, it is powered by the runoff energy of its contained phi-well, meaning it needs no external power to function. It's still susceptible to solar flares, however.\n\nNOTE: This won't give any messages when phi-matter is produced. This is to avoid annoying daily messages, since you'll probably end up with multiple of these.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Production/ITW_PhiGeneratorPassive/ITW_PhiGeneratorPassive</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(5,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+        <size>(3,2)</size>
+        <costList>
+            <Plasteel>100</Plasteel>
+            <ComponentSpacer>8</ComponentSpacer>
+            <ITW_PhiWell>1</ITW_PhiWell>
+        </costList>
+        <statBases>
+            <MaxHitPoints>750</MaxHitPoints>
+        </statBases>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>0</basePowerConsumption>
+                <shortCircuitInRain>false</shortCircuitInRain>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Spawner">
+                <requiresPower>true</requiresPower>
+                <thingToSpawn>ITW_PhiMatter</thingToSpawn>
+                <spawnCount>100</spawnCount>
+                <spawnIntervalRange><min>60000</min><max>60000</max></spawnIntervalRange>
+                <writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+                <showMessageIfOwned>false</showMessageIfOwned> <!-- Disabled to avoid annoying daily messages -->
+            </li>
+          </comps>
+          <researchPrerequisites>
+            <li>ITW_Starsteel</li>
+          </researchPrerequisites>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_PhiGeneratorBase">
+        <defName>ITW_PhiGeneratorPowered</defName>
+        <label>phi-pump</label>
+        <description>An autonomous phi-matter generation structure. It quickly extracts phi-matter out of a phi-well, producing enough phi-matter to make ten batches of starsteel each day. It requires an immense amount of power to function.\n\nThis specific type of phi-pump is considered small by industrial standards.\n\nNOTE: This won't give any messages when phi-matter is produced. This is to avoid annoying daily messages, since you'll probably end up with multiple of these.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Production/ITW_PhiGeneratorPowered</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(5,5)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+        <size>(3,3)</size>
+        <rotatable>false</rotatable>
+        <costList>
+            <ITW_MaterialCommon>150</ITW_MaterialCommon>
+            <ITW_Component>12</ITW_Component>
+            <ITW_PhiWell>1</ITW_PhiWell>
+        </costList>
+        <statBases>
+            <MaxHitPoints>750</MaxHitPoints>
+            <Beauty>20</Beauty>
+        </statBases>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>36000</basePowerConsumption>
+                <shortCircuitInRain>false</shortCircuitInRain>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Spawner">
+                <requiresPower>true</requiresPower>
+                <thingToSpawn>ITW_PhiMatter</thingToSpawn>
+                <spawnCount>500</spawnCount>
+                <spawnIntervalRange><min>30000</min><max>30000</max></spawnIntervalRange>
+                <writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+                <showMessageIfOwned>false</showMessageIfOwned> <!-- Disabled to avoid annoying daily messages -->
+            </li>
+          </comps>
+          <researchPrerequisites>
+            <li>ITW_Starsteel</li>
+          </researchPrerequisites>
+    </ThingDef>
+
+</Defs>

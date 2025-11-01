@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingDef ParentName="BenchBase" Name="ITW_CraftingMealBase" Abstract="True">
+        <thingClass>Building_WorkTable</thingClass>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
+        <minifiedDef />
+        <thingCategories Inherit="false" />
+        <size>(3,4)</size>
+        <fillPercent>0.5</fillPercent>
+        <staticSunShadowHeight>0.20</staticSunShadowHeight>
+        <castEdgeShadows>true</castEdgeShadows>
+        <inspectorTabs><li>ITab_Bills</li></inspectorTabs>
+        <building><spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity></building>
+        <designationCategory>Production</designationCategory>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <uiOrder>1000</uiOrder>
+        <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+        <surfaceType>Item</surfaceType>
+        <interactionCellOffset>(0,0,-2)</interactionCellOffset>
+        <hasInteractionCell>true</hasInteractionCell>
+        <statBases>
+            <Flammability>0</Flammability>
+            <WorkToBuild>2100</WorkToBuild>
+        </statBases>
+        <placeWorkers>
+            <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+        </placeWorkers>
+    </ThingDef>
+
+    <WorkGiverDef>
+        <defName>ITW_CraftingMeal</defName>
+        <label>cook at food synthesizer</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Cooking</workType>
+		<priorityInType>100</priorityInType>
+		<fixedBillGiverDefs><li>ITW_CraftingMeal</li></fixedBillGiverDefs>
+        <verb>Cook at food synthesizer</verb>
+        <gerund>Cooking at food synthesizer</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+    </WorkGiverDef>
+
+    <ThingDef ParentName="ITW_CraftingMealBase">
+        <defName>ITW_CraftingMeal</defName>
+        <label>food synthesizer</label>
+        <description>A human-made phitech food production facility. It is capable of quickly and efficiently creating high-quality meals with the assistance of nutrient printers. The process is regulated by a subpersona AI which prevents its users from making significant errors, allowing even individuals who have never cooked before to produce high-grade food.\n\nAll food produced by a food synthesizer is lightly infused with phi-matter. This completely sterilizes the food, preventing spoilage.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Production/ITW_CraftingMeal/ITW_CraftingMeal</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(5,6)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+        <costList>
+            <ITW_MaterialCommon>100</ITW_MaterialCommon>
+            <ITW_Component>4</ITW_Component>
+        </costList>
+        <statBases>
+            <MaxHitPoints>350</MaxHitPoints>
+        </statBases>
+        <comps>
+            <li Class="CompProperties_Refuelable">
+                <fuelConsumptionRate>25.0</fuelConsumptionRate>
+                <fuelCapacity>100.0</fuelCapacity>
+                <fuelFilter>
+                <thingDefs>
+                    <li>ITW_PhiMatter</li>
+                </thingDefs>
+                </fuelFilter>
+                <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+                <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>500</basePowerConsumption>
+                <shortCircuitInRain>false</shortCircuitInRain>
+            </li>
+            <li Class="CompProperties_Flickable" />
+        </comps>
+        <researchPrerequisites>
+            <li>ITW_Starsteel</li>
+        </researchPrerequisites>
+    </ThingDef>
+
+</Defs>

@@ -1,0 +1,887 @@
+<Defs>
+    <!-- These bionics are intended to be equivalent to (lightly-)modded Archotech, which is around 200% efficiency. -->
+
+    <!-- Base item -->
+    <ThingDef Name="ITW_BionicItemBase" ParentName="BodyPartBionicBase" Abstract="True">
+        <techLevel>Ultra</techLevel>
+        <graphicData>
+            <texPath>Things/Item/Health/HealthItem</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.80</drawSize>
+            <color>(255,60,0)</color>
+        </graphicData>
+        <tradeTags>
+            <li>Bionic</li>
+        </tradeTags>
+        <techHediffsTags>
+            <li>Advanced</li>
+        </techHediffsTags>
+        <statBases>
+            <WorkToMake>6000</WorkToMake> <!--- Due to the sheer number of bionics, I'm reducing work-to-make by a lot. -->
+            <MaxHitPoints>150</MaxHitPoints>
+            <Flammability>0</Flammability>
+            <Beauty>4</Beauty>
+            <DeteriorationRate>0</DeteriorationRate>
+            <Mass>1</Mass>
+        </statBases>
+        <recipeMaker Inherit="False">
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <unfinishedThingDef>UnfinishedHealthItemBionic</unfinishedThingDef>
+            <skillRequirements>
+                <Crafting>10</Crafting>
+            </skillRequirements>
+            <researchPrerequisite>ITW_Bionics</researchPrerequisite>
+            <recipeUsers>
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+        </recipeMaker>
+        <costList>
+            <ITW_MaterialCommon>15</ITW_MaterialCommon>
+            <ITW_Component>4</ITW_Component>
+        </costList>
+    </ThingDef>
+
+    <!-- Bodypart Hediff -->
+    <HediffDef Name="ITW_BionicBodypartHediff" ParentName="AddedBodyPartBase" Abstract="True">
+		<defaultLabelColor>(255,60,0)</defaultLabelColor>
+        <woundAnchorRange>0</woundAnchorRange>
+        <displayWound>true</displayWound>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>2.0</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+        <comps>
+            <li MayRequire="V1024.EBFramework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+                <scaleAdjustment>1</scaleAdjustment>
+            </li>
+        </comps>
+	</HediffDef>
+
+    <!-- Implant Hediff -->
+	<HediffDef Name="ITW_BionicImplantHediff" ParentName="ImplantHediffBase" Abstract="True">
+		<defaultLabelColor>(255,60,0)</defaultLabelColor>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+        <comps>
+            <li MayRequire="V1024.EBFramework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+                <scaleAdjustment>1</scaleAdjustment>
+            </li>
+        </comps>
+	</HediffDef>
+
+
+    <!-- REPLACEMENT PARTS -->
+
+    <!-- Eye -->
+    <HediffDef ParentName="ITW_BionicBodypartHediff">
+        <defName>ITW_BionicEye_GenI</defName>
+        <label>phitech eye</label>
+        <description>An installed phitech eye.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicEye_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicEye_GenI</spawnThingOnRemoved>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicEye_GenI</defName>
+        <label>phitech eye</label>
+        <description>A human-made phitech eye. It is equipped with full-spectrum perception, full-spectrum light emitters, and a sophisticated highlighting algorithm. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicEye_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicEye_GenI</defName>
+        <label>install phitech eye</label>
+        <description>Install a phitech eye.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicEye_GenI</ThingDef>
+			<HediffDef>ITW_BionicEye_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech eye.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicEye_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicEye_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Eye</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicEye_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicEye_GenI</defName>
+		<label>remove phitech eye</label>
+		<description>Remove a phitech eye.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicEye_GenI</ThingDef>
+			<HediffDef>ITW_BionicEye_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech eye.</jobString>
+		<removesHediff>ITW_BionicEye_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Ear -->
+    <HediffDef ParentName="ITW_BionicBodypartHediff">
+        <defName>ITW_BionicEar_GenI</defName>
+        <label>phitech ear</label>
+        <description>An installed phitech ear.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicEar_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicEar_GenI</spawnThingOnRemoved>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicEar_GenI</defName>
+        <label>phitech ear</label>
+        <description>A human-made phitech auditory system replacement. It has virtually no limit to its hearing range, and can filter out noise according to its user's preferences. A built-in subpersona AI monitors all incoming audio data, allowing it to identify and warn of its user of important audio even if it's filtered out. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicEar_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicEar_GenI</defName>
+        <label>install phitech ear</label>
+        <description>Install a phitech ear.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicEar_GenI</ThingDef>
+			<HediffDef>ITW_BionicEar_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech ear.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicEar_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicEar_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Ear</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicEar_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicEar_GenI</defName>
+		<label>remove phitech ear</label>
+		<description>Remove a phitech ear.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicEar_GenI</ThingDef>
+			<HediffDef>ITW_BionicEar_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech ear.</jobString>
+		<removesHediff>ITW_BionicEar_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Nose -->
+    <HediffDef ParentName="ITW_BionicBodypartHediff">
+        <defName>ITW_BionicNose_GenI</defName>
+        <label>phitech nose</label>
+        <description>An installed phitech nose.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicNose_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicNose_GenI</spawnThingOnRemoved>
+        <stages>
+            <li>
+                <statOffsets>
+                    <CookSpeed>5</CookSpeed>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicNose_GenI</defName>
+        <label>phitech nose</label>
+        <description>A human-made phitech olfactory system replacement. In addition to greatly enhancing the sense of smell, it can also filter out unpleasant smells. This opt-out feature is automatically disabled against dangerous gases, such as from rotting bodies. It contains a subpersona AI which, by monitoring all its user's sensory data, assists said user with cooking, especially in regards to sanitation. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicNose_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicNose_GenI</defName>
+        <label>install phitech nose</label>
+        <description>Install a phitech nose.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicNose_GenI</ThingDef>
+			<HediffDef>ITW_BionicNose_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech nose.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicNose_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicNose_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Nose</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicNose_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicNose_GenI</defName>
+		<label>remove phitech nose</label>
+		<description>Remove a phitech nose.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicNose_GenI</ThingDef>
+			<HediffDef>ITW_BionicNose_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech nose.</jobString>
+		<removesHediff>ITW_BionicNose_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Jaw -->
+    <HediffDef ParentName="ITW_BionicBodypartHediff">
+        <defName>ITW_BionicJaw_GenI</defName>
+        <label>phitech jaw</label>
+        <description>An installed phitech jaw.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicJaw_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicJaw_GenI</spawnThingOnRemoved>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicJaw_GenI</defName>
+        <label>phitech jaw</label>
+        <description>A human-made phitech jaw. It contains a subpersona AI capable of helping its user in social interactions. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicJaw_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicJaw_GenI</defName>
+        <label>install phitech jaw</label>
+        <description>Install a phitech jaw.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicJaw_GenI</ThingDef>
+			<HediffDef>ITW_BionicJaw_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech jaw.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicJaw_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicJaw_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Jaw</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicJaw_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicJaw_GenI</defName>
+		<label>remove phitech jaw</label>
+		<description>Remove a phitech jaw.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicJaw_GenI</ThingDef>
+			<HediffDef>ITW_BionicJaw_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech jaw.</jobString>
+		<removesHediff>ITW_BionicJaw_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Arm -->
+    <HediffDef ParentName="ITW_BionicBodypartHediff">
+        <defName>ITW_BionicArm_GenI</defName>
+        <label>phitech arm</label>
+        <description>An installed phitech arm.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicArm_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicArm_GenI</spawnThingOnRemoved>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicArm_GenI</defName>
+        <label>phitech arm</label>
+        <description>A human-made phitech arm. It possesses immense physical strength and precision, regulated by a subpersona AI. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicArm_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicArm_GenI</defName>
+        <label>install phitech arm</label>
+        <description>Install a phitech arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicArm_GenI</ThingDef>
+			<HediffDef>ITW_BionicArm_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech arm.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicArm_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicArm_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Arm</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicArm_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicArm_GenI</defName>
+		<label>remove phitech arm</label>
+		<description>Remove a phitech arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicArm_GenI</ThingDef>
+			<HediffDef>ITW_BionicArm_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech arm.</jobString>
+		<removesHediff>ITW_BionicArm_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Leg -->
+    <HediffDef ParentName="ITW_BionicBodypartHediff">
+        <defName>ITW_BionicLeg_GenI</defName>
+        <label>phitech leg</label>
+        <description>An installed phitech leg.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicLeg_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicLeg_GenI</spawnThingOnRemoved>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicLeg_GenI</defName>
+        <label>phitech leg</label>
+        <description>A human-made phitech leg. It features a subpersona-monitored impact compensation and balancing mechanism which help its users keep upright. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicLeg_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicLeg_GenI</defName>
+        <label>install phitech leg</label>
+        <description>Install a phitech leg.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicLeg_GenI</ThingDef>
+			<HediffDef>ITW_BionicLeg_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech leg.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicLeg_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicLeg_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Leg</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicLeg_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicLeg_GenI</defName>
+		<label>remove phitech leg</label>
+		<description>Remove a phitech leg.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicLeg_GenI</ThingDef>
+			<HediffDef>ITW_BionicLeg_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech leg.</jobString>
+		<removesHediff>ITW_BionicLeg_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Spine -->
+    <HediffDef ParentName="ITW_BionicBodypartHediff">
+        <defName>ITW_BionicSpine_GenI</defName>
+        <label>phitech spine</label>
+        <description>An installed phitech spine.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicSpine_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicSpine_GenI</spawnThingOnRemoved>
+		<addedPartProps><partEfficiency>1</partEfficiency></addedPartProps> <!-- To avoid having to totally rebalance bionics and make a lot of clutter, I'm just making this have no effect on bodypart efficiency. -->
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicSpine_GenI</defName>
+        <label>phitech spine</label>
+        <description>A human-made phitech spine, notably only for its incredible durability. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.\n\nDisclaimer: You need Elite Bionics Framework to get that 'durability'.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicSpine_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicSpine_GenI</defName>
+        <label>install phitech spine</label>
+        <description>Install a phitech spine.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicSpine_GenI</ThingDef>
+			<HediffDef>ITW_BionicSpine_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech spine.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicSpine_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicSpine_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Spine</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicSpine_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicSpine_GenI</defName>
+		<label>remove phitech spine</label>
+		<description>Remove a phitech spine.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicSpine_GenI</ThingDef>
+			<HediffDef>ITW_BionicSpine_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech spine.</jobString>
+		<removesHediff>ITW_BionicSpine_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Heart -->
+    <HediffDef ParentName="ITW_BionicBodypartHediff">
+        <defName>ITW_BionicHeart_GenI</defName>
+        <label>phitech heart</label>
+        <description>An installed phitech heart.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicHeart_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicHeart_GenI</spawnThingOnRemoved>
+		<stages>
+			<li>
+				<totalBleedFactor>0.0</totalBleedFactor>
+			</li>
+		</stages>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicHeart_GenI</defName>
+        <label>phitech heart</label>
+        <description>A human-made phitech heart. Upon installation it uses an internal starsteel supply to reinforce the entire cardiovascular system; upon reinforcement wounds can be automatically sealed, preventing bleeding entirely. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicHeart_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicHeart_GenI</defName>
+        <label>install phitech heart</label>
+        <description>Install a phitech heart.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicHeart_GenI</ThingDef>
+			<HediffDef>ITW_BionicHeart_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech heart.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicHeart_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicHeart_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Heart</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicHeart_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicHeart_GenI</defName>
+		<label>remove phitech heart</label>
+		<description>Remove a phitech heart.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicHeart_GenI</ThingDef>
+			<HediffDef>ITW_BionicHeart_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech heart.</jobString>
+		<removesHediff>ITW_BionicHeart_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Lung -->
+    <HediffDef ParentName="ITW_BionicBodypartHediff">
+        <defName>ITW_BionicLung_GenI</defName>
+        <label>phitech lung</label>
+        <description>An installed phitech lung.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicLung_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicLung_GenI</spawnThingOnRemoved>
+    	<preventsLungRot>true</preventsLungRot>
+        <stages>
+            <li>
+                <statOffsets>
+                    <ToxicEnvironmentResistance>2.0</ToxicEnvironmentResistance>
+      				<VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">2.0</VacuumResistance>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicLung_GenI</defName>
+        <label>phitech lung</label>
+        <description>A human-made phitech lung. It recycles all carbon dioxide produced by the body, removing the need to breathe entirely. This provides total immunity to suffocation and environmental toxins, even if only one lung is installed. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicLung_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicLung_GenI</defName>
+        <label>install phitech lung</label>
+        <description>Install a phitech lung.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicLung_GenI</ThingDef>
+			<HediffDef>ITW_BionicLung_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech lung.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicLung_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicLung_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Lung</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicLung_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicLung_GenI</defName>
+		<label>remove phitech lung</label>
+		<description>Remove a phitech lung.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicLung_GenI</ThingDef>
+			<HediffDef>ITW_BionicLung_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech lung.</jobString>
+		<removesHediff>ITW_BionicLung_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Kidney -->
+    <HediffDef ParentName="ITW_BionicBodypartHediff">
+        <defName>ITW_BionicKidney_GenI</defName>
+        <label>phitech kidney</label>
+        <description>An installed phitech kidney.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicKidney_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicKidney_GenI</spawnThingOnRemoved>
+        <stages>
+            <li>
+                <statOffsets>
+                    <ToxicResistance>2.0</ToxicResistance>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicKidney_GenI</defName>
+        <label>phitech kidney</label>
+        <description>A human-made phitech kidney. It produces and maintains mechanites that patrol the bloodstream, removing toxins from the body before they can cause damage, regardless of volume. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicKidney_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicKidney_GenI</defName>
+        <label>install phitech kidney</label>
+        <description>Install a phitech kidney.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicKidney_GenI</ThingDef>
+			<HediffDef>ITW_BionicKidney_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech kidney.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicKidney_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicKidney_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Kidney</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicKidney_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicKidney_GenI</defName>
+		<label>remove phitech kidney</label>
+		<description>Remove a phitech kidney.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicKidney_GenI</ThingDef>
+			<HediffDef>ITW_BionicKidney_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech kidney.</jobString>
+		<removesHediff>ITW_BionicKidney_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Liver -->
+    <HediffDef ParentName="ITW_BionicBodypartHediff">
+        <defName>ITW_BionicLiver_GenI</defName>
+        <label>phitech liver</label>
+        <description>An installed phitech liver.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicLiver_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicLiver_GenI</spawnThingOnRemoved>
+        <stages>
+            <li>
+                <statFactors>
+                    <InjuryHealingFactor>4</InjuryHealingFactor>
+                </statFactors>
+            </li>
+        </stages>
+        <comps>
+            <li Class="IHaveTheCure.HediffCompProperties_CuresHediffs">
+               <hediffsToCure>
+                    <li>BadBack</li>
+                    <li>Carcinoma</li>
+                    <li>Frail</li>
+					<li>HeartArteryBlockage</li>
+					<li>Asthma</li>
+					<li>Cataract</li>
+					<li>HearingLoss</li>
+               </hediffsToCure>
+           </li>
+        </comps>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicLiver_GenI</defName>
+        <label>phitech liver</label>
+        <description>A human-made phitech liver. It produces and maintains mechanites that patrol the body, repairing damage wherever found; including age-related ailments and cancers. This drastically increases the rate users recover from injuries. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.\n\nDue to game limitations and the mod author's limited modding knowhow, it doesn't heal scars.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicLiver_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicLiver_GenI</defName>
+        <label>install phitech liver</label>
+        <description>Install a phitech liver.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicLiver_GenI</ThingDef>
+			<HediffDef>ITW_BionicLiver_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech liver.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicLiver_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicLiver_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Liver</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicLiver_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicLiver_GenI</defName>
+		<label>remove phitech liver</label>
+		<description>Remove a phitech liver.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicLiver_GenI</ThingDef>
+			<HediffDef>ITW_BionicLiver_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech liver.</jobString>
+		<removesHediff>ITW_BionicLiver_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Stomach -->
+    <HediffDef ParentName="ITW_BionicBodypartHediff">
+        <defName>ITW_BionicStomach_GenI</defName>
+        <label>phitech stomach</label>
+        <description>An installed phitech stomach.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicStomach_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicStomach_GenI</spawnThingOnRemoved>
+        <stages>
+            <li>
+			<makeImmuneTo>
+				<li>GutWorms</li>
+			</makeImmuneTo>
+                <hungerRateFactor>0.0</hungerRateFactor>
+                <foodPoisoningChanceFactor>0</foodPoisoningChanceFactor>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicStomach_GenI</defName>
+        <label>phitech stomach</label>
+        <description>A human-made phitech stomach. It contains a vanometric power cell which completely replaces the body's need for energy. It also produces and maintains mechanites that patrol the body, recovering waste material and recycling it for endless reuse. As such, having a phitech stomach completely removes the need to eat. Even growing children and the pregnant do not need to eat, as the mechanites occasionally patrol outside the body to scavenge for new biomass as needed. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicStomach_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicStomach_GenI</defName>
+        <label>install phitech stomach</label>
+        <description>Install a phitech stomach.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicStomach_GenI</ThingDef>
+			<HediffDef>ITW_BionicStomach_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech stomach.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicStomach_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicStomach_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Stomach</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicStomach_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicStomach_GenI</defName>
+		<label>remove phitech stomach</label>
+		<description>Remove a phitech stomach.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicStomach_GenI</ThingDef>
+			<HediffDef>ITW_BionicStomach_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech stomach.</jobString>
+		<removesHediff>ITW_BionicStomach_GenI</removesHediff>
+	</RecipeDef>
+
+    
+    <!-- IMPLANTS -->
+    
+    <!-- Brain -->
+    <HediffDef ParentName="ITW_BionicImplantHediff">
+        <defName>ITW_BionicBrain_GenI</defName>
+        <label>phitech neural enchanter</label>
+        <description>An installed phitech neural enchanter.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicBrain_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicBrain_GenI</spawnThingOnRemoved>
+        <stages>
+            <li>
+                <statFactors>
+                    <PsychicEntropyMax MayRequire="Ludeon.RimWorld.Royalty">1.35</PsychicEntropyMax>
+                    <PsychicEntropyRecoveryRate MayRequire="Ludeon.RimWorld.Royalty">1.35</PsychicEntropyRecoveryRate>
+                    <MechBandwidth MayRequire="Ludeon.Rimworld.Biotech">1.5</MechBandwidth>
+                    <MechControlGroups MayRequire="Ludeon.Rimworld.Biotech">1.5</MechControlGroups>
+                    <GlobalLearningFactor>1.5</GlobalLearningFactor>
+                    <RestFallRateFactor>0.5</RestFallRateFactor>
+                </statFactors>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <offset>1.00</offset>
+                    </li>
+                </capMods>
+            </li>
+        </stages>
+        <comps>
+            <li Class="IHaveTheCure.HediffCompProperties_CuresHediffs">
+               <hediffsToCure>
+                    <li>Dementia</li>
+                    <li>Alzheimers</li>
+               </hediffsToCure>
+           </li>
+        </comps>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicBrain_GenI</defName>
+        <label>phitech neural enchanter</label>
+        <description>A human-made phitech brain implant that non-invasively augments the brain, forming removable starsteel circuits which greatly improve cognition. It produces and maintains mechanites that prevent and, if already present, cures any neural diseases and reducing the need for sleep. It also assists with memory retention, improving learning. If a psylink and/or mechlink is present, it will also bind to them, improving both significantly. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicBrain_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicBrain_GenI</defName>
+        <label>install phitech neural enchanter</label>
+        <description>Install a phitech neural enchanter.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicBrain_GenI</ThingDef>
+			<HediffDef>ITW_BionicBrain_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech neural enchanter.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicBrain_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicBrain_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Brain</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicBrain_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicBrain_GenI</defName>
+		<label>remove phitech neural enchanter</label>
+		<description>Remove a phitech neural enchanter.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicBrain_GenI</ThingDef>
+			<HediffDef>ITW_BionicBrain_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech neural enchanter.</jobString>
+		<removesHediff>ITW_BionicBrain_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Head -->
+    <HediffDef ParentName="ITW_BionicImplantHediff">
+        <defName>ITW_BionicHead_GenI</defName>
+        <label>phitech head armor</label>
+        <description>Installed phitech head armor.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicHead_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicHead_GenI</spawnThingOnRemoved>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicHead_GenI</defName>
+        <label>phitech head armor</label>
+        <description>Dermis-level implanted armor for the head made of starsteel. It improves bodypart durability without sacrificing mobility.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicHead_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicHead_GenI</defName>
+        <label>install phitech head armor</label>
+        <description>Install phitech head armor.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicHead_GenI</ThingDef>
+			<HediffDef>ITW_BionicHead_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech head armor.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicHead_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicHead_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Head</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicHead_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicHead_GenI</defName>
+		<label>remove phitech head armor</label>
+		<description>Remove phitech head armor.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicHead_GenI</ThingDef>
+			<HediffDef>ITW_BionicHead_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech head armor.</jobString>
+		<removesHediff>ITW_BionicHead_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Neck -->
+    <HediffDef ParentName="ITW_BionicImplantHediff">
+        <defName>ITW_BionicNeck_GenI</defName>
+        <label>phitech neck armor</label>
+        <description>Installed phitech neck armor.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicNeck_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicNeck_GenI</spawnThingOnRemoved>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicNeck_GenI</defName>
+        <label>phitech neck armor</label>
+        <description>Dermis-level implanted armor for the neck made of starsteel. It improves bodypart durability without sacrificing mobility.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicNeck_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicNeck_GenI</defName>
+        <label>install phitech neck armor</label>
+        <description>Install phitech neck armor.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicNeck_GenI</ThingDef>
+			<HediffDef>ITW_BionicNeck_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech neck armor.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicNeck_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicNeck_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicNeck_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicNeck_GenI</defName>
+		<label>remove phitech neck armor</label>
+		<description>Remove phitech neck armor.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicNeck_GenI</ThingDef>
+			<HediffDef>ITW_BionicNeck_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech neck armor.</jobString>
+		<removesHediff>ITW_BionicNeck_GenI</removesHediff>
+	</RecipeDef>
+
+
+    <!-- Torso -->
+    <HediffDef ParentName="ITW_BionicImplantHediff">
+        <defName>ITW_BionicTorso_GenI</defName>
+        <label>phitech torso armor</label>
+        <description>Installed phitech torso armor.</description>
+		<descriptionHyperlinks><ThingDef>ITW_BionicTorso_GenI</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_BionicTorso_GenI</spawnThingOnRemoved>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_BionicTorso_GenI</defName>
+        <label>phitech torso armor</label>
+        <description>Dermis-level implanted armor for the torso made of starsteel. It improves bodypart durability without sacrificing mobility.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicTorso_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_BionicTorso_GenI</defName>
+        <label>install phitech torso armor</label>
+        <description>Install phitech torso armor.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicTorso_GenI</ThingDef>
+			<HediffDef>ITW_BionicTorso_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing phitech torso armor.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_BionicTorso_GenI</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_BionicTorso_GenI</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_BionicTorso_GenI</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_BionicTorso_GenI</defName>
+		<label>remove phitech torso armor</label>
+		<description>Remove phitech torso armor.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_BionicTorso_GenI</ThingDef>
+			<HediffDef>ITW_BionicTorso_GenI</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing phitech torso armor.</jobString>
+		<removesHediff>ITW_BionicTorso_GenI</removesHediff>
+	</RecipeDef>
+    
+</Defs>

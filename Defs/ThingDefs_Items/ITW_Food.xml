@@ -1,0 +1,42 @@
+<Defs>
+
+    <ThingDef ParentName="MealCooked">
+        <defName>ITW_Meal</defName>
+        <label>enchanted meal</label>
+        <description>A luxurious meal kit assembled with the assistance of phitech. Its contents are perfectly sterile and preserved, so eating it has no risk of food poisoning or spoilage. Therefore, it's great for travel.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Meal/ITW_Meal</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <Nutrition>1</Nutrition>
+            <MarketValue>60</MarketValue>
+        </statBases>
+        <ingestible>
+            <preferability>MealLavish</preferability>
+            <ingestEffect>EatVegetarian</ingestEffect>
+            <ingestSound>Meal_Eat</ingestSound>
+            <tasteThought>ITW_Meal</tasteThought>
+        </ingestible>
+        <comps Inherit="False">
+            <li Class="CompProperties_Forbiddable" />
+        </comps>
+    </ThingDef>
+
+    <ThoughtDef>
+        <defName>ITW_Meal</defName>
+        <durationDays>1</durationDays>
+        <stages>
+            <li>
+                <label>ate stellar meal</label>
+                <description>I got to eat an enchanted meal. I can't even begin to describe how incredible it was.</description>
+                <baseMoodEffect>16</baseMoodEffect>
+            </li>
+        </stages>
+        <replaceThoughts>
+            <li>AteLavishMeal</li>
+            <li>AteFineMeal</li>
+        </replaceThoughts>
+    </ThoughtDef>
+
+</Defs>

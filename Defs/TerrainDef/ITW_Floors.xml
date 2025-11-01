@@ -1,0 +1,55 @@
+<Defs>
+
+    <TerrainDef ParentName="FloorBase" Name="ITW_FloorBase" Abstract="True" >
+        <constructEffect>ConstructMetal</constructEffect>
+        <isPaintable>true</isPaintable>
+        <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+        <tags>
+            <li>FineFloor</li>
+        </tags>
+        <statBases>
+            <WorkToBuild>300</WorkToBuild>
+        </statBases>
+    </TerrainDef>
+
+    <TerrainDef ParentName="ITW_FloorBase">
+        <defName>ITW_FloorCommon</defName>
+        <label>starsteel tile</label>
+        <description>Floor tiles made of pure starsteel. They are quick to clean and get a bonus to cleanliness for use in medical and culinary settings, alongside looking very nice.</description>
+        <renderPrecedence>240</renderPrecedence>
+        <texturePath>BaseITW/Terrain/Surfaces/ITW_FloorCommon</texturePath>
+        <statBases>
+            <WorkToBuild>900</WorkToBuild>
+            <Beauty>5</Beauty>
+            <Cleanliness>0.2</Cleanliness>
+            <CleaningTimeFactor>0.6</CleaningTimeFactor>
+        </statBases>
+        <costList>
+            <ITW_MaterialCommon>3</ITW_MaterialCommon>
+        </costList>
+        <researchPrerequisites>
+            <li>ITW_Starsteel</li>
+        </researchPrerequisites>
+    </TerrainDef>
+
+    <TerrainDef ParentName="ITW_FloorBase">
+        <defName>ITW_FloorBeauty</defName>
+        <label>opulent starsteel tile</label>
+        <description>Floor tiles made of pure opulent starsteel. They are quick to clean and get a bonus to cleanliness for use in medical and culinary settings, alongside looking very, very nice.</description>
+        <renderPrecedence>240</renderPrecedence>
+        <texturePath>BaseITW/Terrain/Surfaces/ITW_FloorBeauty</texturePath>
+        <statBases>
+            <WorkToBuild>900</WorkToBuild>
+            <Beauty>11</Beauty>
+            <Cleanliness>0.2</Cleanliness>
+            <CleaningTimeFactor>0.6</CleaningTimeFactor>
+        </statBases>
+        <costList>
+            <ITW_MaterialBeauty>3</ITW_MaterialBeauty>
+        </costList>
+        <researchPrerequisites>
+            <li>ITW_Starsteel</li>
+        </researchPrerequisites>
+    </TerrainDef>
+
+</Defs>

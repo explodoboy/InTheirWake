@@ -1,0 +1,242 @@
+<Defs>
+    <ResearchTabDef>
+        <defName>ITW</defName>
+        <label>In Their Wake</label>
+    </ResearchTabDef>
+
+    <!-- BASE RESEARCHES -->
+
+    <ResearchProjectDef Name="ITW_ResearchBase" Abstract="True">
+        <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+        <requiredResearchFacilities>
+            <li>MultiAnalyzer</li>
+            <li>ITW_ResearchUnlocker</li>
+        </requiredResearchFacilities>
+		<techLevel>Archotech</techLevel>
+        <tab>ITW</tab>
+    </ResearchProjectDef>
+    
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_Initial</defName>
+        <label>phi-matter principles</label>
+        <description>Work and experiment with phi-matter in a basic manner.</description>
+        <baseCost>10000</baseCost>
+		<techLevel>Ultra</techLevel>
+        <requiredResearchFacilities Inherit="False">
+            <li>MultiAnalyzer</li>
+        </requiredResearchFacilities>
+		<prerequisites>
+			<li>ShipComputerCore</li>
+			<li>ShipEngine</li>
+			<li>ShipReactor</li>
+			<li>ShipCryptosleep</li>
+			<li>ShipSensorCluster</li>
+		</prerequisites>
+        <researchViewX>0</researchViewX>
+        <researchViewY>2.5</researchViewY>
+    </ResearchProjectDef>
+
+    <!-- Considering mandatory linkables, multiply desired baseCost past here by 1.5x -->
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_Starsteel</defName>
+        <label>starsteel fabrication</label>
+        <description>Produce and work with starsteel.</description>
+        <baseCost>22500</baseCost> <!-- effective 15000 -->
+		<prerequisites>
+			<li>ITW_Initial</li>
+		</prerequisites>
+        <researchViewX>1</researchViewX>
+        <researchViewY>2.5</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_PowerFueled</defName>
+        <label>phi-induced fission</label>
+        <description>Learn to split the atom without enrichment, using phi-matter as an intermediary.</description>
+        <baseCost>5250</baseCost> <!-- effective 3500 -->
+		<prerequisites>
+			<li>ITW_Starsteel</li>
+		</prerequisites>
+        <researchViewX>2</researchViewX>
+        <researchViewY>0</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_PowerFree</defName>
+        <label>phi-based vanometric power</label>
+        <description>Learn to draw power from the quantum foam, using phi-matter as an intermediary.</description>
+        <baseCost>5250</baseCost> <!-- effective 3500 -->
+		<prerequisites>
+			<li>ITW_Starsteel</li>
+		</prerequisites>
+        <researchViewX>2</researchViewX>
+        <researchViewY>0.75</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_Battery</defName>
+        <label>phitech power storage</label>
+        <description>Learn how to use starsteel to create lossless power transmission and storage.</description>
+        <baseCost>5250</baseCost> <!-- effective 3500 -->
+		<prerequisites>
+			<li>ITW_Starsteel</li>
+		</prerequisites>
+        <researchViewX>2</researchViewX>
+        <researchViewY>1.5</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_Hydroponics</defName>
+        <label>phitech hydroponics</label>
+        <description>Devise methods to accelerate the growth of crops beyond what nature intended.</description>
+        <baseCost>5250</baseCost> <!-- effective 3500 -->
+		<prerequisites>
+			<li>ITW_Starsteel</li>
+		</prerequisites>
+        <researchViewX>2</researchViewX>
+        <researchViewY>2.25</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_Recreation</defName>
+        <label>recreational training</label>
+        <description>Build skill entertainment stations; recreational computers that contain games that train a certain skill.</description>
+        <baseCost>7500</baseCost> <!-- effective 5000 -->
+		<prerequisites>
+			<li>ITW_Starsteel</li>
+		</prerequisites>
+        <researchViewX>2</researchViewX>
+        <researchViewY>3</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_MedicineAndDrugs</defName>
+        <label>phitech medicinals</label>
+        <description>Produce powerful specialized mechanite-based drugs out of starsteel.</description>
+        <baseCost>7500</baseCost> <!-- effective 5000 -->
+		<prerequisites>
+			<li>ITW_Starsteel</li>
+		</prerequisites>
+        <researchViewX>2</researchViewX>
+        <researchViewY>3.75</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_Bionics</defName>
+        <label>phitech bionics</label>
+        <description>Design bionics and implants on-par with those created by archotechs.</description>
+        <baseCost>5250</baseCost> <!-- effective 3500 -->
+		<prerequisites>
+			<li>ITW_Starsteel</li>
+		</prerequisites>
+        <researchViewX>2</researchViewX>
+        <researchViewY>4.5</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_Armor</defName>
+        <label>phitech armor</label>
+        <description>Design phitech armor, and its.</description>
+        <baseCost>7500</baseCost> <!-- effective 5000 -->
+		<prerequisites>
+			<li>ITW_Starsteel</li>
+		</prerequisites>
+        <researchViewX>2</researchViewX>
+        <researchViewY>5.25</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_WeaponsRanged</defName>
+        <label>ranged phitech weaponry</label>
+        <description>Design weaponry that fire packets of phi-matter.</description>
+        <baseCost>7500</baseCost> <!-- effective 5000 -->
+		<prerequisites>
+			<li>ITW_Starsteel</li>
+		</prerequisites>
+        <researchViewX>3</researchViewX>
+        <researchViewY>0</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_Turrets</defName>
+        <label>phitech turrets</label>
+        <description>Design turrets which use phitech principles.</description>
+        <baseCost>5250</baseCost> <!-- effective 3500 -->
+		<prerequisites>
+			<li>ITW_WeaponsRanged</li>
+		</prerequisites>
+        <researchViewX>3</researchViewX>
+        <researchViewY>0.75</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_Grenades</defName>
+        <label>mobile grenades</label>
+        <description>Design a large variety of phitech grenades.</description>
+        <baseCost>7500</baseCost> <!-- effective 5000 -->
+		<prerequisites>
+			<li>ITW_Starsteel</li>
+		</prerequisites>
+        <researchViewX>3</researchViewX>
+        <researchViewY>1.5</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_WeaponsMelee</defName>
+        <label>melee phitech weaponry</label>
+        <description>Design weaponry that utilize both controlled phi-matter directing and inertial amplifiers.</description>
+        <baseCost>7500</baseCost> <!-- effective 5000 -->
+		<prerequisites>
+			<li>ITW_Starsteel</li>
+		</prerequisites>
+        <researchViewX>3</researchViewX>
+        <researchViewY>2.25</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_Meals</defName>
+        <label>food enchantment</label>
+        <description>Utilize phi-matter to create sterile and very, very tasty food.</description>
+        <baseCost>2250</baseCost> <!-- effective 1500 -->
+		<prerequisites>
+			<li>ITW_Starsteel</li>
+		</prerequisites>
+        <researchViewX>3</researchViewX>
+        <researchViewY>3</researchViewY>
+    </ResearchProjectDef>
+
+    <!-- Infinite Research -->
+    <ResearchProjectDef ParentName="ITW_ResearchBase">
+        <defName>ITW_End</defName>
+        <label>the limit</label>
+        <description>We can go no further; their embers have lifted us high, but our ambition isn't enough.\n\nWe've been left...in their wake.</description>
+		<baseCost>Infinity</baseCost>
+		<prerequisites>
+			<li>ITW_PowerFueled</li>
+			<li>ITW_PowerFree</li>
+			<li>ITW_Battery</li>
+			<li>ITW_Hydroponics</li>
+			<li>ITW_Recreation</li>
+			<li>ITW_MedicineAndDrugs</li>
+			<li>ITW_Bionics</li>
+			<li>ITW_Armor</li>
+			<li>ITW_WeaponsRanged</li>
+			<li>ITW_Turrets</li>
+			<li>ITW_Grenades</li>
+			<li>ITW_WeaponsMelee</li>
+			<li>ITW_Meals</li>
+		</prerequisites>
+        <researchViewX>4</researchViewX>
+        <researchViewY>2.5</researchViewY>
+		<techLevel>Archotech</techLevel>
+		<modExtensions>
+			<li Class="InfiniteResearch.ResearchExtension_Infinite" />
+		</modExtensions>
+    </ResearchProjectDef>
+
+    
+    <!-- [==========] GENERATION 2 "COSMISTELLAR" [==========] -->
+
+</Defs>

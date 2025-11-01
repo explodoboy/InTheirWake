@@ -1,0 +1,792 @@
+<Defs>
+
+	<ThingDef ParentName="UnfinishedBase">
+		<defName>ITW_UnfinishedMaterial</defName>
+		<label>unfinished starsteel</label>
+		<description>A mass of some variant of unfinished starsteel.</description>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>BaseITW/Things/Item/Unfinished/ITW_UnfinishedMaterial</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stuffCategories Inherit="false" />
+	</ThingDef>
+
+	<ThingDef ParentName="UnfinishedBase">
+		<defName>ITW_UnfinishedDrug</defName>
+		<label>unfinished phitech nanite injector</label>
+		<description>An unfinished phitech mechanite injector.</description>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>BaseITW/Things/Item/Unfinished/ITW_UnfinishedDrug</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stuffCategories Inherit="false" />
+	</ThingDef>
+
+	<ThingDef ParentName="UnfinishedBase">
+		<defName>ITW_UnfinishedMedicine</defName>
+		<label>unfinished phitech medicine</label>
+		<description>An unfinished kit of phitech medicine.</description>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>BaseITW/Things/Item/Unfinished/ITW_UnfinishedMedicine</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stuffCategories Inherit="false" />
+	</ThingDef>
+
+    <RecipeDef Name="ITW_CraftingMainRecipeBase" Abstract="True">
+        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+        <workSkill>Crafting</workSkill>
+		<skillRequirements><Crafting>10</Crafting></skillRequirements>
+		<recipeUsers><li>ITW_CraftingMain</li></recipeUsers>
+    </RecipeDef>
+
+    <!-- // EXAMPLE RECIPE \\
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>DEFNAME_HERE</defName>
+		<label>LABEL_HERE</label>
+		<description>DESCRIPTION_HERE</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITEM_1</li></thingDefs></filter><count>NUMBER_HERE</count></li>
+			<li><filter><thingDefs><li>ITEM_2</li></thingDefs></filter><count>NUMBER_HERE</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITEM_1</li>
+				<li>ITEM_2</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products><OUTPUT_HERE>NUMBER_HERE</OUTPUT_HERE></products>
+		<researchPrerequisite>RESEARCH_HERE</researchPrerequisite>
+		<jobString></jobString>
+    </RecipeDef>
+    -->
+
+
+    <!-- Base Resources -->
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_OneBatch</defName>
+		<label>synthesize common starsteel</label>
+		<description>Assemble, infuse, and edit a batch of common starsteel. This requires a versatile base, a noble metal for stability, and a dense metal for infusion density.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>7</count></li>
+			<li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>1</count></li>
+			<li><filter><thingDefs><li>Uranium</li></thingDefs></filter><count>2</count></li>
+			<li><filter><thingDefs><li>ITW_PhiMatter</li></thingDefs></filter><count>100</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Plasteel</li>
+				<li>Gold</li>
+				<li>Uranium</li>
+				<li>ITW_PhiMatter</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>600</workAmount>
+		<products>
+            <ITW_MaterialCommon>10</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Synthesizing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FiveBatch</defName>
+		<label>bulk synthesize common starsteel</label>
+		<description>Assemble, infuse, and edit five batches' worth of common starsteel. This requires a versatile base, a noble metal for stability, and a dense metal for infusion density.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>35</count></li>
+			<li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>5</count></li>
+			<li><filter><thingDefs><li>Uranium</li></thingDefs></filter><count>10</count></li>
+			<li><filter><thingDefs><li>ITW_PhiMatter</li></thingDefs></filter><count>500</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Plasteel</li>
+				<li>Gold</li>
+				<li>Uranium</li>
+				<li>ITW_PhiMatter</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>3000</workAmount>
+		<products>
+            <ITW_MaterialCommon>50</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Synthesizing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FromMaterialFlawed_MiniBatch</defName>
+		<label>reform flawed starsteel (1x)</label>
+		<description>Restructure the molecular structure of a unit of flawed starsteel, reforming it into common starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialFlawed</li></thingDefs></filter><count>1</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialFlawed</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>60</workAmount>
+		<products>
+            <ITW_MaterialCommon>1</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FromMaterialFlawed_OneBatch</defName>
+		<label>reform flawed starsteel (10x)</label>
+		<description>Restructure the molecular structure of a batch's worth flawed starsteel, reforming it into common starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialFlawed</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialFlawed</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>600</workAmount>
+		<products>
+            <ITW_MaterialCommon>10</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FromMaterialFlawed_FiveBatch</defName>
+		<label>reform flawed starsteel (50x)</label>
+		<description>Restructure the molecular structure of five batch's worth flawed starsteel, reforming it into common starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialFlawed</li></thingDefs></filter><count>50</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialFlawed</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>3000</workAmount>
+		<products>
+            <ITW_MaterialCommon>50</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FromMaterialBeauty_MiniBatch</defName>
+		<label>reform opulent starsteel (1x)</label>
+		<description>Restructure the molecular structure of a unit of opulent starsteel, reforming it into common starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialBeauty</li></thingDefs></filter><count>1</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialBeauty</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>30</workAmount>
+		<products>
+            <ITW_MaterialCommon>1</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FromMaterialBeauty_OneBatch</defName>
+		<label>reform opulent starsteel (10x)</label>
+		<description>Restructure the molecular structure of a batch's worth opulent starsteel, reforming it into common starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialBeauty</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialBeauty</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>300</workAmount>
+		<products>
+            <ITW_MaterialCommon>10</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FromMaterialBeauty_FiveBatch</defName>
+		<label>reform opulent starsteel (50x)</label>
+		<description>Restructure the molecular structure of five batch's worth opulent starsteel, reforming it into common starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialBeauty</li></thingDefs></filter><count>50</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialBeauty</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>1500</workAmount>
+		<products>
+            <ITW_MaterialCommon>50</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FromMaterialDurable_MiniBatch</defName>
+		<label>reform stalwart starsteel (1x)</label>
+		<description>Restructure the molecular structure of a unit of stalwart starsteel, reforming it into common starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialDurable</li></thingDefs></filter><count>1</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialDurable</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>30</workAmount>
+		<products>
+            <ITW_MaterialCommon>1</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FromMaterialDurable_OneBatch</defName>
+		<label>reform stalwart starsteel (10x)</label>
+		<description>Restructure the molecular structure of a batch's worth stalwart starsteel, reforming it into common starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialDurable</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialDurable</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>300</workAmount>
+		<products>
+            <ITW_MaterialCommon>10</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FromMaterialDurable_FiveBatch</defName>
+		<label>reform stalwart starsteel (50x)</label>
+		<description>Restructure the molecular structure of five batch's worth stalwart starsteel, reforming it into common starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialDurable</li></thingDefs></filter><count>50</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialDurable</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>1500</workAmount>
+		<products>
+            <ITW_MaterialCommon>50</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FromMaterialProtective_MiniBatch</defName>
+		<label>reform resilient starsteel (1x)</label>
+		<description>Restructure the molecular structure of a unit of resilient starsteel, reforming it into common starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialProtective</li></thingDefs></filter><count>1</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialProtective</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>30</workAmount>
+		<products>
+            <ITW_MaterialCommon>1</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FromMaterialProtective_OneBatch</defName>
+		<label>reform resilient starsteel (10x)</label>
+		<description>Restructure the molecular structure of a batch's worth resilient starsteel, reforming it into common starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialProtective</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialProtective</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>300</workAmount>
+		<products>
+            <ITW_MaterialCommon>10</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialCommon_FromMaterialProtective_FiveBatch</defName>
+		<label>reform resilient starsteel (50x)</label>
+		<description>Restructure the molecular structure of five batch's worth resilient starsteel, reforming it into common starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialProtective</li></thingDefs></filter><count>50</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialProtective</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>1500</workAmount>
+		<products>
+            <ITW_MaterialCommon>50</ITW_MaterialCommon>
+        </products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialBeauty_OneBatch</defName>
+		<label>form opulent starsteel</label>
+		<description>Edit a batch's worth common starsteel into opulent starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>300</workAmount>
+		<products><ITW_MaterialBeauty>10</ITW_MaterialBeauty></products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialBeauty_FiveBatch</defName>
+		<label>bulk form opulent starsteel</label>
+		<description>Edit five batch's worth common starsteel into opulent starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>50</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>1500</workAmount>
+		<products><ITW_MaterialBeauty>50</ITW_MaterialBeauty></products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialDurable_OneBatch</defName>
+		<label>form stalwart starsteel</label>
+		<description>Edit a batch's worth common starsteel into stalwart starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>300</workAmount>
+		<products><ITW_MaterialDurable>10</ITW_MaterialDurable></products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialDurable_FiveBatch</defName>
+		<label>bulk form stalwart starsteel</label>
+		<description>Edit five batch's worth common starsteel into stalwart starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>50</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>1500</workAmount>
+		<products><ITW_MaterialDurable>50</ITW_MaterialDurable></products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialProtective_OneBatch</defName>
+		<label>form resilient starsteel</label>
+		<description>Edit a batch's worth common starsteel into resilient starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>300</workAmount>
+		<products><ITW_MaterialProtective>10</ITW_MaterialProtective></products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_MaterialProtective_FiveBatch</defName>
+		<label>bulk form resilient starsteel</label>
+		<description>Edit five batch's worth common starsteel into resilient starsteel.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>50</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>1500</workAmount>
+		<products><ITW_MaterialProtective>50</ITW_MaterialProtective></products>
+        <unfinishedThingDef>ITW_UnfinishedMaterial</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Editing starsteel.</jobString>
+    </RecipeDef>
+
+
+    <!-- Components -->
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_Component_OneBatch</defName>
+		<label>manufacture phitech component</label>
+		<description>Manufacture a batch of phitech component.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>900</workAmount>
+		<products><ITW_Component>1</ITW_Component></products>
+        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Manufacturing starsteel component.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_Component_FiveBatch</defName>
+		<label>bulk manufacture phitech components</label>
+		<description>Manufacture five batches of phitech component.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>50</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>4500</workAmount>
+		<products><ITW_Component>5</ITW_Component></products>
+        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+		<researchPrerequisite>ITW_Starsteel</researchPrerequisite>
+		<jobString>Manufacturing starsteel component.</jobString>
+    </RecipeDef>
+        
+
+    <!-- Drugs -->
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_DrugImmunity_OneBatch</defName>
+		<label>gestate aegis</label>
+		<description>Produce a batch of aegis.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>2</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>300</workAmount>
+		<products><ITW_DrugImmunity>2</ITW_DrugImmunity></products>
+        <unfinishedThingDef>ITW_UnfinishedDrug</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Gestating phitech drug.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_DrugImmunity_FiveBatch</defName>
+		<label>bulk gestate aegis</label>
+		<description>Produce five batches of aegis.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>1500</workAmount>
+		<products><ITW_DrugImmunity>10</ITW_DrugImmunity></products>
+        <unfinishedThingDef>ITW_UnfinishedDrug</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Gestating phitech drug.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_DrugMood_OneBatch</defName>
+		<label>gestate everglow</label>
+		<description>Produce a batch of everglow.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>2</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>300</workAmount>
+		<products><ITW_DrugMood>2</ITW_DrugMood></products>
+        <unfinishedThingDef>ITW_UnfinishedDrug</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Gestating phitech drug.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_DrugMood_FiveBatch</defName>
+		<label>bulk gestate everglow</label>
+		<description>Produce five batchs of everglow.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>1500</workAmount>
+		<products><ITW_DrugMood>10</ITW_DrugMood></products>
+        <unfinishedThingDef>ITW_UnfinishedDrug</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Gestating phitech drug.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_DrugPsychic_OneBatch</defName>
+		<label>gestate psion</label>
+		<description>Produce a batch of psion.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>2</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>300</workAmount>
+		<products><ITW_DrugPsychic>1</ITW_DrugPsychic></products>
+		<recipeUsers Inherit="False"/> <!-- Disabled by default; enabled by Royalty in a patch -->
+        <unfinishedThingDef>ITW_UnfinishedDrug</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Gestating phitech drug.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_DrugPsychic_FiveBatch</defName>
+		<label>bulk gestate psion</label>
+		<description>Produce five batchs of psion.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>1500</workAmount>
+		<recipeUsers Inherit="False"/> <!-- Disabled by default; enabled by Royalty in a patch -->
+		<products><ITW_DrugPsychic>5</ITW_DrugPsychic></products>
+        <unfinishedThingDef>ITW_UnfinishedDrug</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Gestating phitech drug.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_DrugSleep_OneBatch</defName>
+		<label>gestate trance</label>
+		<description>Produce a batch of trance.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>2</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>300</workAmount>
+		<products><ITW_DrugSleep>1</ITW_DrugSleep></products>
+        <unfinishedThingDef>ITW_UnfinishedDrug</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Gestating phitech drug.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_DrugSleep_FiveBatch</defName>
+		<label>bulk gestate trance</label>
+		<description>Produce five batchs of trance.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>1500</workAmount>
+		<products><ITW_DrugSleep>5</ITW_DrugSleep></products>
+        <unfinishedThingDef>ITW_UnfinishedDrug</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Gestating phitech drug.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_DrugEnhancement_OneBatch</defName>
+		<label>gestate surge</label>
+		<description>Produce a batch of surge.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>2</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>300</workAmount>
+		<products><ITW_DrugEnhancement>1</ITW_DrugEnhancement></products>
+        <unfinishedThingDef>ITW_UnfinishedDrug</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Gestating phitech drug.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_DrugEnhancement_FiveBatch</defName>
+		<label>bulk gestate surge</label>
+		<description>Produce five batchs of surge.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>10</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>1500</workAmount>
+		<products><ITW_DrugEnhancement>5</ITW_DrugEnhancement></products>
+        <unfinishedThingDef>ITW_UnfinishedDrug</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Gestating phitech drug.</jobString>
+    </RecipeDef>
+
+
+    <!-- Medicine -->
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_Medicine_OneBatch</defName>
+		<label>manufacture stellar medicine</label>
+		<description>Manufacture a kit of stellar medicine.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>3</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>600</workAmount>
+		<products><ITW_Medicine>1</ITW_Medicine></products>
+        <unfinishedThingDef>ITW_UnfinishedMedicine</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Manufacturing stellar medicine.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_Medicine_FiveBatch</defName>
+		<label>bulk manufacture stellar medicine</label>
+		<description>Manufacture five kits of stellar medicine.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></filter><count>15</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>3000</workAmount>
+		<products><ITW_Medicine>5</ITW_Medicine></products>
+        <unfinishedThingDef>ITW_UnfinishedMedicine</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Bulk manufacturing stellar medicine.</jobString>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_CraftingMainRecipeBase">
+		<defName>ITW_Medicine_FromMedicineUltratech</defName>
+		<label>manufacture glitterworld medicine from phitech medicine</label>
+		<description>Break down a kit of phitech medicine into two kits' worth of glitterworld-grade medicine.</description>
+		<ingredients>
+			<li><filter><thingDefs><li>ITW_Medicine</li></thingDefs></filter><count>1</count></li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ITW_MaterialCommon</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workAmount>300</workAmount>
+		<products><MedicineUltratech>2</MedicineUltratech></products>
+        <unfinishedThingDef>ITW_UnfinishedMedicine</unfinishedThingDef>
+		<researchPrerequisite>ITW_MedicineAndDrugs</researchPrerequisite>
+		<jobString>Manufacturing stellar medicine.</jobString>
+    </RecipeDef>
+
+</Defs>

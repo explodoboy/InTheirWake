@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+
+<name>In Their Wake</name>
+<author>explodoboy</author>
+<packageId>explodoboy.InTheirWake</packageId>
+<supportedVersions><li>1.6</li></supportedVersions>
+<modDependencies>
+    <li>
+        <packageId>brrainz.harmony</packageId>
+        <displayName>Harmony</displayName>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+        <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+    <li>
+        <packageId>UnlimitedHugs.HugsLib</packageId>
+        <displayName>HugsLib</displayName>
+        <downloadUrl>https://github.com/UnlimitedHugs/RimworldHugsLib/releases/latest</downloadUrl>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/818773962</steamWorkshopUrl>
+    </li>
+    <li>
+        <packageId>imranfish.xmlextensions</packageId>
+        <displayName>XML Extensions</displayName>
+        <downloadUrl>https://github.com/15adhami/XmlExtensions/releases</downloadUrl>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/2574315206</steamWorkshopUrl>
+    </li>
+    <li>
+        <packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
+        <displayName>Vanilla Expanded Framework</displayName>
+        <steamWorkshopUrl>https://steamcommunity.com/workshop/filedetails/?id=2023507013</steamWorkshopUrl>
+        <downloadUrl>https://github.com/Vanilla-Expanded/VanillaExpandedFramework</downloadUrl>
+    </li>
+</modDependencies>
+<loadAfter>
+    <li>V1024.EBFramework</li>
+    <li>imranfish.xmlextensions</li>
+</loadAfter>
+<description>"We stand in the shadow of greatness. They, who we call the Phibearers, spanned both lightyears and millennia. They'd marched between stars faster than candles flickered. Sculpted stars into sprawling cities without end. Assembled weapons capable of turning parts of the galaxy to dust... They must have found the deepest truths; what everything came from, the truth of the divine, and the meaning of it all."\n\n"But now they're gone, and they have been for a kilomillennium. Bones and embers lie in their wake, still glowing with the ambition of a people that could never truly die. It had happened in an instant, an eternal empire vanished in a day. As if they were the kings of the stars one moment, then gone when you blinked your eye. And nobody knows where they went."\n\nEoTC adds new overpowered content that extends the endgame. It can be considered a spiritual successor to Ambition of the Cosmic.\n\nCheck the Workshop page for more details.</description>
+
+</ModMetaData>

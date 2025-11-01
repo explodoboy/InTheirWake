@@ -1,0 +1,272 @@
+<Defs>
+
+    <ThingDef ParentName="ArmorMachineableBase" Name="ITW_ArmorBodyBase" Abstract="True">
+        <apparel>
+            <bodyPartGroups>
+                <li>Torso</li>
+                <li>Neck</li>
+                <li>Shoulders</li>
+                <li>Arms</li>
+                <li>Legs</li>
+                <li>Hands</li>
+                <li>Feet</li>
+            </bodyPartGroups>
+            <layers>
+                <li>Middle</li>
+                <li>Shell</li>
+            </layers>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <tags>
+                <li>SpacerMilitary</li>
+                <li>RoyalCombatGear</li>
+                <li>PrestigeCombatGear</li>
+                <li>EVA</li>
+            </tags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+        </apparel>
+        <thingCategories>
+            <li>ApparelArmor</li>
+        </thingCategories>
+        <comps>
+            <li Class="CompProperties_Biocodable"/>
+        </comps>
+        <uiIconScale>1.25</uiIconScale>
+        <generateCommonality>0.5</generateCommonality>
+        <statBases>
+            <Mass>15</Mass>
+            <Flammability>0</Flammability>
+        </statBases>
+        <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <skillRequirements>
+              <Crafting>10</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+            <defaultIngredientFilter><disallowedThingDefs Inherit="False"></disallowedThingDefs></defaultIngredientFilter>
+        </recipeMaker>
+    </ThingDef>
+
+    <ThingDef ParentName="ArmorMachineableBase" Name="ITW_ArmorHeadBase" Abstract="True">
+        <apparel>
+            <bodyPartGroups>
+                <li>FullHead</li>
+            </bodyPartGroups>
+            <layers>
+                <li>Overhead</li>
+            </layers>
+            <tags>
+                <li>SpacerMilitary</li>
+                <li>RoyalCombatGear</li>
+                <li>PrestigeCombatGear</li>
+                <li>EVA</li>
+            </tags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+        </apparel>
+        <thingCategories>
+            <li>ApparelArmor</li>
+        </thingCategories>
+        <comps>
+            <li Class="CompProperties_Biocodable"/>
+        </comps>
+        <uiIconScale>1.25</uiIconScale>
+        <generateCommonality>0.5</generateCommonality>
+        <statBases>
+            <Mass>2</Mass>
+            <Flammability>0</Flammability>
+        </statBases>
+        <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+            <defaultIngredientFilter><disallowedThingDefs Inherit="False"></disallowedThingDefs></defaultIngredientFilter>
+        </recipeMaker>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_ArmorHeadBase">
+        <defName>ITW_ArmorHead</defName>
+        <label>phitech helmet</label>
+        <description>A phitech helmet built for maximum protection. Thick starsteel plating backed by heavy impact dampeners allow it to shrug off most ultratech weapons; especially blunt and heat, which it has a comparatively high level of resistance to. A full sensory uplink allows users to see through the helmet as if it were their own eyes. It is also incredibly durable.\n\nThis kind of helmet is standard issue for all models of phitech armor. While others technically exist, they are rarely used.</description>
+        <graphicData>
+          <texPath>BaseITW/Things/Pawn/Humanlike/Apparel/ITW_ArmorHead/ITW_ArmorHead</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MaxHitPoints>1000</MaxHitPoints>
+            <ArmorRating_Sharp>1.50</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.80</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.90</ArmorRating_Heat>
+            <Insulation_Cold>120</Insulation_Cold>
+            <Insulation_Heat>80</Insulation_Heat>
+            <EquipDelay>4</EquipDelay>
+        </statBases>
+        <apparel>
+            <wornGraphicPath>BaseITW/Things/Pawn/Humanlike/Apparel/ITW_ArmorHead/ITW_ArmorHead</wornGraphicPath>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+        <equippedStatOffsets>
+            <ToxicEnvironmentResistance>2</ToxicEnvironmentResistance>
+        </equippedStatOffsets>
+        <recipeMaker>
+            <recipeUsers Inherit="False"><li>ITW_CraftingMain</li></recipeUsers>
+            <researchPrerequisite>ITW_Armor</researchPrerequisite>
+        </recipeMaker>
+        <costList>
+            <ITW_MaterialProtective>35</ITW_MaterialProtective>
+            <ITW_MaterialDurable>15</ITW_MaterialDurable>
+            <ITW_Component>1</ITW_Component>
+        </costList>
+        <tradeTags>
+            <li>HiTechArmor</li>
+            <li>Armor</li>
+        </tradeTags>
+        <thingSetMakerTags>
+            <li>RewardStandardLowFreq</li>
+        </thingSetMakerTags>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_ArmorBodyBase">
+        <defName>ITW_ArmorHeavyBody</defName>
+        <label>zenith armor</label>
+        <description>A set of human-made heavy phitech armor. Thick starsteel plating backed by heavy impact dampeners allow it to shrug off most ultratech weapons. A full sensory uplink allows users to use the armor as if it were an extension of their body. Combined with powerful internal motors, and users can use the suits completely unencumbered. It is also absurdly durable.\n\nArmor like this is used by top-grade shock troops who not only need to storm highly-fortified positions, but withstand immense presure for prolonged periods of time.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Pawn/Humanlike/Apparel/ITW_ArmorHeavyBody/ITW_ArmorHeavyBody</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MaxHitPoints>1000</MaxHitPoints>
+            <ArmorRating_Sharp>1.50</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.80</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.90</ArmorRating_Heat>
+            <Insulation_Cold>120</Insulation_Cold>
+            <Insulation_Heat>80</Insulation_Heat>
+            <EquipDelay>12</EquipDelay>
+        </statBases>
+        <apparel>
+            <wornGraphicPath>BaseITW/Things/Pawn/Humanlike/Apparel/ITW_ArmorHeavyBody/ITW_ArmorHeavyBody</wornGraphicPath>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+        <equippedStatOffsets>
+            <!-- Armor has no MoveSpeed penalty. -->
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.5</SlaveSuppressionOffset>
+        </equippedStatOffsets>
+        <recipeMaker>
+            <recipeUsers Inherit="False"><li>ITW_CraftingMain</li></recipeUsers>
+            <researchPrerequisite>ITW_Armor</researchPrerequisite>
+        </recipeMaker>
+        <costList>
+            <ITW_MaterialProtective>100</ITW_MaterialProtective>
+            <ITW_MaterialDurable>50</ITW_MaterialDurable>
+            <ITW_Component>6</ITW_Component>
+            <ITW_PhiMatter>200</ITW_PhiMatter>
+        </costList>
+        <tradeTags Inherit="False">
+            <li>HiTechArmor</li>
+            <li>Armor</li>
+        </tradeTags>
+        <thingSetMakerTags>
+            <li>RewardStandardLowFreq</li>
+        </thingSetMakerTags>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_ArmorBodyBase">
+        <defName>ITW_ArmorMediumBody</defName>
+        <label>starguard armor</label>
+        <description>A set of human-made medium phitech armor. Starsteel plating backed by impact dampeners provides strong protection against the best ultratech weapons, and good protection against phitech. A full sensory uplink allows users to use the armor as if it were an extension of their body. Combined with powerful internal motors, and users can achieve speeds somewhat higher than what they can usually achieve. It is also absurdly durable.\n\nArmor like this is used in two primary ways. For phitech societies, it is standard issue for most of their soldiers. For others, it is used by specialist shock troops to take on threats that cataphracts just aren't quite enough for.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Pawn/Humanlike/Apparel/ITW_ArmorMediumBody/ITW_ArmorMediumBody</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MaxHitPoints>850</MaxHitPoints>
+            <ArmorRating_Sharp>1.35</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.75</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.85</ArmorRating_Heat>
+            <Insulation_Cold>105</Insulation_Cold>
+            <Insulation_Heat>70</Insulation_Heat>
+            <EquipDelay>8</EquipDelay>
+        </statBases>
+        <apparel>
+            <wornGraphicPath>BaseITW/Things/Pawn/Humanlike/Apparel/ITW_ArmorMediumBody/ITW_ArmorMediumBody</wornGraphicPath>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+        <equippedStatOffsets>
+            <MoveSpeed>0.25</MoveSpeed>
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.5</SlaveSuppressionOffset>
+        </equippedStatOffsets>
+        <recipeMaker>
+            <recipeUsers Inherit="False"><li>ITW_CraftingMain</li></recipeUsers>
+            <researchPrerequisite>ITW_Armor</researchPrerequisite>
+        </recipeMaker>
+        <costList>
+            <ITW_MaterialProtective>65</ITW_MaterialProtective>
+            <ITW_MaterialDurable>35</ITW_MaterialDurable>
+            <ITW_Component>4</ITW_Component>
+            <ITW_PhiMatter>100</ITW_PhiMatter>
+        </costList>
+        <tradeTags Inherit="False">
+            <li>HiTechArmor</li>
+            <li>Armor</li>
+        </tradeTags>
+        <thingSetMakerTags>
+            <li>RewardStandardLowFreq</li>
+        </thingSetMakerTags>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_ArmorBodyBase">
+        <defName>ITW_ArmorLightBody</defName>
+        <label>luminal armor</label>
+        <description>A set of human-made light phitech armor, made for mobility. Starsteel plating backed by impact dampeners provides strong protection on-par or surpassing that of heavy ultratech. A full sensory uplink allows users to use the armor as if it were an extension of their body. Combined with powerful internal motors, and users can achieve speeds considerably higher than what they can usually achieve. It is also absurdly durable.\n\nArmor like this is primarily used for its exceptional agility and fast equip mechanisms, most commonly scouts and combat medics. Despite the thinness of its plating, it is often preferred to cataphract armor; it resists penetrating weapons only slightly less, in turn for vastly superior mobility and blunt/heat protection.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Pawn/Humanlike/Apparel/ITW_ArmorLightBody/ITW_ArmorLightBody</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MaxHitPoints>700</MaxHitPoints>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.70</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.80</ArmorRating_Heat>
+            <Insulation_Cold>105</Insulation_Cold>
+            <Insulation_Heat>70</Insulation_Heat>
+            <EquipDelay>4</EquipDelay>
+        </statBases>
+        <apparel>
+            <wornGraphicPath>BaseITW/Things/Pawn/Humanlike/Apparel/ITW_ArmorLightBody/ITW_ArmorLightBody</wornGraphicPath>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+        <equippedStatOffsets>
+            <MoveSpeed>0.5</MoveSpeed>
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.5</SlaveSuppressionOffset>
+        </equippedStatOffsets>
+        <recipeMaker>
+            <recipeUsers Inherit="False"><li>ITW_CraftingMain</li></recipeUsers>
+            <researchPrerequisite>ITW_Armor</researchPrerequisite>
+        </recipeMaker>
+        <costList>
+            <ITW_MaterialProtective>50</ITW_MaterialProtective>
+            <ITW_MaterialDurable>25</ITW_MaterialDurable>
+            <ITW_Component>2</ITW_Component>
+            <ITW_PhiMatter>50</ITW_PhiMatter>
+        </costList>
+        <tradeTags Inherit="False">
+            <li>HiTechArmor</li>
+            <li>Armor</li>
+        </tradeTags>
+        <thingSetMakerTags>
+            <li>RewardStandardLowFreq</li>
+        </thingSetMakerTags>
+    </ThingDef>
+
+</Defs>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    
+    <!-- If Biotech not enabled, disable tox gas grenades. -->
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Biotech</li>
+        </mods>
+        <nomatch Class="PatchOperationRemove">
+            <xpath>Defs/ThingDef[defName="ITW_GrenadeToxGas"]/recipeMaker</xpath>
+        </nomatch>
+    </Operation>
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Biotech</li>
+        </mods>
+        <nomatch Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="ITW_GrenadeToxGas"]/label</xpath>
+            <value><label>DISABLED: Stellar tox gas grenade</label></value>
+        </nomatch>
+    </Operation>
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Biotech</li>
+        </mods>
+        <nomatch Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="ITW_GrenadeToxGas"]/description</xpath>
+            <value><description>This item is disabled due to the Biotech DLC not being active.</description></value>
+        </nomatch>
+    </Operation>
+    
+    <!-- Handle enabling of tox gas grenades. -->
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Biotech</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="ITW_Proj_GrenadeToxGas"]/projectile/damageDef</xpath>
+            <value><damageDef>ToxGas</damageDef></value>
+        </match>
+    </Operation>
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Biotech</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="ITW_Proj_GrenadeToxGas"]/projectile</xpath>
+            <value><postExplosionGasType>ToxGas</postExplosionGasType></value>
+        </match>
+    </Operation>
+
+</Patch>

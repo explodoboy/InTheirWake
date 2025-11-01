@@ -1,0 +1,90 @@
+<Defs>
+
+    <ThingDef ParentName="ITW_DrugItemBase">
+        <defName>ITW_DrugImmunity</defName>
+        <label>aegis</label>
+        <description>A concoction of mechanites that repair the body. They accelerates healing and greatly boosts the immune system, instantly curing some conditions and preventing others.\n\nA dose lasts for 5.5 days.</description>
+        <descriptionHyperlinks>
+            <HediffDef>ITW_DrugImmunity</HediffDef>
+        </descriptionHyperlinks>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Drug/ITW_DrugImmunity</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>60</MarketValue>
+        </statBases>
+        <ingestible>
+            <drugCategory>Medical</drugCategory>
+            <outcomeDoers>
+                <li Class="IngestionOutcomeDoer_GiveHediff">
+                    <hediffDef>ITW_DrugImmunity</hediffDef>
+                    <severity>1</severity>
+                </li>
+            </outcomeDoers>
+        </ingestible>
+        <researchPrerequisites>
+            <li>ITW_MedicineAndDrugs</li>
+        </researchPrerequisites>
+        <tradeTags Inherit="False"><li>Drugs</li></tradeTags> <!-- Inside Def and not base to allow modsettings to disable -->
+        <comps>
+            <li Class="CompProperties_Drug">
+                <addictiveness>0</addictiveness>
+                <existingAddictionSeverityOffset>0</existingAddictionSeverityOffset>
+                <needLevelOffset>0</needLevelOffset>
+                <isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+                <listOrder>200</listOrder>
+                <overdoseSeverityOffset>0</overdoseSeverityOffset>
+                <largeOverdoseChance>0</largeOverdoseChance>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef ParentName="ITW_DrugHediffBase">
+        <defName>ITW_DrugImmunity</defName>
+        <label>aegis</label>
+        <description>Aegis mechanites in the bloodstream. They are fighting disease and accelerating healing. Eventually they will lose charge and harmlessly filter out of the body.</description>
+        <defaultLabelColor>(255,60,0)</defaultLabelColor>
+        <maxSeverity>1</maxSeverity>
+        <stages>
+            <li>
+                <makeImmuneTo>
+                    <li>GutWorms</li>
+                    <li>FoodPoisoning</li>
+                    <li>MuscleParasites</li>
+                    <li>FibrousMechanites</li>
+                    <li>SensoryMechanites</li>
+                    <li>WoundInfection</li>
+                    <li>Flu</li>
+                    <li>Plague</li>
+                    <li>Malaria</li>
+                    <li>SleepingSickness</li>
+                    <li>LungRot</li>
+                    <li>OrganDecay</li>
+                </makeImmuneTo>
+                <statOffsets>
+                    <ImmunityGainSpeed>2.00</ImmunityGainSpeed>
+                    <InjuryHealingFactor>2.0</InjuryHealingFactor>
+                </statOffsets>
+            </li>
+        </stages>
+        <comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+                <severityPerDay>-0.18</severityPerDay>
+                <showHoursToRecover>true</showHoursToRecover>
+            </li>
+            <li Class="IHaveTheCure.HediffCompProperties_CuresHediffs">
+               <hediffsToCure>
+                    <li>GutWorms</li>
+                    <li>FoodPoisoning</li>
+                    <li>MuscleParasites</li>
+                    <li>FibrousMechanites</li>
+                    <li>SensoryMechanites</li>
+                    <li>LungRot</li>
+                    <li>OrganDecay</li> <!-- FUCK YOU ORGAN DECAY, I GET TO SAY WHEN IT'S TIME TO GET NEW BIONICS -->
+               </hediffsToCure>
+           </li>
+        </comps>
+    </HediffDef>
+    
+</Defs>

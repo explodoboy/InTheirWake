@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<!-- Behold, the only piece of AoTC code that remains in ITW. Kinda. -->
+
+<!-- If you're looking at this file hoping to learn more about patches, you're in luck! I will leave a comment pretty much everywhere so you can understand what's going on here. -->
+<!-- I know it might look daunting, and it might look too complicated to bother to learn, but it's actually really simple once you understand how it works. I was able to learn xpath in a day. -->
+
+<Operation Class="PatchOperationFindMod">
+    <mods>
+        <li>RT Fuse</li> <!-- Multiple mods can be put here, BUT you MUST put an <li></li> between each and every mod, even if it's just one. -->
+    </mods>
+	<match Class="PatchOperationAdd"> <!-- This basically means 'add something to an object or a part of an object'. -->
+		<xpath>/Defs/ThingDef[defName="ITW_Battery"]/comps</xpath> <!-- This is the path to what you want to add to/modify/replace. --> 
+
+		<!-- /Defs/ should be a given for most patches I know about, since chances are if you're patching something it'll be a Def. -->
+		<!-- /ThingDef/ is a type of def. All buildings and items are a ThingDef. -->
+		<!-- The stuff between brackets basically runs a search for any attribute with the same value in the quotation marks. It's a good idea to use defName since nothing can have the same defName, but there's nothing stopping you from, say, finding a thingDef by its label. -->
+		<!-- After that, you select the attribute of the object you want to modify. In this case, I'll be adding a list (<li>) element as a child of <comps>. It's possible to go deeper; if you know a <comps> only has one <li>, then you can path to /comps/li. But if you do that, you should probably do a bracket search to get exactly what you want, because a future update or another mod could add another <li> and ruin your patch. -->
+		<!-- In general, whenever doing an xpath patch, try to make your patch as robust as possible. Assume nothing, and your patch has the best chance of surviving big modpacks and updates. -->
+
+		<value> <!-- This is what you're adding/inserting/replacing. In this case, it's component from a mod. -->
+			<li Class="RT_Fuse.CompProperties_RTFuse">
+				<compClass>RT_Fuse.CompRTFuse</compClass>
+				<surgeMitigation>2500</surgeMitigation> <!-- Change number according to need, of course. -->
+				<breakdownOnTrip>false</breakdownOnTrip>
+			</li>
+			<li Class="CompProperties_Flickable" /> <!-- Fuses don't work if they can't be flicked or break down, so to fix this the batteries get the Flickable tag. -->
+		</value>
+	</match> <!-- Make sure to close your tags! -->
+</Operation> <!-- This marks the end of the patch. You can start a new operation, and/or do a PatchOperationSequence. -->
+
+</Patch> <!-- This is the end of the file. Don't put anything past here that isn't a comment, or you'll have a bad time. -->

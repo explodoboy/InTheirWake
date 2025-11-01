@@ -1,0 +1,236 @@
+<Defs>
+
+    <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality" Name="ITW_BaseMeleeWeapon_Sharp" Abstract="True">
+        <techLevel>Ultra</techLevel>
+        <smeltable>false</smeltable>
+        <recipeMaker Inherit="False">
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Machining</soundWorking>
+            <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+            <recipeUsers><li>ITW_CraftingMain</li></recipeUsers>
+            <researchPrerequisite>ITW_WeaponsMelee</researchPrerequisite>
+            <!--defaultIngredientFilter><disallowedThingDefs Inherit="False" /></defaultIngredientFilter-->
+        </recipeMaker>
+        <tradeTags>
+            <li>WeaponMelee</li>
+        </tradeTags>
+        <costList>
+            <ITW_MaterialDurable>60</ITW_MaterialDurable>
+            <ITW_Component>4</ITW_Component>
+        </costList>
+        <statBases>
+            <WorkToMake>18000</WorkToMake>
+            <Mass>2</Mass>
+        </statBases>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality" Name="ITW_BaseMeleeWeapon_Blunt" Abstract="True">
+        <techLevel>Ultra</techLevel>
+        <smeltable>false</smeltable>
+        <recipeMaker Inherit="False">
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Machining</soundWorking>
+            <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+            <recipeUsers><li>ITW_CraftingMain</li></recipeUsers>
+            <researchPrerequisite>ITW_WeaponsMelee</researchPrerequisite>
+            <!--defaultIngredientFilter><disallowedThingDefs Inherit="False" /></defaultIngredientFilter-->
+        </recipeMaker>
+        <tradeTags>
+            <li>WeaponMelee</li>
+        </tradeTags>
+        <costList>
+            <ITW_MaterialDurable>60</ITW_MaterialDurable>
+            <ITW_Component>4</ITW_Component>
+        </costList>
+        <statBases>
+            <WorkToMake>18000</WorkToMake>
+            <Mass>2</Mass>
+        </statBases>
+    </ThingDef>
+    
+    <ThingDef ParentName="ITW_BaseMeleeWeapon_Sharp">
+        <defName>ITW_MeleeSlowSharp</defName>
+        <label>perdition monosword</label>
+        <description>A human-designed phitech longsword with a monomolecular edge, whose edge is covered in a thin layer of phi-matter. It can cleave through most armors like it was never there to begin with, leaving a moderate burn that penetrates practically all armor. Its handle has a blade of its own with the same qualities. Attacks are slow, favoring users who want to break their enemies with one or two devastating blows.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponMelee/ITW_MeleeSlowSharp</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <weaponTags>
+            <li>LongSword</li>
+        </weaponTags>
+        <relicChance>5</relicChance>
+        <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
+        <equippedAngleOffset>-65</equippedAngleOffset>
+        <tools> <!-- Basing damage numbers from Royalty DLC's Monosword, and cooldown time from the basegame Longsword. -->
+            <li>
+                <label>handle blade</label>  <!-- 10 DPS -->
+                <capacities>
+                <li>Cut</li>
+                </capacities>
+                <power>35</power>
+                <cooldownTime>2</cooldownTime>
+                <armorPenetration>1.2</armorPenetration>
+                <extraMeleeDamages>
+                    <li>
+                        <def>Burn</def>
+                        <amount>5</amount>
+                        <armorPenetration>2.0</armorPenetration>
+                    </li>
+                </extraMeleeDamages>
+            </li>
+            <li>
+                <label>point</label> <!-- 12.31 DPS -->
+                <capacities>
+                <li>Stab</li>
+                </capacities>
+                <power>45</power>
+                <cooldownTime>2.6</cooldownTime>
+                <armorPenetration>1.2</armorPenetration>
+                <extraMeleeDamages>
+                    <li>
+                        <def>Burn</def>
+                        <amount>5</amount>
+                        <armorPenetration>2.0</armorPenetration>
+                    </li>
+                </extraMeleeDamages>
+            </li>
+            <li>
+                <label>edge</label> <!-- 12.31 DPS -->
+                <capacities>
+                <li>Cut</li>
+                </capacities>
+                <power>45</power>
+                <cooldownTime>2.6</cooldownTime>
+                <armorPenetration>1.2</armorPenetration>
+                <extraMeleeDamages>
+                    <li>
+                        <def>Burn</def>
+                        <amount>5</amount>
+                        <armorPenetration>2.0</armorPenetration>
+                    </li>
+                </extraMeleeDamages>
+            </li>
+        </tools>
+    </ThingDef>
+    
+    <ThingDef ParentName="ITW_BaseMeleeWeapon_Sharp">
+        <defName>ITW_MeleeFastSharp</defName>
+        <label>perdition monoflail</label>
+        <description>A human-designed phitech flail with monomolecular edges, whose edge is covered in a thin layer of phi-matter. It can cleave through most armor like it was never there to begin with, leaving a light burn that penetrates practically all armor. It permits lightning-fast attacks, fitting users who want to gradually wear down their enemies rather than bring them down in one go.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponMelee/ITW_MeleeFastSharp</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <weaponTags>
+            <!--li>LongSword</li-->
+        </weaponTags>
+        <relicChance>5</relicChance>
+        <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
+        <equippedAngleOffset>-65</equippedAngleOffset>
+        <tools>
+            <li>
+                <label>edge</label> <!-- 12.31 DPS -->
+                <capacities>
+                <li>Cut</li>
+                </capacities>
+                <power>11</power>
+                <cooldownTime>0.65</cooldownTime>
+                <armorPenetration>1.2</armorPenetration>
+                <extraMeleeDamages>
+                    <li>
+                        <def>Burn</def>
+                        <amount>2</amount>
+                        <armorPenetration>2.0</armorPenetration>
+                    </li>
+                </extraMeleeDamages>
+            </li>
+        </tools>
+    </ThingDef>
+    
+    <ThingDef ParentName="ITW_BaseMeleeWeapon_Blunt">
+        <defName>ITW_MeleeSlowBlunt</defName>
+        <label>The Block</label>
+        <description>A crude-looking phitech club. It contains impact amplifiers, which allows for it to create sufficient forces to crush non-phitech armor. Its pommel contains a miniature head of its own, ensuring no enemy is safe. Attacks are slow, favoring users who want to break their enemies with one or two devastating blows.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponMelee/ITW_MeleeSlowBlunt</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <weaponTags>
+            <!--li>LongSword</li-->
+        </weaponTags>
+        <relicChance>5</relicChance>
+        <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
+        <equippedAngleOffset>-65</equippedAngleOffset>
+        <tools> <!-- Basing damage numbers from Royalty DLC's Monosword, and cooldown time from the basegame Longsword. -->
+            <li>
+                <label>handle</label>
+                <capacities>
+                    <li>Poke</li>
+                </capacities>
+                <power>40</power>
+                <cooldownTime>2</cooldownTime>
+                <armorPenetration>0.75</armorPenetration>
+            </li>
+            <li>
+                <label>face</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>50</power>
+                <cooldownTime>2.6</cooldownTime>
+                <armorPenetration>0.75</armorPenetration>
+            </li>
+            <li>
+                <label>edge</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>50</power>
+                <cooldownTime>2.6</cooldownTime>
+                <armorPenetration>0.75</armorPenetration>
+            </li>
+            <li>
+                <label>corner</label>
+                <capacities>
+                    <li>Poke</li>
+                </capacities>
+                <power>50</power>
+                <cooldownTime>2.6</cooldownTime>
+                <armorPenetration>0.75</armorPenetration>
+            </li>
+        </tools>
+    </ThingDef>
+    
+    <ThingDef ParentName="ITW_BaseMeleeWeapon_Blunt">
+        <defName>ITW_MeleeFastBlunt</defName>
+        <label>I-Flail</label>
+        <description>A human-designed phitech flail with impact amplifiers, which allows for it to create sufficient forces to crush non-phitech armor. It permits lightning-fast attacks, fitting users who want to gradually wear down their enemies rather than bring them down in one go.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Equipment/WeaponMelee/ITW_MeleeFastBlunt</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <weaponTags>
+            <!--li>LongSword</li-->
+        </weaponTags>
+        <relicChance>5</relicChance>
+        <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
+        <equippedAngleOffset>-65</equippedAngleOffset>
+        <tools> <!-- Basing damage numbers from Royalty DLC's Monosword, and cooldown time from the basegame Longsword. -->
+            <li>
+                <label>edge</label> <!-- 12.31 DPS -->
+                <capacities>
+                <li>Blunt</li>
+                </capacities>
+                <power>13</power>
+                <cooldownTime>0.65</cooldownTime>
+                <armorPenetration>0.75</armorPenetration>
+            </li>
+        </tools>
+    </ThingDef>
+
+</Defs>

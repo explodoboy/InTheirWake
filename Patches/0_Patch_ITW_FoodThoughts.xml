@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    
+    <!-- Fine meal -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThoughtDef[defName="AteFineMeal"]/replaceThoughts</xpath>
+        <value><li>ITW_Meal</li></value>
+    </Operation>
+    
+    <!-- Lavish meal -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThoughtDef[defName="AteLavishMeal"]/replaceThoughts</xpath>
+        <value><li>ITW_Meal</li></value>
+    </Operation>
+
+</Patch>

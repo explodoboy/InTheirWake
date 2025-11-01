@@ -1,0 +1,63 @@
+<Defs>
+
+    <!-- NOTES TO SELF: -->
+    <!-- Fine meals cost 0.5 nutrition -->
+    <!-- Nutrient past cost 0.3 nutrition -->
+
+    <RecipeDef Name="ITW_MealRecipeBase" ParentName="CookMealBase" Abstract="True">
+        <workSpeedStat>CookSpeed</workSpeedStat>
+		<skillRequirements></skillRequirements>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_CookMeal</soundWorking>
+        <allowMixingIngredients>true</allowMixingIngredients>
+        <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    </RecipeDef>
+
+    <!-- Gen1 meal -->
+    <RecipeDef ParentName="ITW_MealRecipeBase">
+		<defName>ITW_Meal_OneBatch</defName>
+		<label>cook enchanted meal</label>
+		<description>Print a luxury meal with phitech.</description>
+        <workAmount>300</workAmount>
+		<products>
+            <ITW_Meal>1</ITW_Meal>
+        </products>
+		<recipeUsers><li>ITW_CraftingMeal</li></recipeUsers>
+		<researchPrerequisite>ITW_Meals</researchPrerequisite>
+		<jobString>Cooking stellar meal.</jobString>
+        <ingredients Inherit="False">
+            <li>
+                <filter>
+                <categories>
+                    <li>FoodRaw</li>
+                </categories>
+                </filter>
+                <count>0.5</count>
+            </li>
+        </ingredients>
+    </RecipeDef>
+
+    <RecipeDef ParentName="ITW_MealRecipeBase">
+		<defName>ITW_Meal_FourBatch</defName>
+		<label>bulk cook enchanted meal</label>
+		<description>Print four luxury meals with phitech.</description>
+        <workAmount>1200</workAmount>
+		<products>
+            <ITW_Meal>4</ITW_Meal>
+        </products>
+		<recipeUsers><li>ITW_CraftingMeal</li></recipeUsers>
+		<researchPrerequisite>ITW_Meals</researchPrerequisite>
+		<jobString>Cooking stellar meal.</jobString>
+        <ingredients Inherit="False">
+            <li>
+                <filter>
+                <categories>
+                    <li>FoodRaw</li>
+                </categories>
+                </filter>
+                <count>2</count>
+            </li>
+        </ingredients>
+    </RecipeDef>
+
+</Defs>

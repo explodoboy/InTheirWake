@@ -1,0 +1,95 @@
+<Defs>
+
+    <ThingDef ParentName="ITW_DrugItemBase">
+        <defName>ITW_DrugEnhancement</defName>
+        <label>surge</label>
+        <description>A concoction of mechanites that greatly enhances the user's senses. Upon injection they evenly distribute themselves across the body, clearing tiredness, then amplifying cognition and mobility. Pain is also removed entirely from the user for the duration. Surge is designed for phitech shock troopers who need that extra push to make it to the other end, but civilians often enjoy using it as well.\n\nA dose lasts for 12 hours.</description>
+        <descriptionHyperlinks>
+            <HediffDef>ITW_DrugEnhancement</HediffDef>
+        </descriptionHyperlinks>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Drug/ITW_DrugEnhancement</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>60</MarketValue>
+        </statBases>
+        <ingestible>
+            <joyKind>Chemical</joyKind>
+            <joy>0.25</joy>
+            <baseIngestTicks>120</baseIngestTicks>
+            <outcomeDoers>
+                <li Class="IngestionOutcomeDoer_GiveHediff">
+                    <hediffDef>ITW_DrugEnhancement</hediffDef>
+                    <severity>1</severity>
+                </li>
+                <li Class="IngestionOutcomeDoer_OffsetNeed">
+                    <need>Rest</need>
+                    <offset>1</offset>
+                </li>
+            </outcomeDoers>
+        </ingestible>
+        <researchPrerequisites>
+            <li>ITW_MedicineAndDrugs</li>
+        </researchPrerequisites>
+        <techLevel>Ultra</techLevel> <!-- Assuming highest just in case. -->
+        <tradeTags Inherit="False"><li>Drugs</li></tradeTags> <!-- Inside Def and not base to allow modsettings to disable -->
+        <comps>
+            <li Class="CompProperties_Drug">
+                <addictiveness>0</addictiveness>
+                <existingAddictionSeverityOffset>0</existingAddictionSeverityOffset>
+                <needLevelOffset>0</needLevelOffset>
+                <isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+                <listOrder>200</listOrder>
+                <overdoseSeverityOffset>0</overdoseSeverityOffset>
+                <largeOverdoseChance>0</largeOverdoseChance>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef ParentName="ITW_DrugHediffBase">
+        <defName>ITW_DrugEnhancement</defName>
+        <label>high on surge</label>
+        <labelNoun>a surge high</labelNoun>
+        <description>Surge mechanites saturating the entire body. They are augmenting cognition and agility. Eventually they will lose charge and harmlessly filter out of the body.</description>
+        <defaultLabelColor>(255,60,0)</defaultLabelColor>
+        <maxSeverity>1.0</maxSeverity>
+        <comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+                <severityPerDay>-2</severityPerDay>
+                <showHoursToRecover>true</showHoursToRecover>
+            </li>
+        </comps>
+        <stages>
+            <li>
+                <painFactor>0</painFactor>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <offset>1.00</offset>
+                    </li>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <offset>1.00</offset>
+                    </li>
+                </capMods>
+            </li>
+        </stages>
+    </HediffDef>
+  
+    <ThoughtDef>
+        <defName>ITW_DrugEnhancement</defName>
+        <workerClass>ThoughtWorker_Hediff</workerClass>
+        <hediff>ITW_DrugEnhancement</hediff>
+        <validWhileDespawned>true</validWhileDespawned>
+        <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+        <stages>
+            <li>
+                <label>high on surge</label>
+                <description>My mind is clear but all-seeing. I feel fast enough to dodge a charge lance shot. It's weird...and I like it.</description>
+                <baseMoodEffect>7</baseMoodEffect>
+            </li>
+        </stages>
+    </ThoughtDef>
+    
+</Defs>

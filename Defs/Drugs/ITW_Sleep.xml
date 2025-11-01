@@ -1,0 +1,88 @@
+<Defs>
+
+    <ThingDef ParentName="ITW_DrugItemBase">
+        <defName>ITW_DrugSleep</defName>
+        <label>trance</label>
+        <description>A concoction of mechanites which simultaneously fulfills the need of sleep and enhances focus. Trance is completely safe; unlike chemical stimulants, it is impossible to become addicted to it, nor is there any risk of chemical damage. In the most advanced of societies, trance is commonly used be adolescents who cannot yet get a sleepstopper implant to circumvent the need for sleep.\n\nA dose lasts for 1.3 days. If Royalty DLC is active, it grants psyfocus.</description>
+        <descriptionHyperlinks>
+            <HediffDef>ITW_DrugSleep</HediffDef>
+        </descriptionHyperlinks>
+        <graphicData>
+            <texPath>BaseITW/Things/Item/Drug/ITW_DrugSleep</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>60</MarketValue>
+        </statBases>
+        <ingestible>
+            <joyKind>Chemical</joyKind>
+            <joy>0.1</joy>
+            <outcomeDoers>
+                <li Class="IngestionOutcomeDoer_GiveHediff">
+                    <hediffDef>ITW_DrugSleep</hediffDef>
+                    <severity>1</severity>
+                </li>
+                <li Class="IngestionOutcomeDoer_OffsetNeed">
+                    <need>Rest</need>
+                    <offset>1</offset>
+                </li>
+            </outcomeDoers>
+        </ingestible>
+        <researchPrerequisites>
+            <li>ITW_MedicineAndDrugs</li>
+        </researchPrerequisites>
+        <techLevel>Ultra</techLevel> <!-- Assuming highest just in case. -->
+        <tradeTags Inherit="False"><li>Drugs</li></tradeTags> <!-- Inside Def and not base to allow modsettings to disable -->
+        <comps>
+            <li Class="CompProperties_Drug">
+                <addictiveness>0</addictiveness>
+                <existingAddictionSeverityOffset>0</existingAddictionSeverityOffset>
+                <needLevelOffset>0</needLevelOffset>
+                <isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+                <listOrder>200</listOrder>
+                <overdoseSeverityOffset>0</overdoseSeverityOffset>
+                <largeOverdoseChance>0</largeOverdoseChance>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef ParentName="ITW_DrugHediffBase">
+        <defName>ITW_DrugSleep</defName>
+        <label>high on trance</label>
+        <labelNoun>a trance high</labelNoun>
+        <description>Trance mechanites in the brain. They are actively satisfying the need for sleep and enhancing focus. Eventually they will lose charge and harmlessly filter out of the body.</description>
+        <defaultLabelColor>(255,60,0)</defaultLabelColor>
+        <maxSeverity>1.0</maxSeverity>
+        <comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+                <severityPerDay>-0.75</severityPerDay>
+                <showHoursToRecover>true</showHoursToRecover>
+            </li>
+        </comps>
+        <stages>
+            <li>
+                <restFallFactor>0</restFallFactor>
+                <statOffsets>
+                    <WorkSpeedGlobal>0.5</WorkSpeedGlobal>
+                    <MeditationFocusGain MayRequire="Ludeon.RimWorld.Royalty">0.5</MeditationFocusGain>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+  
+    <ThoughtDef>
+      <defName>ITW_DrugSleep</defName>
+      <workerClass>ThoughtWorker_Hediff</workerClass>
+      <hediff>ITW_DrugSleep</hediff>
+      <validWhileDespawned>true</validWhileDespawned>
+      <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+      <stages>
+        <li>
+          <label>high on trance</label>
+          <description>I feel awake and alert.</description>
+          <baseMoodEffect>3</baseMoodEffect>
+        </li>
+      </stages>
+    </ThoughtDef>
+    
+</Defs>

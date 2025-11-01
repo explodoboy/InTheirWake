@@ -1,0 +1,67 @@
+<Defs>
+    
+    <ThingDef ParentName="BuildingBase" Name="ITW_LinkableResearchBase" Abstract="True">
+        <size>(1,1)</size>
+        <rotatable>true</rotatable>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <castEdgeShadows>true</castEdgeShadows>
+        <fillPercent>0.5</fillPercent>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <canOverlapZones>false</canOverlapZones>
+        <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+        <designationCategory>Misc</designationCategory>
+        <thingCategories>
+            <li>BuildingsMisc</li>
+        </thingCategories>
+        <statBases>
+          <WorkToBuild>12000</WorkToBuild>
+          <Mass>60</Mass>
+          <Flammability>0</Flammability>
+        </statBases>
+        <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_LinkableResearchBase">
+        <defName>ITW_ResearchUnlocker</defName>
+        <label>phi-matter analysis engine</label>
+        <description>An simulation core operated by a persona-grade AI. The AI both enables controlled experiments with phi-matter, in addition to generally assisting researchers in their endeavours. It is necessary to research phi-technology.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Misc/ITW_ResearchUnlocker</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(3,3)</drawSize>
+        </graphicData>
+        <statBases>
+            <MaxHitPoints>500</MaxHitPoints>
+        </statBases>
+        <building>
+            <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+        </building>
+        <costList>
+            <Plasteel>100</Plasteel>
+            <ComponentSpacer>8</ComponentSpacer>
+            <AIPersonaCore>1</AIPersonaCore>
+        </costList>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <shortCircuitInRain>true</shortCircuitInRain>
+                <basePowerConsumption>5000</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable"/>
+            <li Class="CompProperties_Facility">
+                <statOffsets>
+                    <ResearchSpeedFactor>0.5</ResearchSpeedFactor>
+                </statOffsets>
+                <maxSimultaneous>1</maxSimultaneous>
+            </li>
+        </comps>
+        <placeWorkers>
+            <li>PlaceWorker_ShowFacilitiesConnections</li>
+        </placeWorkers>
+        <researchPrerequisites>
+            <li>ITW_Initial</li>
+        </researchPrerequisites>
+    </ThingDef>
+
+</Defs>

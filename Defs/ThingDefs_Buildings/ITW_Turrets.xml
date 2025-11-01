@@ -1,0 +1,392 @@
+<Defs>
+
+    <ThingDef Abstract="True" Name="ITW_TurretBase" ParentName="BuildingBase">
+        <thingClass>Building_TurretGun</thingClass>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <uiIconScale>2.70</uiIconScale>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <altitudeLayer>Building</altitudeLayer>
+        <stealable>false</stealable>
+        <rotatable>false</rotatable>
+        <thingCategories>
+            <li>BuildingsSecurity</li>
+        </thingCategories>
+        <statBases>
+            <Flammability>0</Flammability>
+            <ShootingAccuracyTurret>1</ShootingAccuracyTurret> <!-- According to my understanding of vanilla files and its comments, this should be like a level 20 (human) shooter. -->
+        </statBases>
+        <tickerType>Normal</tickerType>
+        <comps>
+            <li Class="CompProperties_Forbiddable"/>
+            <li Class="CompProperties_Flickable"/>
+        </comps>
+        <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
+        <fillPercent>0.4</fillPercent>
+        <hasTooltip>true</hasTooltip>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <designationCategory>Security</designationCategory>
+        <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+        <placeWorkers>
+            <li>PlaceWorker_TurretTop</li>
+            <li>PlaceWorker_ShowTurretRadius</li>
+        </placeWorkers>
+    </ThingDef>
+
+    <ThingDef Abstract="True" Name="ITW_TurretBase_Light" ParentName="ITW_TurretBase">
+        <size>(1,1)</size>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Security/TurretBase_Light</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+            <damageData>
+                <rect>(0.1,0.1,0.2,0.2)</rect>
+            </damageData>
+            <shadowData>
+                <volume>(0.1,0.1,0.1)</volume>
+                <offset>(0,0,0)</offset>
+            </shadowData>
+        </graphicData>
+        <statBases>
+            <WorkToBuild>900</WorkToBuild>
+        </statBases>
+    </ThingDef>
+
+    <ThingDef Abstract="True" Name="ITW_TurretBase_Medium" ParentName="ITW_TurretBase">
+        <size>(1,1)</size>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Security/TurretBase_Medium</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+            <damageData>
+                <rect>(0.2,0.2,0.6,0.6)</rect>
+            </damageData>
+            <shadowData>
+                <volume>(0.27,0.25,0.27)</volume>
+                <offset>(0,0,0)</offset>
+            </shadowData>
+        </graphicData>
+        <statBases>
+            <WorkToBuild>1800</WorkToBuild>
+        </statBases>
+    </ThingDef>
+
+    <ThingDef Abstract="True" Name="ITW_BaseWeaponTurret" ParentName="BaseWeaponTurret">
+        <statBases>
+            <DeteriorationRate>0</DeteriorationRate>
+            <Mass>5</Mass>
+            <Flammability>0</Flammability>
+        </statBases>
+    </ThingDef>
+
+
+    <ThingDef ParentName="ITW_TurretBase_Light">
+        <defName>ITW_TurretPistol</defName>
+        <label>phitech pistol turret</label>
+        <description>A portable phitech turret mounted with a modified phitech pistol. It needs to be occasionally refueled with phi-matter. Compared to other phitech turrets it is weak but cheap and efficient, using a unit of phi-matter per two shots. It works best at close range, but has good accuracy at all ranges. It may explode when severely damaged, and it cannot be directly controlled; beware of friendly fire.</description>
+        <uiIconPath>BaseITW/Things/Building/Security/ITW_TurretPistol</uiIconPath>
+        <building>
+            <ai_combatDangerous>true</ai_combatDangerous>
+            <turretGunDef>ITW_TurretPistolGun</turretGunDef>
+            <turretBurstCooldownTime>1.1</turretBurstCooldownTime> <!-- verb cooldown + aim time -->
+        </building>
+        <statBases>
+            <MaxHitPoints>750</MaxHitPoints> <!-- 75 * MaterialTough HP mult -->
+            <Mass>5</Mass>
+            <Beauty>5</Beauty>
+        </statBases>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>250</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Refuelable">
+                <fuelLabel>Shots until barrel change</fuelLabel>
+                <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+                <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+                <fuelFilter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></fuelFilter>
+                <fuelCapacity>60</fuelCapacity> <!-- 120 'bursts' -->
+                <fuelMultiplier>1</fuelMultiplier> <!-- every weapon is 1:1 loading phi-matter, but they vary in consumption per shot -->
+                <initialFuelPercent>1</initialFuelPercent>
+                <autoRefuelPercent>0.5</autoRefuelPercent>
+                <showFuelGizmo>true</showFuelGizmo>
+                <minimumFueledThreshold>1</minimumFueledThreshold>
+                <factorByDifficulty>true</factorByDifficulty>
+                <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+                <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+            </li>
+        </comps>
+        <costList>
+            <!-- Cost is 2x the weapon it's based off of -->
+            <ITW_MaterialDurable>10</ITW_MaterialDurable>
+            <ITW_MaterialCommon>40</ITW_MaterialCommon>
+            <ITW_Component>2</ITW_Component>
+        </costList>
+        <researchPrerequisites>
+            <li>ITW_WeaponsRanged</li>
+        </researchPrerequisites>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_BaseWeaponTurret">
+        <defName>ITW_TurretPistolGun</defName>
+        <label>stellar pistol turret gun</label>
+        <description>A stellar pistol made to be mounted on a turret.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Security/ITW_TurretPistolGun</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases> <!-- Stats are copied straight from the weapon it's based off of. I left warmup time in deliberately, because I like it. -->
+            <AccuracyTouch>0.75</AccuracyTouch>
+            <AccuracyShort>0.85</AccuracyShort>
+            <AccuracyMedium>0.75</AccuracyMedium>
+            <AccuracyLong>0.65</AccuracyLong>
+            <RangedWeapon_Cooldown>0.8</RangedWeapon_Cooldown>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <defaultProjectile>ITW_PistolBullet</defaultProjectile>
+                <warmupTime>0.3</warmupTime>
+                <range>27.9</range>
+                <soundCast>Shot_ChargeRifle</soundCast>
+                <soundCastTail>GunTail_Light</soundCastTail>
+                <muzzleFlashScale>9</muzzleFlashScale>
+                <consumeFuelPerShot>0.5</consumeFuelPerShot> <!-- 1 phi-matter per 2 shots -->
+            </li>
+        </verbs>
+    </ThingDef>
+
+
+    <ThingDef ParentName="ITW_TurretBase_Medium">
+        <defName>ITW_TurretRifle</defName>
+        <label>phitech rifle turret</label>
+        <description>A portable turret mounted with a modified phitech rifle. It needs to be occasionally refueled with phi-matter. Compared to other phitech turrets its performance is balanced; good damage, good efficiency. It uses 3 phi-matter per burst. It's most effective at medium range, and becomes inaccurate at very close range. It may explode when severely damaged, and it cannot be directly controlled; beware of friendly fire.</description>
+        <uiIconPath>BaseITW/Things/Building/Security/ITW_TurretRifle</uiIconPath>
+        <building>
+            <ai_combatDangerous>true</ai_combatDangerous>
+            <turretGunDef>ITW_TurretRifleGun</turretGunDef>
+            <turretBurstCooldownTime>2.75</turretBurstCooldownTime> <!-- verb cooldown + aim time -->
+        </building>
+        <statBases>
+            <MaxHitPoints>1000</MaxHitPoints> <!-- 100 * MaterialTough HP mult -->
+            <Mass>10</Mass>
+            <Beauty>5</Beauty>
+        </statBases>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>500</basePowerConsumption> <!-- pistol turret power draw * 2.5 -->
+            </li>
+            <li Class="CompProperties_Refuelable">
+                <fuelLabel>Shots until barrel change</fuelLabel>
+                <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+                <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+                <fuelFilter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></fuelFilter>
+                <fuelCapacity>120</fuelCapacity> <!-- 40 bursts -->
+                <fuelMultiplier>1</fuelMultiplier> <!-- every weapon is 1:1 loading phi-matter, but they vary in consumption per shot -->
+                <initialFuelPercent>1</initialFuelPercent>
+                <autoRefuelPercent>0.5</autoRefuelPercent>
+                <showFuelGizmo>true</showFuelGizmo>
+                <minimumFueledThreshold>1</minimumFueledThreshold>
+                <factorByDifficulty>true</factorByDifficulty>
+                <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+                <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+            </li>
+        </comps>
+        <costList>
+            <!-- Cost is 2x the weapon it's based off of -->
+            <ITW_MaterialDurable>25</ITW_MaterialDurable>
+            <ITW_MaterialCommon>75</ITW_MaterialCommon>
+            <ITW_Component>4</ITW_Component>
+        </costList>
+        <researchPrerequisites>
+            <li>ITW_WeaponsRanged</li>
+        </researchPrerequisites>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_BaseWeaponTurret">
+        <defName>ITW_TurretRifleGun</defName>
+        <label>stellar rifle turret gun</label>
+        <description>A stellar rifle made to be mounted on a turret.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Security/ITW_TurretRifleGun</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases> <!-- Stats are copied straight from the weapon it's based off of. -->
+            <AccuracyTouch>0.55</AccuracyTouch>
+            <AccuracyShort>0.70</AccuracyShort>
+            <AccuracyMedium>0.85</AccuracyMedium>
+            <AccuracyLong>0.70</AccuracyLong>
+            <RangedWeapon_Cooldown>1.75</RangedWeapon_Cooldown>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>ITW_RifleBullet</defaultProjectile>
+                <warmupTime>1.0</warmupTime>
+                <range>34.9</range>
+                <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+                <burstShotCount>3</burstShotCount>
+                <soundCast>ChargeLance_Fire</soundCast>
+                <soundCastTail>GunTail_Medium</soundCastTail>
+                <muzzleFlashScale>9</muzzleFlashScale>
+                <consumeFuelPerShot>1</consumeFuelPerShot>
+            </li>
+        </verbs>
+    </ThingDef>
+
+
+    <ThingDef ParentName="ITW_TurretBase_Medium">
+        <defName>ITW_TurretShotgun</defName>
+        <label>phitech shotgun turret</label>
+        <description>A portable turret mounted with a modified phitech shotgun. It needs to be occasionally refueled with phi-matter. Compared to other phitech turrets it has a short range, but shreds anything that gets too close. It uses 3 phi-matter per shot. Its efficiency is average. It may explode when severely damaged, and it cannot be directly controlled; beware of friendly fire.</description>
+        <uiIconPath>BaseITW/Things/Building/Security/ITW_TurretShotgun</uiIconPath>
+        <building>
+            <ai_combatDangerous>true</ai_combatDangerous>
+            <turretGunDef>ITW_TurretShotgunGun</turretGunDef>
+            <turretBurstCooldownTime>1.5</turretBurstCooldownTime> <!-- verb cooldown + aim time -->
+        </building>
+        <statBases>
+            <MaxHitPoints>1000</MaxHitPoints> <!-- 100 * MaterialTough HP mult -->
+            <Mass>10</Mass>
+            <Beauty>5</Beauty>
+        </statBases>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>500</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Refuelable">
+                <fuelLabel>Shots until barrel change</fuelLabel>
+                <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+                <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+                <fuelFilter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></fuelFilter>
+                <fuelCapacity>120</fuelCapacity> <!-- 40 'bursts' -->
+                <fuelMultiplier>1</fuelMultiplier> <!-- every weapon is 1:1 loading phi-matter, but they vary in consumption per shot -->
+                <initialFuelPercent>1</initialFuelPercent>
+                <autoRefuelPercent>0.5</autoRefuelPercent>
+                <showFuelGizmo>true</showFuelGizmo>
+                <minimumFueledThreshold>1</minimumFueledThreshold>
+                <factorByDifficulty>true</factorByDifficulty>
+                <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+                <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+            </li>
+        </comps>
+        <costList>
+            <!-- Cost is 2x the weapon it's based off of -->
+            <ITW_MaterialDurable>25</ITW_MaterialDurable>
+            <ITW_MaterialCommon>75</ITW_MaterialCommon>
+            <ITW_Component>4</ITW_Component>
+        </costList>
+        <researchPrerequisites>
+            <li>ITW_WeaponsRanged</li>
+        </researchPrerequisites>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_BaseWeaponTurret">
+        <defName>ITW_TurretShotgunGun</defName>
+        <label>phitech lockdown turret gun</label>
+        <description>A modified phitech shotgun.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Security/ITW_TurretShotgunGun</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases> <!-- Stats are copied straight from the weapon it's based off of. -->
+            <AccuracyTouch>0.95</AccuracyTouch>
+            <AccuracyShort>0.90</AccuracyShort>
+            <AccuracyMedium>0.60</AccuracyMedium>
+            <AccuracyLong>0.30</AccuracyLong>
+            <RangedWeapon_Cooldown>1.0</RangedWeapon_Cooldown>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <defaultProjectile>ITW_ShotgunBullet</defaultProjectile>
+                <warmupTime>0.5</warmupTime>
+                <range>20.9</range>
+                <soundCast>ChargeLance_Fire</soundCast>
+                <soundCastTail>GunTail_Heavy</soundCastTail>
+                <muzzleFlashScale>9</muzzleFlashScale>
+                <consumeFuelPerShot>3</consumeFuelPerShot> <!-- 3 phi-matter per shot -->
+            </li>
+        </verbs>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_TurretBase_Medium">
+        <defName>ITW_TurretSniper</defName>
+        <label>phitech sniper turret</label>
+        <description>A portable phitech turret mounted with a modified phitech sniper. It needs to be occasionally refueled with phi-matter. Compared to other phitech turrets it is more expensive and less efficient per-shot (4 phi-matter) but has a very high damage output. It performs best at long range, becoming increasingly less accurate as targets get near. It may explode when severely damaged, and it cannot be directly controlled; beware of friendly fire.</description>
+        <uiIconPath>BaseITW/Things/Building/Security/ITW_TurretSniper</uiIconPath>
+        <building>
+            <ai_combatDangerous>true</ai_combatDangerous>
+            <turretGunDef>ITW_TurretSniperGun</turretGunDef>
+            <turretBurstCooldownTime>4.0</turretBurstCooldownTime> <!-- verb cooldown + aim time -->
+        </building>
+        <statBases>
+            <MaxHitPoints>1000</MaxHitPoints> <!-- 100 * MaterialTough HP mult -->
+            <Mass>20</Mass>
+            <Beauty>5</Beauty>
+        </statBases>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>500</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Refuelable">
+                <fuelLabel>Shots until barrel change</fuelLabel>
+                <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+                <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+                <fuelFilter><thingDefs><li>ITW_MaterialCommon</li></thingDefs></fuelFilter>
+                <fuelCapacity>120</fuelCapacity> <!-- 40 'bursts' -->
+                <fuelMultiplier>1</fuelMultiplier> <!-- every weapon is 1:1 loading phi-matter, but they vary in consumption per shot -->
+                <initialFuelPercent>1</initialFuelPercent>
+                <autoRefuelPercent>0.5</autoRefuelPercent>
+                <showFuelGizmo>true</showFuelGizmo>
+                <minimumFueledThreshold>1</minimumFueledThreshold>
+                <factorByDifficulty>true</factorByDifficulty>
+                <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+                <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+            </li>
+        </comps>
+        <costList>
+            <!-- Cost is 2x the weapon it's based off of -->
+            <ITW_MaterialDurable>25</ITW_MaterialDurable>
+            <ITW_MaterialCommon>125</ITW_MaterialCommon>
+            <ITW_Component>6</ITW_Component>
+        </costList>
+        <researchPrerequisites>
+            <li>ITW_WeaponsRanged</li>
+        </researchPrerequisites>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_BaseWeaponTurret">
+        <defName>ITW_TurretSniperGun</defName>
+        <label>stellar sniper turret gun</label>
+        <description>A stellar sniper made to be mounted on a turret.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Security/ITW_TurretSniperGun</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases> <!-- Stats are copied straight from the weapon it's based off of. -->
+            <AccuracyTouch>0.55</AccuracyTouch>
+            <AccuracyShort>0.70</AccuracyShort>
+            <AccuracyMedium>0.85</AccuracyMedium>
+            <AccuracyLong>0.95</AccuracyLong>
+            <RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <defaultProjectile>ITW_SniperBullet</defaultProjectile>
+                <warmupTime>1.5</warmupTime>
+                <range>59.9</range>
+                <soundCast>ChargeLance_Fire</soundCast>
+                <soundCastTail>GunTail_Heavy</soundCastTail>
+                <muzzleFlashScale>9</muzzleFlashScale>
+                <consumeFuelPerShot>4</consumeFuelPerShot>
+            </li>
+        </verbs>
+    </ThingDef>
+
+</Defs>

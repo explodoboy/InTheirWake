@@ -1,0 +1,545 @@
+<Defs>
+
+    <ThingDef ParentName="FurnitureBase" Name="ITW_JoyBase" Abstract="True">
+        <altitudeLayer>Building</altitudeLayer>
+        <rotatable>false</rotatable>
+        <socialPropernessMatters>true</socialPropernessMatters>
+        <fillPercent>0.40</fillPercent>
+        <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+        <size>(2,2)</size>
+        <building>
+            <joyKind>Gaming_Cerebral</joyKind>
+        </building>
+        <statBases>
+            <WorkToBuild>12000</WorkToBuild>
+            <Mass>5</Mass>
+            <Flammability>0</Flammability>
+            <MaxHitPoints>250</MaxHitPoints>
+            <Beauty>12</Beauty>
+            <JoyGainFactor>1.5</JoyGainFactor>
+        </statBases>
+        <costList>
+            <ITW_MaterialCommon>50</ITW_MaterialCommon>
+            <ITW_Component>5</ITW_Component>
+        </costList>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>150</basePowerConsumption>
+                <shortCircuitInRain>false</shortCircuitInRain>
+            </li>
+            <li Class="CompProperties_Flickable" />
+        </comps>
+        <researchPrerequisites>
+            <li>ITW_Recreation</li>
+        </researchPrerequisites>
+        <pathCost>42</pathCost>
+        <passability>PassThroughOnly</passability>
+        <designationCategory>Joy</designationCategory>
+        <canOverlapZones>false</canOverlapZones>
+        <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    </ThingDef>
+
+    <JoyGiverDef Name="ITW_JoyGiverBase" Abstract="True">
+        <giverClass>JoyGiver_InteractBuildingSitAdjacent</giverClass>
+        <baseChance>5</baseChance>
+    </JoyGiverDef>
+
+    <JobDef Name="ITW_JoyJobBase" Abstract="True">
+        <driverClass>JobDriver_SitFacingBuilding</driverClass>
+        <reportString>playing a computer game.</reportString>
+        <joyXpPerTick>0.01</joyXpPerTick>
+        <joyDuration>4000</joyDuration>
+        <joyMaxParticipants>8</joyMaxParticipants>
+        <taleOnCompletion>PlayedGame</taleOnCompletion>
+        <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    </JobDef>
+
+
+    <!-- Animals -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingAnimals</defName>
+        <label>animals entertainment station</label>
+        <description>An interactive computer station containing a grand variety of ranching and animal training games. Up to eight people can use the station at once. Trains the animals skill.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingAnimals</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+    
+    <JoyKindDef>
+        <defName>ITW_GamingAnimals</defName>
+        <label>animals gameplay</label>
+    </JoyKindDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingAnimals</defName>
+        <thingDefs>
+            <li>ITW_GamingAnimals</li>
+        </thingDefs>
+        <jobDef>ITW_GamingAnimals</jobDef>
+        <joyKind>ITW_GamingAnimals</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingAnimals</defName>
+        <joySkill>Animals</joySkill>
+        <joyKind>ITW_GamingAnimals</joyKind>
+    </JobDef>
+
+
+    <!-- Artistic -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingArtistic</defName>
+        <label>artistic entertainment station</label>
+        <description>An interactive computer station containing a grand variety of ranching art-related games and applications. Up to eight people can use the station at once. Trains the artistic skill.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingArtistic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+    
+    <JoyKindDef>
+        <defName>ITW_GamingArtistic</defName>
+        <label>artistic gameplay</label>
+    </JoyKindDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingArtistic</defName>
+        <thingDefs>
+            <li>ITW_GamingArtistic</li>
+        </thingDefs>
+        <jobDef>ITW_GamingArtistic</jobDef>
+        <joyKind>ITW_GamingArtistic</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingArtistic</defName>
+        <joySkill>Artistic</joySkill>
+        <joyKind>ITW_GamingArtistic</joyKind>
+    </JobDef>
+
+
+    <!-- Construction -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingConstruction</defName>
+        <label>construction entertainment station</label>
+        <description>An interactive computer station containing a grand variety of construction, sculpting, carpentry and engineering games. Up to eight people can use the station at once. Trains the construction skill.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingConstruction</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+    
+    <JoyKindDef>
+        <defName>ITW_GamingConstruction</defName>
+        <label>construction gameplay</label>
+    </JoyKindDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingConstruction</defName>
+        <thingDefs>
+            <li>ITW_GamingConstruction</li>
+        </thingDefs>
+        <jobDef>ITW_GamingConstruction</jobDef>
+        <joyKind>ITW_GamingConstruction</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingConstruction</defName>
+        <joySkill>Construction</joySkill>
+        <joyKind>ITW_GamingConstruction</joyKind>
+    </JobDef>
+
+
+    <!-- Cooking -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingCooking</defName>
+        <label>cooking entertainment station</label>
+        <description>An interactive computer station containing a grand variety of cooking games. Up to eight people can use the station at once. Trains the cooking skill.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingCooking</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+    
+    <JoyKindDef>
+        <defName>ITW_GamingCooking</defName>
+        <label>cooking gameplay</label>
+    </JoyKindDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingCooking</defName>
+        <thingDefs>
+            <li>ITW_GamingCooking</li>
+        </thingDefs>
+        <jobDef>ITW_GamingCooking</jobDef>
+        <joyKind>ITW_GamingCooking</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingCooking</defName>
+        <joySkill>Cooking</joySkill>
+        <joyKind>ITW_GamingCooking</joyKind>
+    </JobDef>
+
+
+    <!-- Crafting -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingCrafting</defName>
+        <label>crafting entertainment station</label>
+        <description>An interactive computer station containing a grand variety of games about smithing, tailoring, machining, and more. Up to eight people can use the station at once. Trains the crafting skill.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingCrafting</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+    
+    <JoyKindDef>
+        <defName>ITW_GamingCrafting</defName>
+        <label>crafting gameplay</label>
+    </JoyKindDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingCrafting</defName>
+        <thingDefs>
+            <li>ITW_GamingCrafting</li>
+        </thingDefs>
+        <jobDef>ITW_GamingCrafting</jobDef>
+        <joyKind>ITW_GamingCrafting</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingCrafting</defName>
+        <joySkill>Crafting</joySkill>
+        <joyKind>ITW_GamingCrafting</joyKind>
+    </JobDef>
+
+
+    <!-- Intellectual -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingIntellectual</defName>
+        <label>intellectual entertainment station</label>
+        <description>An interactive computer station containing a grand variety of intellectually-challenging games. Up to eight people can use the station at once. Trains the intellectual skill.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingIntellectual</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingIntellectual</defName>
+        <thingDefs>
+            <li>ITW_GamingIntellectual</li>
+        </thingDefs>
+        <jobDef>ITW_GamingIntellectual</jobDef>
+        <joyKind>Gaming_Cerebral</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingIntellectual</defName>
+        <joySkill>Intellectual</joySkill>
+        <joyKind>Gaming_Cerebral</joyKind>
+    </JobDef>
+
+
+    <!-- Medicine -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingMedicine</defName>
+        <label>medical entertainment station</label>
+        <description>An interactive computer station containing a grand variety of medical-related games, such as surgery and triage simulators. Up to eight people can use the station at once. Trains the medical skill.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingMedicine</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+    
+    <JoyKindDef>
+        <defName>ITW_GamingMedicine</defName>
+        <label>medical gameplay</label>
+    </JoyKindDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingMedicine</defName>
+        <thingDefs>
+            <li>ITW_GamingMedicine</li>
+        </thingDefs>
+        <jobDef>ITW_GamingMedicine</jobDef>
+        <joyKind>ITW_GamingMedicine</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingMedicine</defName>
+        <joySkill>Medicine</joySkill>
+        <joyKind>ITW_GamingMedicine</joyKind>
+    </JobDef>
+
+
+    <!-- Melee -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingMelee</defName>
+        <label>melee entertainment station</label>
+        <description>An interactive computer station containing a grand variety of melee fighting games, especially in virtual reality. Up to eight people can use the station at once. Trains the melee skill.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingMelee</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+    
+    <JoyKindDef>
+        <defName>ITW_GamingMelee</defName>
+        <label>melee gameplay</label>
+    </JoyKindDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingMelee</defName>
+        <thingDefs>
+            <li>ITW_GamingMelee</li>
+        </thingDefs>
+        <jobDef>ITW_GamingMelee</jobDef>
+        <joyKind>ITW_GamingMelee</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingMelee</defName>
+        <joySkill>Melee</joySkill>
+        <joyKind>ITW_GamingMelee</joyKind>
+    </JobDef>
+
+
+    <!-- Mining -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingMining</defName>
+        <label>mining entertainment station</label>
+        <description>An interactive computer station containing a grand variety of mining-related games. Up to eight people can use the station at once. Trains the mining skill.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingMining</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+    
+    <JoyKindDef>
+        <defName>ITW_GamingMining</defName>
+        <label>mining gameplay</label>
+    </JoyKindDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingMining</defName>
+        <thingDefs>
+            <li>ITW_GamingMining</li>
+        </thingDefs>
+        <jobDef>ITW_GamingMining</jobDef>
+        <joyKind>ITW_GamingMining</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingMining</defName>
+        <joySkill>Mining</joySkill>
+        <joyKind>ITW_GamingMining</joyKind>
+    </JobDef>
+
+
+    <!-- Plants -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingPlants</defName>
+        <label>plants entertainment station</label>
+        <description>An interactive computer station containing a grand variety of agriculture games. Up to eight people can use the station at once. Trains the plants skill.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingPlants</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+    
+    <JoyKindDef>
+        <defName>ITW_GamingPlants</defName>
+        <label>plants gameplay</label>
+    </JoyKindDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingPlants</defName>
+        <thingDefs>
+            <li>ITW_GamingPlants</li>
+        </thingDefs>
+        <jobDef>ITW_GamingPlants</jobDef>
+        <joyKind>ITW_GamingPlants</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingPlants</defName>
+        <joySkill>Plants</joySkill>
+        <joyKind>ITW_GamingPlants</joyKind>
+    </JobDef>
+
+
+    <!-- Shooting -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingShooting</defName>
+        <label>shooting entertainment station</label>
+        <description>An interactive computer station containing a grand variety of dexterity-testing games, especially in virtual reality. Up to eight people can use the station at once. Trains the shooting skill.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingShooting</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingShooting</defName>
+        <thingDefs>
+            <li>ITW_GamingShooting</li>
+        </thingDefs>
+        <jobDef>ITW_GamingShooting</jobDef>
+        <joyKind>Gaming_Dexterity</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingShooting</defName>
+        <joySkill>Shooting</joySkill>
+        <joyKind>Gaming_Dexterity</joyKind>
+    </JobDef>
+
+
+    <!-- Social -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingSocial</defName>
+        <label>social entertainment station</label>
+        <description>An interactive computer station containing a grand variety of socially-intensive games, including those based in deduction and deception. It is considered social interaction, even if nobody else is playing. Up to eight people can use the station at once. Trains the social skill.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingSocial</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingSocial</defName>
+        <thingDefs>
+            <li>ITW_GamingSocial</li>
+        </thingDefs>
+        <jobDef>ITW_GamingSocial</jobDef>
+        <joyKind>Social</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingSocial</defName>
+        <joySkill>Social</joySkill>
+        <joyKind>Social</joyKind>
+    </JobDef>
+
+
+    <!-- Telescope -->
+    <ThingDef ParentName="ITW_JoyBase">
+        <defName>ITW_GamingTelescope</defName>
+        <label>astronomy entertainment station</label>
+        <description>An interactive computer station containing a grand variety of space-related games. Up to eight people can use the station at once. It doesn't train any skills, but doesn't need to be in an unroofed area like a regular telescope.\n\nThis building requires adjacent chairs or stools to use.</description>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Joy/ITW_GamingTelescope</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+    </ThingDef>
+
+    <JoyGiverDef ParentName="ITW_JoyGiverBase">
+        <defName>ITW_GamingTelescope</defName>
+        <thingDefs>
+            <li>ITW_GamingTelescope</li>
+        </thingDefs>
+        <jobDef>ITW_GamingTelescope</jobDef>
+        <joyKind>Telescope</joyKind>
+    </JoyGiverDef>
+
+    <JobDef ParentName="ITW_JoyJobBase">
+        <defName>ITW_GamingTelescope</defName>
+        <joyKind>Telescope</joyKind>
+        <joyXpPerTick Inherit="False"></joyXpPerTick> <!-- no xp -->
+    </JobDef>
+
+</Defs>

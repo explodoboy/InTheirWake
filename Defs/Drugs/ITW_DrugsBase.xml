@@ -1,0 +1,34 @@
+<Defs>
+
+    <ThingDef ParentName="DrugBase" Name="ITW_DrugItemBase" Abstract="True">
+        <statBases>
+            <Flammability>0</Flammability>
+            <DeteriorationRate>0</DeteriorationRate>
+            <Beauty>4</Beauty>
+            <Mass>0.25</Mass>
+        </statBases>
+        <ingestible>
+            <drugCategory>Social</drugCategory>
+            <foodType>Processed, Fluid</foodType>
+            <baseIngestTicks>120</baseIngestTicks>
+            <ingestSound>Ingest_Inject</ingestSound>
+            <ingestHoldOffsetStanding>
+                <northDefault>
+                    <offset>(0.18,0,0)</offset>
+				</northDefault>
+            </ingestHoldOffsetStanding>
+            <ingestCommandString>Inject {0}</ingestCommandString>
+            <ingestReportString>Injecting {0}.</ingestReportString>
+            <useEatingSpeedStat>false</useEatingSpeedStat>
+            <chairSearchRadius>0</chairSearchRadius>
+        </ingestible>
+        <techLevel>Archotech</techLevel>
+    </ThingDef>
+
+    <HediffDef Name="ITW_DrugHediffBase" Abstract="True">
+        <hediffClass>HediffWithComps</hediffClass>
+        <scenarioCanAdd>false</scenarioCanAdd>
+        <isBad>false</isBad>
+    </HediffDef>
+
+</Defs>
