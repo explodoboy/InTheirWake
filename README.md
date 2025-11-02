@@ -1,0 +1,1 @@
+In Their Wake is an extension to the lategame, adding a fair amount of content that follows the philosophy of 'vanilla, but better and preferably with a twist'. This mod is considered overpowered, though I tried to keep it reasonable so that it feels fair.
