@@ -31,7 +31,7 @@
     <ThingDef ParentName="ITW_HydroponicsBase">
         <defName>ITW_Hydroponics</defName>
         <label>phitech hydroponics basin</label>
-        <description>A human-made phitech hydroponic unit. Growth of plants inside it is accelerated beyond what is naturally possible with a combination of genetic engineering and mechanites. If power is cut, the plants will quickly die.\n\nSTATS:\nConsumes 120 Watts\nHas 500% fertility</description>
+        <description>A human-made phitech hydroponic unit. Growth of plants inside it is accelerated beyond what is naturally possible with a combination of genetic engineering and mechanites. If power is cut, the plants will quickly die.</description>
         <graphicData>
             <texPath>BaseITW/Things/Building/Production/ITW_Hydroponics/ITW_Hydroponics</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
