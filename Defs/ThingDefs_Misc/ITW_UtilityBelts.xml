@@ -1,14 +1,4 @@
 <Defs>
-
-    <MVCF.ModDef>
-        <defName>ITW_MVCF</defName>
-        <label>In Their Wake</label>
-        <description>In Their Wake stuffs</description>
-        <ActivateFeatures>
-            <li>ApparelVerbs</li>
-            <li>IntegratedToggle</li>
-        </ActivateFeatures>
-    </MVCF.ModDef>
     
     <ThingDef ParentName="ApparelBase" Name="ITW_ShieldBeltBase" Abstract="True">
         <tickerType>Normal</tickerType>
@@ -71,7 +61,7 @@
     <ThingDef ParentName="ITW_ShieldBeltBase">
         <defName>ITW_UtilityBelt</defName>
         <label>phitech utility pack</label>
-        <description>A multi-purpose phitech pack containing a personal ranged shield and mobility thrusters. The personal shield protects against incoming projectiles and shrapnel, but does not protect against melee attacks or heat and shuts down instantly if hit by an EMP.\n\nIf Royalty is enabled, the utility pack gains the functionality of a jump pack with no fuel requirement; otherwise, it's just a ranged shield pack.</description>
+        <description>A multi-purpose phitech pack containing a personal ranged shield, deployable shieldpack, mobility thrusters. The personal shield protects against incoming projectiles and shrapnel, but does not protect against melee attacks or heat and shuts down instantly if hit by an EMP. The shieldpack is immobile after placed and very short-lived but blocks both ground and air projectiles, such as bullets and artillery.\n\nIf Royalty is enabled, the utility pack gains the functionality of a jump pack with no fuel requirement; otherwise, it's a ranged shield belt.</description>
         <graphicData>
             <texPath>BaseITW/Things/Pawn/Humanlike/Apparel/ITW_UtilityBelt/ITW_UtilityBelt</texPath>
             <graphicClass>Graphic_Single</graphicClass>
@@ -105,17 +95,43 @@
                     <canTargetBuildings>false</canTargetBuildings>
                 </targetParams>
             </li>
+            <li>
+                <verbClass>Verb_Spawn</verbClass>
+                <label>flicker fullshield</label>
+                <spawnDef>ITW_FlickerShield</spawnDef>
+                <commandIcon>BaseITW/Things/Building/Security/ITW_FlickerShield</commandIcon>
+                <violent>false</violent>
+                <hasStandardCommand>true</hasStandardCommand>
+                <targetable>false</targetable>
+                <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+                <onlyManualCast>True</onlyManualCast>
+                <warmupTime>0.1</warmupTime>
+                <warmupEffecter>BulletShieldGenerator_Reactivate</warmupEffecter> <!-- hack to get an effect on shield placement -->
+                <targetParams>
+                    <canTargetSelf>true</canTargetSelf>
+                </targetParams>
+            </li>
         </verbs>
         <comps>
-            <li Class="MVCF.Comps.CompProperties_VerbGiver" MayRequire="Ludeon.RimWorld.Royalty">
+            <li Class="MVCF.Comps.CompProperties_VerbGiver">
                 <verbProps>
-                    <li>
+                    <li MayRequire="Ludeon.RimWorld.Royalty">
                         <label>jump</label>
                         <description>Leap a long distance, flying straight over passable obstacles. Has a short cooldown.</description>
                         <comps>
                             <li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
                                 <compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
                                 <cooldownTime>10</cooldownTime> <!-- time is in seconds -->
+                            </li>
+                        </comps>
+                    </li>
+                    <li>
+                        <label>flicker fullshield</label>
+                        <description>Release a short-lived fullshield on the ground. Cooldown of one and hour.</description>
+                        <comps>
+                            <li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+                                <compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+                                <cooldownTime>41.67</cooldownTime> <!-- time is in seconds -->
                             </li>
                         </comps>
                     </li>
@@ -147,6 +163,68 @@
         <tradeTags>
             <li>Armor</li>
         </tradeTags>
+    </ThingDef>
+
+    <!-- things spawned by the utility belt -->
+    <ThingDef ParentName="BuildingBase">
+        <defName>ITW_FlickerShield</defName>
+        <label>flicker fullshield</label>
+        <description>A human-made phitech shield projector. It intercepts both ground projectiles and artillery while allowing bullets and artillery to go out. Its internal capacitors will run out of charge after a few seconds of use. While its lifetime is short, it is highly resistant to EMPs and will only go offline briefly.</description>
+        <altitudeLayer>BuildingOnTop</altitudeLayer>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <pathCost>0</pathCost>
+        <passability>Standable</passability>
+        <fillPercent>0.35</fillPercent>
+        <graphicData>
+            <texPath>BaseITW/Things/Building/Security/ITW_FlickerShield</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+            <shadowData>
+                <volume>(0.3, 0.2, 0.3)</volume>
+                <offset>(0,0,-0.1)</offset>
+            </shadowData>
+            <damageData>
+                <rect>(0.2,0.2,0.6,0.6)</rect>
+            </damageData>
+        </graphicData>
+        <statBases>
+            <MaxHitPoints>150</MaxHitPoints>
+            <Flammability>0.5</Flammability>
+        </statBases>
+        <tickerType>Normal</tickerType>
+        <killedLeavings/>
+        <rotatable>false</rotatable>
+        <selectable>true</selectable>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+        <repairEffect>ConstructMetal</repairEffect>
+        <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+        <building>
+            <claimable>false</claimable>
+            <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+            <ai_chillDestination>false</ai_chillDestination>
+            <isEdifice>false</isEdifice>
+            <destroyEffecter>Shield_Break</destroyEffecter>
+        </building>
+        <comps>
+        <li Class="CompProperties_ProjectileInterceptor">
+            <radius>2.9</radius>
+            <interceptGroundProjectiles>true</interceptGroundProjectiles>
+            <interceptAirProjectiles>true</interceptAirProjectiles>
+            <interceptNonHostileProjectiles>true</interceptNonHostileProjectiles>
+            <interceptOutgoingProjectiles>false</interceptOutgoingProjectiles>
+            <color>(0.8, 0.8, 0.2)</color>
+            <idlePulseSpeed>3</idlePulseSpeed>
+            <minIdleAlpha>0.05</minIdleAlpha>
+            <disarmedByEmpForTicks>60</disarmedByEmpForTicks>
+            <activeSound>BulletShield_Ambience</activeSound>
+        </li>
+        <li Class="CompProperties_DestroyAfterDelay">
+            <delayTicks>600</delayTicks>
+            <destroyMode>KillFinalize</destroyMode>
+            <countdownLabel>Power loss in</countdownLabel>
+        </li>
+        </comps>
     </ThingDef>
 
 </Defs>

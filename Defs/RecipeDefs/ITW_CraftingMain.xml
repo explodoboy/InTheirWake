@@ -43,6 +43,7 @@
 	</ThingDef>
 
     <RecipeDef Name="ITW_CraftingMainRecipeBase" Abstract="True">
+      	<effectWorking>Smith</effectWorking>
         <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
         <workSkill>Crafting</workSkill>
 		<skillRequirements><Crafting>10</Crafting></skillRequirements>

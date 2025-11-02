@@ -1,5 +1,16 @@
 <Defs>
-    <!-- These bionics are intended to be equivalent to (lightly-)modded Archotech, which is around 200% efficiency. -->
+    <!-- These bionics are intended to be equivalent to modded Archotech, which is around 200% efficiency. -->
+
+    <MVCF.ModDef>
+        <defName>ITW_MVCF</defName>
+        <label>In Their Wake</label>
+        <description>In Their Wake stuffs</description>
+        <ActivateFeatures>
+            <li>ApparelVerbs</li>
+            <li>IntegratedToggle</li>
+            <li>HediffVerbs</li>
+        </ActivateFeatures>
+    </MVCF.ModDef>
 
     <!-- Base item -->
     <ThingDef Name="ITW_BionicItemBase" ParentName="BodyPartBionicBase" Abstract="True">
@@ -46,7 +57,7 @@
 
     <!-- Bodypart Hediff -->
     <HediffDef Name="ITW_BionicBodypartHediff" ParentName="AddedBodyPartBase" Abstract="True">
-		<defaultLabelColor>(255,60,0)</defaultLabelColor>
+		<defaultLabelColor>(200,200,0)</defaultLabelColor>
         <woundAnchorRange>0</woundAnchorRange>
         <displayWound>true</displayWound>
 		<addedPartProps>
@@ -273,6 +284,22 @@
         <description>An installed phitech arm.</description>
 		<descriptionHyperlinks><ThingDef>ITW_BionicArm_GenI</ThingDef></descriptionHyperlinks>
 		<spawnThingOnRemoved>ITW_BionicArm_GenI</spawnThingOnRemoved>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>fist</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>14</power>
+					<cooldownTime>2</cooldownTime>
+					<soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
+					<soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
+				</li>
+				</tools>
+			</li>
+		</comps>
     </HediffDef>
 
     <ThingDef ParentName="ITW_BionicItemBase">
@@ -363,13 +390,20 @@
         <description>An installed phitech spine.</description>
 		<descriptionHyperlinks><ThingDef>ITW_BionicSpine_GenI</ThingDef></descriptionHyperlinks>
 		<spawnThingOnRemoved>ITW_BionicSpine_GenI</spawnThingOnRemoved>
-		<addedPartProps><partEfficiency>1</partEfficiency></addedPartProps> <!-- To avoid having to totally rebalance bionics and make a lot of clutter, I'm just making this have no effect on bodypart efficiency. -->
+        <comps>
+			<li Class="HediffCompProperties_GiveAbility">
+				<abilityDefs>
+					<li>ITW_Smokepop</li>
+					<li>ITW_FirefoamPop</li>
+				</abilityDefs>
+			</li>
+        </comps>
     </HediffDef>
 
     <ThingDef ParentName="ITW_BionicItemBase">
         <defName>ITW_BionicSpine_GenI</defName>
         <label>phitech spine</label>
-        <description>A human-made phitech spine, notably only for its incredible durability. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.\n\nDisclaimer: You need Elite Bionics Framework to get that 'durability'.</description>
+        <description>A human-made phitech spine. It contains several integrated fabricator/dispenser units that can be activated at will. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.\n\nDisclaimer: You need Elite Bionics Framework to get that 'durability'.</description>
 		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicSpine_GenI</RecipeDef></descriptionHyperlinks>
 		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
     </ThingDef>
@@ -567,9 +601,9 @@
 		<spawnThingOnRemoved>ITW_BionicLiver_GenI</spawnThingOnRemoved>
         <stages>
             <li>
-                <statFactors>
-                    <InjuryHealingFactor>4</InjuryHealingFactor>
-                </statFactors>
+                <statOffsets>
+                    <InjuryHealingFactor>2.0</InjuryHealingFactor>
+                </statOffsets>
             </li>
         </stages>
         <comps>
@@ -583,14 +617,15 @@
 					<li>Cataract</li>
 					<li>HearingLoss</li>
                </hediffsToCure>
-           </li>
+           	</li>
+			<li Class="HediffCompProperties_HealPermanentWounds" />
         </comps>
     </HediffDef>
 
     <ThingDef ParentName="ITW_BionicItemBase">
         <defName>ITW_BionicLiver_GenI</defName>
         <label>phitech liver</label>
-        <description>A human-made phitech liver. It produces and maintains mechanites that patrol the body, repairing damage wherever found; including age-related ailments and cancers. This drastically increases the rate users recover from injuries. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.\n\nDue to game limitations and the mod author's limited modding knowhow, it doesn't heal scars.</description>
+        <description>A human-made phitech liver. It produces and maintains mechanites that patrol the body, repairing damage wherever found; including age-related ailments, cancers, and scars. This drastically increases the rate users recover from injuries. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
 		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicLiver_GenI</RecipeDef></descriptionHyperlinks>
 		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
     </ThingDef>
@@ -762,7 +797,7 @@
     <ThingDef ParentName="ITW_BionicItemBase">
         <defName>ITW_BionicHead_GenI</defName>
         <label>phitech head armor</label>
-        <description>Dermis-level implanted armor for the head made of starsteel. It improves bodypart durability without sacrificing mobility.</description>
+        <description>Dermis-level implanted armor for the head made of starsteel. It improves bodypart durability without sacrificing mobility.\n\nThis is useless without Elite Bionics Framework.</description>
 		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicHead_GenI</RecipeDef></descriptionHyperlinks>
 		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
     </ThingDef>
@@ -807,7 +842,7 @@
     <ThingDef ParentName="ITW_BionicItemBase">
         <defName>ITW_BionicNeck_GenI</defName>
         <label>phitech neck armor</label>
-        <description>Dermis-level implanted armor for the neck made of starsteel. It improves bodypart durability without sacrificing mobility.</description>
+        <description>Dermis-level implanted armor for the neck made of starsteel. It improves bodypart durability without sacrificing mobility.\n\nThis is useless without Elite Bionics Framework.</description>
 		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicNeck_GenI</RecipeDef></descriptionHyperlinks>
 		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
     </ThingDef>
@@ -852,7 +887,7 @@
     <ThingDef ParentName="ITW_BionicItemBase">
         <defName>ITW_BionicTorso_GenI</defName>
         <label>phitech torso armor</label>
-        <description>Dermis-level implanted armor for the torso made of starsteel. It improves bodypart durability without sacrificing mobility.</description>
+        <description>Dermis-level implanted armor for the torso made of starsteel. It improves bodypart durability without sacrificing mobility.\n\nThis is useless without Elite Bionics Framework.</description>
 		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicTorso_GenI</RecipeDef></descriptionHyperlinks>
 		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
     </ThingDef>

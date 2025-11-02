@@ -3,7 +3,7 @@
     <ThingDef ParentName="MedicineBase">
         <defName>ITW_Medicine</defName>
         <label>phitech medicine</label>
-        <description>A kit of human-made phitech medical supplies. It consists entirely of several vials of generalist medical mechanites and an injector gun. With remote input from the injector, the mechanites will autonomously perform orders, up to molecular-scale surgery.</description>
+        <description>A kit of human-made phitech medical supplies. It consists entirely of several vials of generalist medical mechanites and an injector gun. With remote input from the injector, the mechanites will autonomously perform orders up to molecular-scale surgery.</description>
         <possessionCount>2</possessionCount>
         <graphicData>
             <texPath>BaseITW/Things/Item/Medicine/ITW_Medicine</texPath>

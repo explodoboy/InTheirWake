@@ -20,7 +20,7 @@
     <ResearchProjectDef ParentName="ITW_ResearchBase">
         <defName>ITW_Initial</defName>
         <label>phi-matter principles</label>
-        <description>Work and experiment with phi-matter in a basic manner.</description>
+        <description>Work and experiment with phi-matter with the help of a machine persona.</description>
         <baseCost>10000</baseCost>
 		<techLevel>Ultra</techLevel>
         <requiredResearchFacilities Inherit="False">
@@ -28,10 +28,6 @@
         </requiredResearchFacilities>
 		<prerequisites>
 			<li>ShipComputerCore</li>
-			<li>ShipEngine</li>
-			<li>ShipReactor</li>
-			<li>ShipCryptosleep</li>
-			<li>ShipSensorCluster</li>
 		</prerequisites>
         <researchViewX>0</researchViewX>
         <researchViewY>2.5</researchViewY>
@@ -126,7 +122,7 @@
     <ResearchProjectDef ParentName="ITW_ResearchBase">
         <defName>ITW_Bionics</defName>
         <label>phitech bionics</label>
-        <description>Design bionics and implants on-par with those created by archotechs.</description>
+        <description>Design bionics, implants, and the mechanites that give them their function.</description>
         <baseCost>5250</baseCost> <!-- effective 3500 -->
 		<prerequisites>
 			<li>ITW_Starsteel</li>
@@ -138,7 +134,7 @@
     <ResearchProjectDef ParentName="ITW_ResearchBase">
         <defName>ITW_Armor</defName>
         <label>phitech armor</label>
-        <description>Design phitech armor, and its.</description>
+        <description>Design phitech armor and its main variants.</description>
         <baseCost>7500</baseCost> <!-- effective 5000 -->
 		<prerequisites>
 			<li>ITW_Starsteel</li>

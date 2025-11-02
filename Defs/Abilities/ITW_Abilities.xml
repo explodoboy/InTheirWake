@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <AbilityDef>
+        <defName>ITW_Smokepop</defName>
+        <label>dispense smoke</label>
+        <description>Release compressed smoke from concealed vents. Smoke reduces the accuracy of any shot fired through it, and prevents turrets from locking on entirely.</description>
+        <iconPath>Things\Pawn\Humanlike\Apparel\SmokepopPack\SmokepopPack</iconPath>
+        <cooldownTicksRange>2500</cooldownTicksRange> <!-- 1 hour -->
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+        <targetRequired>false</targetRequired>
+        <hostile>false</hostile>
+        <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+        <verbProperties>
+            <verbClass>Verb_CastAbility</verbClass>
+            <warmupTime>0.5</warmupTime>
+            <range>3.9</range>
+            <drawAimPie>false</drawAimPie>
+            <targetParams>
+                <canTargetSelf>true</canTargetSelf>
+            </targetParams>
+        </verbProperties>
+        <comps>
+            <li Class="CompProperties_AbilitySmokepop">
+                <smokeRadius>3.5</smokeRadius>
+                <clamorType>Ability</clamorType>
+                <clamorRadius>15</clamorRadius>
+            </li>
+        </comps>
+    </AbilityDef>
+
+    <AbilityDef>
+        <defName>ITW_FirefoamPop</defName>
+        <label>dispense firefoam</label>
+        <description>Release a fire-retardant foam in a circular area.</description>
+        <iconPath>Things\Pawn\Humanlike\Apparel\FirefoamPack\FirefoamPack</iconPath>
+        <cooldownTicksRange>2500</cooldownTicksRange> <!-- 1 hour -->
+        <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+        <targetRequired>false</targetRequired>
+        <hostile>false</hostile>
+        <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+        <verbProperties>
+            <verbClass>Verb_CastAbility</verbClass>
+            <warmupTime>0.5</warmupTime>
+            <requireLineOfSight>false</requireLineOfSight>
+            <drawAimPie>false</drawAimPie>
+            <range>3.9</range>
+            <targetParams>
+                <canTargetSelf>true</canTargetSelf>
+            </targetParams>
+        </verbProperties>
+        <comps>
+            <li Class="CompProperties_AbilityFirefoampop">
+                <firefoamRadius>3.5</firefoamRadius>
+                <clamorType>Ability</clamorType>
+                <clamorRadius>15</clamorRadius>
+            </li>
+        </comps>
+    </AbilityDef>
+
+</Defs>
