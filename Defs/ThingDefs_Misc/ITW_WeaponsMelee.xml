@@ -1,7 +1,7 @@
 <Defs>
 
     <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality" Name="ITW_BaseMeleeWeapon_Sharp" Abstract="True">
-        <techLevel>Ultra</techLevel>
+        <techLevel>Archotech</techLevel>
         <smeltable>false</smeltable>
         <recipeMaker Inherit="False">
             <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
@@ -13,8 +13,12 @@
             <researchPrerequisite>ITW_WeaponsMelee</researchPrerequisite>
             <!--defaultIngredientFilter><disallowedThingDefs Inherit="False" /></defaultIngredientFilter-->
         </recipeMaker>
+        <weaponTags>
+            <li>PhitechMelee</li>
+        </weaponTags>
         <tradeTags>
             <li>WeaponMelee</li>
+            <li>PhitechMelee</li>
         </tradeTags>
         <costList>
             <ITW_MaterialDurable>60</ITW_MaterialDurable>
@@ -27,7 +31,7 @@
     </ThingDef>
 
     <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality" Name="ITW_BaseMeleeWeapon_Blunt" Abstract="True">
-        <techLevel>Ultra</techLevel>
+        <techLevel>Archotech</techLevel>
         <smeltable>false</smeltable>
         <recipeMaker Inherit="False">
             <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
@@ -39,8 +43,12 @@
             <researchPrerequisite>ITW_WeaponsMelee</researchPrerequisite>
             <!--defaultIngredientFilter><disallowedThingDefs Inherit="False" /></defaultIngredientFilter-->
         </recipeMaker>
+        <weaponTags>
+            <li>PhitechMelee</li>
+        </weaponTags>
         <tradeTags>
             <li>WeaponMelee</li>
+            <li>PhitechMelee</li>
         </tradeTags>
         <costList>
             <ITW_MaterialDurable>60</ITW_MaterialDurable>
@@ -60,9 +68,6 @@
             <texPath>BaseITW/Things/Item/Equipment/WeaponMelee/ITW_MeleeSlowSharp</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
-        <weaponTags>
-            <li>LongSword</li>
-        </weaponTags>
         <relicChance>5</relicChance>
         <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
         <equippedAngleOffset>-65</equippedAngleOffset>
@@ -126,9 +131,6 @@
             <texPath>BaseITW/Things/Item/Equipment/WeaponMelee/ITW_MeleeFastSharp</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
-        <weaponTags>
-            <!--li>LongSword</li-->
-        </weaponTags>
         <relicChance>5</relicChance>
         <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
         <equippedAngleOffset>-65</equippedAngleOffset>
@@ -160,9 +162,6 @@
             <texPath>BaseITW/Things/Item/Equipment/WeaponMelee/ITW_MeleeSlowBlunt</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
-        <weaponTags>
-            <!--li>LongSword</li-->
-        </weaponTags>
         <relicChance>5</relicChance>
         <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
         <equippedAngleOffset>-65</equippedAngleOffset>
@@ -214,9 +213,6 @@
             <texPath>BaseITW/Things/Item/Equipment/WeaponMelee/ITW_MeleeFastBlunt</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
-        <weaponTags>
-            <!--li>LongSword</li-->
-        </weaponTags>
         <relicChance>5</relicChance>
         <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
         <equippedAngleOffset>-65</equippedAngleOffset>

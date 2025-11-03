@@ -23,6 +23,10 @@
             <chairSearchRadius>0</chairSearchRadius>
         </ingestible>
         <techLevel>Archotech</techLevel>
+        <tradeTags Inherit="False">
+            <li>Drugs</li>
+            <li>PhitechDrugs</li>
+        </tradeTags>
     </ThingDef>
 
     <HediffDef Name="ITW_DrugHediffBase" Abstract="True">

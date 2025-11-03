@@ -1,6 +1,11 @@
 <Defs>
 
     <ThingDef ParentName="ArmorMachineableBase" Name="ITW_ArmorBodyBase" Abstract="True">
+        <equippedStatOffsets>
+            <PsychicSensitivity MayRequire="Ludeon.RimWorld.Ideology">0.05</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate MayRequire="Ludeon.RimWorld.Ideology">0.033</PsychicEntropyRecoveryRate>
+            <MechBandwidth MayRequire="Ludeon.RimWorld.Biotech">12</MechBandwidth>
+        </equippedStatOffsets>
         <apparel>
             <bodyPartGroups>
                 <li>Torso</li>
@@ -19,9 +24,7 @@
                 <li>Soldier</li>
             </defaultOutfitTags>
             <tags>
-                <li>SpacerMilitary</li>
-                <li>RoyalCombatGear</li>
-                <li>PrestigeCombatGear</li>
+                <li>PhitechArmor</li>
                 <li>EVA</li>
             </tags>
             <useDeflectMetalEffect>true</useDeflectMetalEffect>
@@ -29,6 +32,10 @@
         <thingCategories>
             <li>ApparelArmor</li>
         </thingCategories>
+        <tradeTags Inherit="False">
+            <li>PhitechArmor</li>
+            <li>Armor</li>
+        </tradeTags>
         <comps>
             <li Class="CompProperties_Biocodable"/>
         </comps>
@@ -51,6 +58,11 @@
     </ThingDef>
 
     <ThingDef ParentName="ArmorMachineableBase" Name="ITW_ArmorHeadBase" Abstract="True">
+        <equippedStatOffsets>
+            <PsychicSensitivity MayRequire="Ludeon.RimWorld.Ideology">0.05</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate MayRequire="Ludeon.RimWorld.Ideology">0.033</PsychicEntropyRecoveryRate>
+            <MechBandwidth MayRequire="Ludeon.RimWorld.Biotech">12</MechBandwidth>
+        </equippedStatOffsets>
         <apparel>
             <bodyPartGroups>
                 <li>FullHead</li>
@@ -59,9 +71,7 @@
                 <li>Overhead</li>
             </layers>
             <tags>
-                <li>SpacerMilitary</li>
-                <li>RoyalCombatGear</li>
-                <li>PrestigeCombatGear</li>
+                <li>PhitechArmor</li>
                 <li>EVA</li>
             </tags>
             <useDeflectMetalEffect>true</useDeflectMetalEffect>
@@ -69,6 +79,10 @@
         <thingCategories>
             <li>ApparelArmor</li>
         </thingCategories>
+        <tradeTags Inherit="False">
+            <li>PhitechArmor</li>
+            <li>Armor</li>
+        </tradeTags>
         <comps>
             <li Class="CompProperties_Biocodable"/>
         </comps>
@@ -122,10 +136,6 @@
             <ITW_MaterialDurable>15</ITW_MaterialDurable>
             <ITW_Component>1</ITW_Component>
         </costList>
-        <tradeTags>
-            <li>HiTechArmor</li>
-            <li>Armor</li>
-        </tradeTags>
         <thingSetMakerTags>
             <li>RewardStandardLowFreq</li>
         </thingSetMakerTags>
@@ -168,10 +178,6 @@
             <ITW_Component>6</ITW_Component>
             <ITW_PhiMatter>200</ITW_PhiMatter>
         </costList>
-        <tradeTags Inherit="False">
-            <li>HiTechArmor</li>
-            <li>Armor</li>
-        </tradeTags>
         <thingSetMakerTags>
             <li>RewardStandardLowFreq</li>
         </thingSetMakerTags>
@@ -214,10 +220,6 @@
             <ITW_Component>4</ITW_Component>
             <ITW_PhiMatter>100</ITW_PhiMatter>
         </costList>
-        <tradeTags Inherit="False">
-            <li>HiTechArmor</li>
-            <li>Armor</li>
-        </tradeTags>
         <thingSetMakerTags>
             <li>RewardStandardLowFreq</li>
         </thingSetMakerTags>
@@ -260,10 +262,6 @@
             <ITW_Component>2</ITW_Component>
             <ITW_PhiMatter>50</ITW_PhiMatter>
         </costList>
-        <tradeTags Inherit="False">
-            <li>HiTechArmor</li>
-            <li>Armor</li>
-        </tradeTags>
         <thingSetMakerTags>
             <li>RewardStandardLowFreq</li>
         </thingSetMakerTags>

@@ -1,11 +1,32 @@
 <Defs>
 
-    <ThingDef ParentName="BaseMakeableGun">
+    <ThingDef Name="ITW_BaseGun" ParentName="BaseMakeableGun" Abstract="True">
+        <techLevel>Archotech</techLevel>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>10</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+                <li>ITW_CraftingMain</li>
+            </recipeUsers>
+        </recipeMaker>
+        <weaponTags>
+            <li>PhitechGun</li>
+        </weaponTags>
+        <tradeTags>
+            <li>PhitechGun</li>
+        </tradeTags>
+        <thingSetMakerTags>
+            <li>RewardStandardQualitySuper</li>
+            <li>RewardStandardMidFreq</li>
+        </thingSetMakerTags>
+    </ThingDef>
+
+    <ThingDef ParentName="ITW_BaseGun">
         <defName>ITW_Pistol</defName>
         <label>phitech pistol</label>
         <description>A pistol that launches packets of phi-matter that react violently with all matter (including air) on contact. It is designed to be as cheap as possible, trading performance for mass-producibility. It does decently at all ranges.</description>
-        <techLevel>Ultra</techLevel>
-        <soundInteract>Interact_ChargeRifle</soundInteract>
+        <soundInteract>Interact_ChargeLance</soundInteract>
         <graphicData>
             <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_Pistol</texPath>
             <graphicClass>Graphic_Single</graphicClass>
@@ -42,24 +63,6 @@
             <cooldownTime>2</cooldownTime>
             </li>
         </tools>
-        <recipeMaker>
-            <skillRequirements>
-                <Crafting>10</Crafting>
-            </skillRequirements>
-            <recipeUsers Inherit="False">
-                <li>ITW_CraftingMain</li>
-            </recipeUsers>
-        </recipeMaker>
-        <weaponTags>
-            <li>SpacerGun</li>
-        </weaponTags>
-        <tradeTags>
-            <li>WeaponRanged</li>
-        </tradeTags>
-        <thingSetMakerTags>
-            <li>RewardStandardQualitySuper</li>
-            <li>RewardStandardMidFreq</li>
-        </thingSetMakerTags>
         <costList>
             <ITW_MaterialCommon>25</ITW_MaterialCommon>
             <ITW_Component>1</ITW_Component>
@@ -84,11 +87,10 @@
     </ThingDef>
     
 
-    <ThingDef ParentName="BaseMakeableGun">
+    <ThingDef ParentName="ITW_BaseGun">
         <defName>ITW_Rifle</defName>
         <label>phitech rifle</label>
         <description>An assault rifle that launches bursts of phi-matter packets that react violently with all matter (including air) on contact. It excels at medium range, and is decent otherwise.</description>
-        <techLevel>Ultra</techLevel>
         <soundInteract>Interact_ChargeLance</soundInteract>
         <graphicData>
             <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_Rifle</texPath>
@@ -136,24 +138,6 @@
                 <cooldownTime>2</cooldownTime>
             </li>
         </tools>
-        <recipeMaker>
-            <skillRequirements>
-                <Crafting>10</Crafting>
-            </skillRequirements>
-            <recipeUsers Inherit="False">
-                <li>ITW_CraftingMain</li>
-            </recipeUsers>
-        </recipeMaker>
-        <weaponTags>
-            <li>SpacerGun</li>
-        </weaponTags>
-        <tradeTags>
-            <li>WeaponRanged</li>
-        </tradeTags>
-        <thingSetMakerTags>
-            <li>RewardStandardQualitySuper</li>
-            <li>RewardStandardMidFreq</li>
-        </thingSetMakerTags>
         <costList>
             <ITW_MaterialCommon>50</ITW_MaterialCommon>
             <ITW_Component>2</ITW_Component>
@@ -178,11 +162,10 @@
     </ThingDef>
     
 
-    <ThingDef ParentName="BaseMakeableGun">
+    <ThingDef ParentName="ITW_BaseGun">
         <defName>ITW_Shotgun</defName>
         <label>phitech shotgun</label>
         <description>A shotgun that launches groups of phi-matter packets that react violently with all matter (including air) on contact. It shreds armor and has incredible stopping power, but struggles at range.</description>
-        <techLevel>Ultra</techLevel>
         <soundInteract>Interact_ChargeLance</soundInteract>
         <graphicData>
             <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_Shotgun</texPath>
@@ -228,24 +211,6 @@
                 <cooldownTime>2</cooldownTime>
             </li>
         </tools>
-        <recipeMaker>
-            <skillRequirements>
-                <Crafting>10</Crafting>
-            </skillRequirements>
-            <recipeUsers Inherit="False">
-                <li>ITW_CraftingMain</li>
-            </recipeUsers>
-        </recipeMaker>
-        <weaponTags>
-            <li>SpacerGun</li>
-        </weaponTags>
-        <tradeTags>
-            <li>WeaponRanged</li>
-        </tradeTags>
-        <thingSetMakerTags>
-            <li>RewardStandardQualitySuper</li>
-            <li>RewardStandardMidFreq</li>
-        </thingSetMakerTags>
         <costList>
             <ITW_MaterialCommon>50</ITW_MaterialCommon>
             <ITW_Component>2</ITW_Component>
@@ -270,11 +235,10 @@
     </ThingDef>
     
 
-    <ThingDef ParentName="BaseMakeableGun">
+    <ThingDef ParentName="ITW_BaseGun">
         <defName>ITW_Sniper</defName>
         <label>phitech sniper</label>
         <description>A sniper rifle that launches dense packets of phi-matter that react violently with all matter (including air) on contact. One shot is often all that's needed to secure a kill.</description>
-        <techLevel>Ultra</techLevel>
         <soundInteract>Interact_ChargeLance</soundInteract>
         <graphicData>
             <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_Sniper</texPath>
@@ -320,24 +284,6 @@
                 <cooldownTime>2</cooldownTime>
             </li>
         </tools>
-        <recipeMaker>
-            <skillRequirements>
-                <Crafting>10</Crafting>
-            </skillRequirements>
-            <recipeUsers Inherit="False">
-                <li>ITW_CraftingMain</li>
-            </recipeUsers>
-        </recipeMaker>
-        <weaponTags>
-            <li>SpacerGun</li>
-        </weaponTags>
-        <tradeTags>
-            <li>WeaponRanged</li>
-        </tradeTags>
-        <thingSetMakerTags>
-            <li>RewardStandardQualitySuper</li>
-            <li>RewardStandardMidFreq</li>
-        </thingSetMakerTags>
         <costList>
             <ITW_MaterialCommon>75</ITW_MaterialCommon>
             <ITW_Component>3</ITW_Component>

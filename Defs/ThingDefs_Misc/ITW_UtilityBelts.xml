@@ -69,7 +69,6 @@
         <apparel>
             <wornGraphicPath>BaseITW/Things/Pawn/Humanlike/Apparel/ITW_UtilityBelt/ITW_UtilityBelt</wornGraphicPath>
         </apparel>
-        <techLevel>Ultra</techLevel>
         <statBases>
             <EnergyShieldRechargeRate>0.2</EnergyShieldRechargeRate>
             <EnergyShieldEnergyMax>1.65</EnergyShieldEnergyMax>
@@ -162,6 +161,7 @@
         </thingSetMakerTags>
         <tradeTags>
             <li>Armor</li>
+            <li>PhitechArmor</li>
         </tradeTags>
     </ThingDef>
 

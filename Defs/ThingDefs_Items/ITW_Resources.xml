@@ -41,7 +41,7 @@
     <ThingDef ParentName="ResourceBase" Name="ITW_ResourceIngredientBase" Abstract="True">
         <soundInteract>Metal_Drop</soundInteract>
         <soundDrop>Standard_Drop</soundDrop>
-        <stackLimit>500</stackLimit>
+        <stackLimit>2500</stackLimit>
         <healthAffectsPrice>false</healthAffectsPrice>
         <intricate>true</intricate>
         <thingCategories><li>Manufactured</li></thingCategories>
@@ -105,7 +105,9 @@
             </statFactors>
         </stuffProps>
         <tradeTags> <!-- tradeTags are inside this Def instead of its abstract base because XML patches run BEFORE inheritance, meaning that if I want to patch something, it has to be inside the XML code. I really don't like it, but it is what it is. -->
+        <!-- Might've meant 'AFTER inheritance' above but IDK for sure. -->
             <li>ExoticMisc</li>
+            <li>StarsteelVariant</li>
         </tradeTags>
         <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
     </ThingDef>
@@ -146,6 +148,7 @@
         </stuffProps>
         <tradeTags> <!-- Refer to comment in ITW_MaterialCommon. -->
             <li>ExoticMisc</li>
+            <li>StarsteelVariant</li>
         </tradeTags>
         <thingSetMakerTags><li>RewardStandardHighFreq</li></thingSetMakerTags>
     </ThingDef>
@@ -186,6 +189,7 @@
         </stuffProps>
         <tradeTags> <!-- Refer to comment in ITW_MaterialCommon. -->
             <li>ExoticMisc</li>
+            <li>StarsteelVariant</li>
         </tradeTags>
         <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
     </ThingDef>
@@ -226,6 +230,7 @@
         </stuffProps>
         <tradeTags> <!-- Refer to comment in ITW_MaterialCommon. -->
             <li>ExoticMisc</li>
+            <li>StarsteelVariant</li>
         </tradeTags>
         <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
     </ThingDef>
@@ -266,6 +271,7 @@
         </stuffProps>
         <tradeTags> <!-- Refer to comment in ITW_MaterialCommon. -->
             <li>ExoticMisc</li>
+            <li>StarsteelVariant</li>
         </tradeTags>
         <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
     </ThingDef>

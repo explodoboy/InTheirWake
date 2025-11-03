@@ -14,18 +14,18 @@
 
     <!-- Base item -->
     <ThingDef Name="ITW_BionicItemBase" ParentName="BodyPartBionicBase" Abstract="True">
-        <techLevel>Ultra</techLevel>
+        <techLevel>Archotech</techLevel>
         <graphicData>
             <texPath>Things/Item/Health/HealthItem</texPath>
             <graphicClass>Graphic_Single</graphicClass>
             <drawSize>0.80</drawSize>
-            <color>(255,60,0)</color>
+            <color>(250,250,0)</color>
         </graphicData>
         <tradeTags>
-            <li>Bionic</li>
+            <li>PhitechBionic</li>
         </tradeTags>
-        <techHediffsTags>
-            <li>Advanced</li>
+        <techHediffsTags Inherit="False">
+            <li>Phitech</li>
         </techHediffsTags>
         <statBases>
             <WorkToMake>6000</WorkToMake> <!--- Due to the sheer number of bionics, I'm reducing work-to-make by a lot. -->
@@ -85,6 +85,16 @@
                 <scaleAdjustment>1</scaleAdjustment>
             </li>
         </comps>
+	</HediffDef>
+
+    <!-- Implant Hediff, without health bonus -->
+	<HediffDef Name="ITW_BionicImplantHediffNoHealthBonus" ParentName="ImplantHediffBase" Abstract="True">
+		<defaultLabelColor>(255,60,0)</defaultLabelColor>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
 	</HediffDef>
 
 
@@ -305,7 +315,7 @@
     <ThingDef ParentName="ITW_BionicItemBase">
         <defName>ITW_BionicArm_GenI</defName>
         <label>phitech arm</label>
-        <description>A human-made phitech arm. It possesses immense physical strength and precision, regulated by a subpersona AI. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
+        <description>A human-made phitech arm. In addition to having incredible strength and precision, it has a fabricator unit in the wrist that can rapidly form almost any tool for its user. Its appearance can be modified during installation, so users with synthetic or fleshlike aesthetic appearances can both be satisfied.</description>
 		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicArm_GenI</RecipeDef></descriptionHyperlinks>
 		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
     </ThingDef>
@@ -712,7 +722,7 @@
 	</RecipeDef>
 
     
-    <!-- IMPLANTS -->
+    <!-- ARMORED IMPLANTS -->
     
     <!-- Brain -->
     <HediffDef ParentName="ITW_BionicImplantHediff">
@@ -917,6 +927,68 @@
 		</descriptionHyperlinks>
 		<jobString>Removing phitech torso armor.</jobString>
 		<removesHediff>ITW_BionicTorso_GenI</removesHediff>
+	</RecipeDef>
+
+    
+    <!-- OTHER IMPLANTS -->
+    
+    <!-- Brain -->
+    <HediffDef ParentName="ITW_BionicImplantHediff">
+        <defName>ITW_PsychicDeafener</defName>
+        <label>psychic deafener</label>
+        <description>An installed psychic deafener.</description>
+		<descriptionHyperlinks><ThingDef>ITW_PsychicDeafener</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>ITW_PsychicDeafener</spawnThingOnRemoved>
+        <stages>
+            <li>
+                <statFactors>
+      				<PsychicSensitivity>0.0</PsychicSensitivity>
+                </statFactors>
+            </li>
+        </stages>
+        <comps>
+            <li Class="IHaveTheCure.HediffCompProperties_CuresHediffs">
+               <hediffsToCure>
+                    <li>Dementia</li>
+                    <li>Alzheimers</li>
+               </hediffsToCure>
+           </li>
+        </comps>
+    </HediffDef>
+
+    <ThingDef ParentName="ITW_BionicItemBase">
+        <defName>ITW_PsychicDeafener</defName>
+        <label>psychic deafener</label>
+        <description>A human-made phitech implant that artificially insulates the brain from psychic phenomina, inducing total psychic deafness. The exact mechanism for this effect is poorly understood.</description>
+		<descriptionHyperlinks><RecipeDef>ITW_InstallBodypart_BionicBrain_GenI</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>ITW_InstallBodypart_PsychicDeafener</defName>
+        <label>install psychic deafener</label>
+        <description>Install a psychic deafener.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_PsychicDeafener</ThingDef>
+			<HediffDef>ITW_PsychicDeafener</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing psychic deafener.</jobString>
+		<ingredients><li><filter><thingDefs><li>ITW_PsychicDeafener</li></thingDefs></filter><count>1</count></li></ingredients>
+		<fixedIngredientFilter><thingDefs><li>ITW_PsychicDeafener</li></thingDefs></fixedIngredientFilter>
+		<appliedOnFixedBodyParts><li>Brain</li></appliedOnFixedBodyParts>
+		<addsHediff>ITW_PsychicDeafener</addsHediff>
+    </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>ITW_RemoveBodypart_PsychicDeafener</defName>
+		<label>remove psychic deafener</label>
+		<description>Remove a psychic deafener.</description>
+		<descriptionHyperlinks>
+			<ThingDef>ITW_PsychicDeafener</ThingDef>
+			<HediffDef>ITW_PsychicDeafener</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing psychic deafener.</jobString>
+		<removesHediff>ITW_PsychicDeafener</removesHediff>
 	</RecipeDef>
     
 </Defs>

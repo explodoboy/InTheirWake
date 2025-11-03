@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+    <!-- Adds the phitech orbital trader to the guild. -->
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Odyssey</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+            <xpath>Defs/FactionDef[defName="TradersGuild"]/orbitalTraderKinds</xpath>
+            <value>
+                <li>ITW_Orbital_Phitech</li>
+            </value>
+        </match>
+    </Operation>
+
+</Patch>

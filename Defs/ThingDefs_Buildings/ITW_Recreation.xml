@@ -38,6 +38,9 @@
         <designationCategory>Joy</designationCategory>
         <canOverlapZones>false</canOverlapZones>
         <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+        <tradeTags>
+            <li>PhitechRecreationBuilding</li>
+        </tradeTags>
     </ThingDef>
 
     <JoyGiverDef Name="ITW_JoyGiverBase" Abstract="True">

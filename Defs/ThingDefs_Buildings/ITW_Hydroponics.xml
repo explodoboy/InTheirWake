@@ -26,6 +26,9 @@
             </buildingTags>
         </building>
         <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+        <tradeTags>
+            <li>PhitechExoticBuilding</li>
+        </tradeTags>
     </ThingDef>
 
     <ThingDef ParentName="ITW_HydroponicsBase">

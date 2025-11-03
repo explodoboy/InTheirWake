@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <TraderKindDef>
+        <defName>ITW_Orbital_Phitech</defName>
+        <label>phitech trader</label>
+        <orbital>true</orbital>
+        <faction MayRequire="Ludeon.RimWorld.Odyssey">TradersGuild</faction>
+        <stockGenerators>
+
+            <!-- Resources -->
+            <li Class="StockGenerator_SingleDef">
+                <thingDef>Silver</thingDef>
+                <countRange>25000~50000</countRange>
+            </li>
+
+            <li Class="StockGenerator_SingleDef">
+                <thingDef>ITW_MaterialCommon</thingDef>
+                <countRange>100~300</countRange>
+            </li>
+            <li Class="StockGenerator_SingleDef">
+                <thingDef>ITW_MaterialBeauty</thingDef>
+                <countRange>100~300</countRange>
+            </li>
+            <li Class="StockGenerator_SingleDef">
+                <thingDef>ITW_MaterialDurable</thingDef>
+                <countRange>100~300</countRange>
+            </li>
+            <li Class="StockGenerator_SingleDef">
+                <thingDef>ITW_MaterialProtective</thingDef>
+                <countRange>100~300</countRange>
+            </li>
+
+            <li Class="StockGenerator_SingleDef">
+                <thingDef>ITW_Component</thingDef>
+                <countRange>25~50</countRange>
+            </li>
+
+            <li Class="StockGenerator_SingleDef">
+                <thingDef>ITW_PhiMatter</thingDef>
+                <countRange>2500~10000</countRange>
+            </li>
+
+            <li Class="StockGenerator_SingleDef">
+                <thingDef>ITW_PhiWell</thingDef>
+                <countRange>-4~1</countRange> <!-- If I understand it right, this means the item has a low chance of appearing, since rolling under 0 would just mean effectively 0. The intention is a 1/5 chance of appearing in the shop. -->
+            </li>
+
+            <!-- Drugs -->
+            <li Class="StockGenerator_Tag">
+                <tradeTag>PhitechDrugs</tradeTag>
+                <thingDefCountRange>99</thingDefCountRange> <!-- This is intended to ensure every drug is offered for sale. -->
+                <countRange>10~50</countRange> <!-- I'm assuming this is the range per item offered. -->
+            </li>
+        
+            <!-- Weapons -->
+            <li Class="StockGenerator_Tag">
+                <tradeTag>PhitechGun</tradeTag>
+                <thingDefCountRange>2~4</thingDefCountRange>
+                <countRange>1~2</countRange>
+            </li>
+            <li Class="StockGenerator_Tag">
+                <tradeTag>PhitechMelee</tradeTag>
+                <thingDefCountRange>2~4</thingDefCountRange>
+                <countRange>1~2</countRange>
+            </li>
+            <li Class="StockGenerator_Tag">
+                <tradeTag>PhitechGrenade</tradeTag>
+                <thingDefCountRange>3~6</thingDefCountRange>
+                <countRange>1~2</countRange>
+            </li>
+            
+            <!-- Apparel -->
+            <li Class="StockGenerator_Tag">
+                <tradeTag>PhitechArmor</tradeTag>
+                <thingDefCountRange>2~5</thingDefCountRange>
+                <countRange>1~2</countRange>
+            </li>
+            
+            <!-- Implants -->
+            <li Class="StockGenerator_Tag">
+                <tradeTag>PhitechBionic</tradeTag>
+                <thingDefCountRange>8~20</thingDefCountRange>
+                <countRange>1~4</countRange>
+            </li>
+
+            <!-- Buildings -->
+            <li Class="StockGenerator_Tag">
+                <tradeTag>PhitechExoticBuilding</tradeTag>
+                <thingDefCountRange>1~3</thingDefCountRange> <!-- Useful buildings that aren't tied to progression through the mod, or aren't super powerful. -->
+                <countRange>1~3</countRange>
+            </li>
+            <li Class="StockGenerator_Tag">
+                <tradeTag>PhitechRecreationBuilding</tradeTag>
+                <thingDefCountRange>1~3</thingDefCountRange> <!-- Because there's so many phitech recreation buildings, they get their own tradetag. -->
+                <countRange>1</countRange>
+            </li>
+
+            <!-- Other -->
+            <li Class="StockGenerator_SingleDef">
+                <thingDef>ITW_Meal</thingDef>
+                <countRange>35~100</countRange>
+            </li>
+            <li Class="StockGenerator_SingleDef">
+                <thingDef>ITW_Medicine</thingDef>
+                <countRange>15~50</countRange>
+            </li>
+
+
+            <!-- Buying -->
+            <li Class="StockGenerator_BuyTradeTag"><tag>StarsteelVariant</tag></li>
+            <li Class="StockGenerator_BuyTradeTag"><tag>PhitechBionic</tag></li>
+            <li Class="StockGenerator_BuyTradeTag"><tag>PhitechDrugs</tag></li>
+            <li Class="StockGenerator_BuyTradeTag"><tag>PhitechExoticBuilding</tag></li>
+            <li Class="StockGenerator_BuyTradeTag"><tag>PhitechRecreationBuilding</tag></li>
+            <li Class="StockGenerator_BuyTradeTag"><tag>PhitechArmor</tag></li>
+            <li Class="StockGenerator_BuyTradeTag"><tag>PhitechGun</tag></li>
+            <li Class="StockGenerator_BuyTradeTag"><tag>PhitechMelee</tag></li>
+            <li Class="StockGenerator_BuyTradeTag"><tag>PhitechGrenade</tag></li>
+            <li Class="StockGenerator_BuySingleDef"><thingDef>ITW_Component</thingDef></li>
+            <li Class="StockGenerator_BuySingleDef"><thingDef>ITW_PhiMatter</thingDef></li>
+            <li Class="StockGenerator_BuySingleDef"><thingDef>ITW_PhiWell</thingDef></li>
+            <li Class="StockGenerator_BuySingleDef"><thingDef>ITW_Meal</thingDef></li>
+            <li Class="StockGenerator_BuySingleDef"><thingDef>ITW_Medicine</thingDef></li>
+
+        </stockGenerators>
+    </TraderKindDef>
+
+</Defs>

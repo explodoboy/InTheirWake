@@ -27,6 +27,9 @@
         <thingCategories>
             <li>BuildingsPower</li>
         </thingCategories>
+        <tradeTags>
+            <li>PhitechExoticBuilding</li>
+        </tradeTags>
     </ThingDef>
 
     <ThingDef ParentName="BuildingBase" Name="ITW_BatteryBase" Abstract="True">
@@ -56,6 +59,9 @@
         <staticSunShadowHeight>0.2</staticSunShadowHeight>
         <constructEffect>ConstructMetal</constructEffect>
         <canOverlapZones>false</canOverlapZones>
+        <tradeTags>
+            <li>PhitechExoticBuilding</li>
+        </tradeTags>
     </ThingDef>
 
     <ThingDef ParentName="ITW_PowerGeneratorBase">

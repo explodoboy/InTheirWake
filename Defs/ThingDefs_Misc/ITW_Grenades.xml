@@ -12,12 +12,16 @@
         <thingCategories>
             <li>Grenades</li>
         </thingCategories>
+        <tradeTags Inherit="False">
+            <li>WeaponRanged</li>
+            <li>PhitechGrenade</li>
+        </tradeTags>
     </ThingDef>
 
 
     <ThingDef ParentName="ITW_GrenadeBase">
         <defName>ITW_GrenadeEMP</defName>
-        <label>stellar EMP grenade</label>
+        <label>phitech EMP grenade</label>
         <description>High-power EMP grenade with mobility thrusters for extended range. They can be thrown a decent distance where they'll discharge, emitting an electromagnetic pulse that disrupts electronic equipment such as shields and mechanoids.</description>
         <recipeMaker>
             <researchPrerequisite>ITW_Grenades</researchPrerequisite>
@@ -26,24 +30,20 @@
             </recipeUsers>
         </recipeMaker>
         <weaponTags>
-            <li>GrenadeEMP</li>
+            <li>PhitechGrenadeEMP</li>
         </weaponTags>
-        <tradeTags Inherit="False">
-            <li>WeaponRanged</li>
-        </tradeTags>
         <tickerType>Normal</tickerType>
         <graphicData>
             <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_GrenadeEMP</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
-        <techLevel>Ultra</techLevel> <!-- Override for Gen1, since it's the only non-Archotech generation. -->
         <costList>
             <ITW_MaterialCommon>30</ITW_MaterialCommon>
             <ITW_Component>4</ITW_Component>
         </costList>
         <verbs>
             <li>
-                <label>throw stellar EMP grenade</label>
+                <label>throw phitech EMP grenade</label>
                 <verbClass>Verb_LaunchProjectile</verbClass>
                 <hasStandardCommand>true</hasStandardCommand>
                 <range>17.9</range>
@@ -63,7 +63,7 @@
 
     <ThingDef ParentName="BaseGrenadeProjectile">
         <defName>ITW_Proj_GrenadeEMP</defName>
-        <label>stellar EMP grenade</label>
+        <label>phitech EMP grenade</label>
         <thingClass>Projectile_Explosive</thingClass>
         <graphicData>
             <texPath>BaseITW/Things/Projectile/ITW_Proj_GrenadeEMP</texPath>
@@ -80,7 +80,7 @@
 
     <ThingDef ParentName="ITW_GrenadeBase">
         <defName>ITW_GrenadeExplosive</defName>
-        <label>stellar explosive grenade</label>
+        <label>phitech explosive grenade</label>
         <description>High-yield explosive fragmentation grenade with mobility thrusters for extended range. They can be thrown a decent distance where they'll explode, damaging anything and everyone nearby.</description>
         <recipeMaker>
             <researchPrerequisite>ITW_Grenades</researchPrerequisite>
@@ -89,25 +89,20 @@
             </recipeUsers>
         </recipeMaker>
         <weaponTags>
-            <li>GrenadeDestructive</li>
-            <li>EmpireGrenadeDestructive</li>
+            <li>PhitechGrenadeDestructive</li>
         </weaponTags>
-        <tradeTags Inherit="False">
-            <li>WeaponRanged</li>
-        </tradeTags>
         <tickerType>Normal</tickerType>
         <graphicData>
             <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_GrenadeExplosive</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
-        <techLevel>Ultra</techLevel> <!-- Override for Gen1, since it's the only non-Archotech generation. -->
         <costList>
             <ITW_MaterialCommon>30</ITW_MaterialCommon>
             <ITW_Component>4</ITW_Component>
         </costList>
         <verbs>
             <li>
-                <label>throw stellar explosive grenade</label>
+                <label>throw phitech explosive grenade</label>
                 <verbClass>Verb_LaunchProjectile</verbClass>
                 <hasStandardCommand>true</hasStandardCommand>
                 <range>17.9</range>
@@ -127,7 +122,7 @@
 
     <ThingDef ParentName="BaseGrenadeProjectile">
         <defName>ITW_Proj_GrenadeExplosive</defName>
-        <label>stellar explosive grenade</label>
+        <label>phitech explosive grenade</label>
         <thingClass>Projectile_Explosive</thingClass>
         <graphicData>
             <texPath>BaseITW/Things/Projectile/ITW_Proj_GrenadeExplosive</texPath>
@@ -144,7 +139,7 @@
 
     <ThingDef ParentName="ITW_GrenadeBase">
         <defName>ITW_GrenadeFire</defName>
-        <label>stellar fire grenade</label>
+        <label>phitech fire grenade</label>
         <description>High-pressure fire grenade with mobility thrusters for extended range. They can be thrown at a decent distance where they'll discharge, igniting everything flammable around them.</description>
         <recipeMaker>
             <researchPrerequisite>ITW_Grenades</researchPrerequisite>
@@ -153,25 +148,21 @@
             </recipeUsers>
         </recipeMaker>
         <weaponTags>
-            <li>GrenadeDestructive</li>
-            <li>GrenadeFlame</li>
+            <li>PhitechGrenadeDestructive</li>
+            <li>PhitechGrenadeFire</li>
         </weaponTags>
-        <tradeTags Inherit="False">
-            <li>WeaponRanged</li>
-        </tradeTags>
         <tickerType>Normal</tickerType>
         <graphicData>
             <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_GrenadeFire</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
-        <techLevel>Ultra</techLevel> <!-- Override for Gen1, since it's the only non-Archotech generation. -->
         <costList>
             <ITW_MaterialCommon>30</ITW_MaterialCommon>
             <ITW_Component>4</ITW_Component>
         </costList>
         <verbs>
             <li>
-                <label>throw stellar fire grenade</label>
+                <label>throw phitech fire grenade</label>
                 <verbClass>Verb_LaunchProjectile</verbClass>
                 <hasStandardCommand>true</hasStandardCommand>
                 <range>17.9</range>
@@ -191,7 +182,7 @@
 
     <ThingDef ParentName="BaseGrenadeProjectile">
         <defName>ITW_Proj_GrenadeFire</defName>
-        <label>stellar fire grenade</label>
+        <label>phitech fire grenade</label>
         <thingClass>Projectile_Explosive</thingClass>
         <graphicData>
             <texPath>BaseITW/Things/Projectile/ITW_Proj_GrenadeFire</texPath>
@@ -211,7 +202,7 @@
 
     <ThingDef ParentName="ITW_GrenadeBase">
         <defName>ITW_GrenadeFirefoam</defName>
-        <label>stellar firefoam grenade</label>
+        <label>phitech firefoam grenade</label>
         <description>High-pressure firefoam grenade with mobility thrusters for extended range. They can be thrown at a decent distance before they'll discharge, dispending firefoam which will quickly extinguish any nearby fires.</description>
         <recipeMaker>
             <researchPrerequisite>ITW_Grenades</researchPrerequisite>
@@ -219,22 +210,18 @@
                 <li>ITW_CraftingMain</li>
             </recipeUsers>
         </recipeMaker>
-        <tradeTags Inherit="False">
-            <li>WeaponRanged</li>
-        </tradeTags>
         <tickerType>Normal</tickerType>
         <graphicData>
             <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_GrenadeFirefoam</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
-        <techLevel>Ultra</techLevel> <!-- Override for Gen1, since it's the only non-Archotech generation. -->
         <costList>
             <ITW_MaterialCommon>30</ITW_MaterialCommon>
             <ITW_Component>4</ITW_Component>
         </costList>
         <verbs>
             <li>
-                <label>throw stellar firefoam grenade</label>
+                <label>throw phitech firefoam grenade</label>
                 <verbClass>Verb_LaunchProjectile</verbClass>
                 <hasStandardCommand>true</hasStandardCommand>
                 <range>17.9</range>
@@ -254,7 +241,7 @@
 
     <ThingDef ParentName="BaseGrenadeProjectile">
         <defName>ITW_Proj_GrenadeFirefoam</defName>
-        <label>stellar firefoam grenade</label>
+        <label>phitech firefoam grenade</label>
         <thingClass>Projectile_Explosive</thingClass>
         <graphicData>
             <texPath>BaseITW/Things/Projectile/ITW_Proj_GrenadeFirefoam</texPath>
@@ -271,7 +258,7 @@
 
     <ThingDef ParentName="ITW_GrenadeBase">
         <defName>ITW_GrenadeStun</defName>
-        <label>stellar stun grenade</label>
+        <label>phitech stun grenade</label>
         <description>High-power stun grenade with mobility thrusters for extended range. They can be thrown at a decent distance before they'll activate, emitting a disorienting burst of light and sound that disrupts most conscious beings.</description>
         <recipeMaker>
             <researchPrerequisite>ITW_Grenades</researchPrerequisite>
@@ -279,25 +266,21 @@
                 <li>ITW_CraftingMain</li>
             </recipeUsers>
         </recipeMaker>
-        <tradeTags Inherit="False">
-            <li>WeaponRanged</li>
-        </tradeTags>
         <weaponTags>
-            <li>GrenadeStun</li>
+            <li>PhitechGrenadeStun</li>
         </weaponTags>
         <tickerType>Normal</tickerType>
         <graphicData>
             <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_GrenadeStun</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
-        <techLevel>Ultra</techLevel> <!-- Override for Gen1, since it's the only non-Archotech generation. -->
         <costList>
             <ITW_MaterialCommon>30</ITW_MaterialCommon>
             <ITW_Component>4</ITW_Component>
         </costList>
         <verbs>
             <li>
-                <label>throw stellar stun grenade</label>
+                <label>throw phitech stun grenade</label>
                 <verbClass>Verb_LaunchProjectile</verbClass>
                 <hasStandardCommand>true</hasStandardCommand>
                 <range>17.9</range>
@@ -317,7 +300,7 @@
 
     <ThingDef ParentName="BaseGrenadeProjectile">
         <defName>ITW_Proj_GrenadeStun</defName>
-        <label>stellar stun grenade</label>
+        <label>phitech stun grenade</label>
         <thingClass>Projectile_Explosive</thingClass>
         <graphicData>
             <texPath>BaseITW/Things/Projectile/ITW_Proj_GrenadeStun</texPath>
@@ -334,7 +317,7 @@
 
     <ThingDef ParentName="ITW_GrenadeBase">
         <defName>ITW_GrenadeToxGas</defName>
-        <label>stellar tox gas grenade</label>
+        <label>phitech tox gas grenade</label>
         <description>High-pressure tox gas grenade with mobility thrusters for extended range. They can be thrown at a decent distance before they'll discharge, dispensing hazardous tox gas.</description>
         <recipeMaker>
             <researchPrerequisite>ITW_Grenades</researchPrerequisite>
@@ -342,25 +325,21 @@
                 <li>ITW_CraftingMain</li>
             </recipeUsers>
         </recipeMaker>
-        <tradeTags Inherit="False">
-            <li>WeaponRanged</li>
-        </tradeTags>
         <weaponTags>
-            <li>GrenadeToxGas</li>
+            <li>PhitechGrenadeToxGas</li>
         </weaponTags>
         <tickerType>Normal</tickerType>
         <graphicData>
             <texPath>BaseITW/Things/Item/Equipment/WeaponRanged/ITW_GrenadeToxGas</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
-        <techLevel>Ultra</techLevel> <!-- Override for Gen1, since it's the only non-Archotech generation. -->
         <costList>
             <ITW_MaterialCommon>30</ITW_MaterialCommon>
             <ITW_Component>4</ITW_Component>
         </costList>
         <verbs>
             <li>
-                <label>throw stellar tox gas grenade</label>
+                <label>throw phitech tox gas grenade</label>
                 <verbClass>Verb_LaunchProjectile</verbClass>
                 <hasStandardCommand>true</hasStandardCommand>
                 <range>17.9</range>
@@ -380,7 +359,7 @@
 
     <ThingDef ParentName="BaseGrenadeProjectile">
         <defName>ITW_Proj_GrenadeToxGas</defName>
-        <label>stellar tox gas grenade</label>
+        <label>phitech tox gas grenade</label>
         <thingClass>Projectile_Explosive</thingClass>
         <graphicData>
             <texPath>BaseITW/Things/Projectile/ITW_Proj_GrenadeToxGas</texPath>

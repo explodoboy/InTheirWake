@@ -27,7 +27,6 @@
         <researchPrerequisites>
             <li>ITW_MedicineAndDrugs</li>
         </researchPrerequisites>
-        <tradeTags Inherit="False"><li>Drugs</li></tradeTags> <!-- Inside Def and not base to allow modsettings to disable -->
         <comps>
             <li Class="CompProperties_Drug">
                 <addictiveness>0</addictiveness>
